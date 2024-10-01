@@ -730,12 +730,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts3317" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts7204" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts3317'));
+            var myChart = echarts.init(document.getElementById('echarts7204'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -760,12 +760,12 @@
     </script>
     
 
-    <div id="echarts3011" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts5349" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts3011'));
+            var myChart = echarts.init(document.getElementById('echarts5349'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -798,6 +798,208 @@
         <tag>书法</tag>
         <tag>文化</tag>
         <tag>日语</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>罗塞塔石碑:古希腊语部分翻译</title>
+    <url>/2024/10/01/rosetta-stone-translation-greek/</url>
+    <content><![CDATA[<p><img src="rosetta-stone.jpg" alt="罗塞塔石碑" title="罗塞塔石碑"></p>
+<ol>
+<li><p>继承了父亲王位的，年轻的，最光荣的，埃及的建立者，虔心</p>
+</li>
+<li><p>向着众神，敌人的战胜者，人们文明生活的恢复者，三十年庆典<sup><a href="#fn_1" id="reffn_1">1</a></sup>之主，如伟大的赫菲斯托斯<sup><a href="#fn_2" id="reffn_2">2</a></sup>一般，一个太阳<sup><a href="#fn_3" id="reffn_3">3</a></sup>般的国王，</p>
+</li>
+<li><p>上下埃及的大王<sup><a href="#fn_4" id="reffn_4">4</a></sup>，爱父神的后代，赫菲斯托斯认可的人之一，太阳赐予胜利的人，活生生的宙斯<sup><a href="#fn_5" id="reffn_5">5</a></sup>，太阳之子，永生的，受普塔眷恋的托勒密</p>
+</li>
+<li><p>的统治之下的第九年，阿埃托斯之子阿埃托斯为亚历山大、救主神、姐弟神、施惠神、爱父神<sup><a href="#fn_6" id="reffn_6">6</a></sup>与</p>
+</li>
+<li><p>神显者的祭司，菲利诺斯之女皮拉为贝勒尼基「施惠者」的阿特洛福罗斯<sup><a href="#fn_7" id="reffn_7">7</a></sup>，第欧根尼之女阿莉亚为阿尔西诺伊「爱姐弟者」的卡内弗罗斯<sup><a href="#fn_8" id="reffn_8">8</a></sup>，托勒密之女伊琳妮</p>
+</li>
+<li><p>为阿尔西诺伊「爱父者」的女祭司<sup><a href="#fn_9" id="reffn_9">9</a></sup>，在桑迪科斯月<sup><a href="#fn_10" id="reffn_10">10</a></sup>4日，据埃及历法为梅基尔月<sup><a href="#fn_11" id="reffn_11">11</a></sup>18日。<strong>谕旨</strong>。祭司长、先知和神殿内殿为</p>
+</li>
+<li><p>众神更衣者、持扇者、圣书吏和所有其他的自全国各地神殿来孟斐斯见国王的祭司皆聚集于此，参加永生的，</p>
+</li>
+<li><p>受普塔眷恋的，显赫的施惠神，继承他父亲王位的托勒密安排的盛宴。他们这天齐聚在孟斐斯的神殿，一齐宣布：</p>
+</li>
+<li><p>鉴于永生的，受普塔眷恋的，显赫的施惠神，爱父神托勒密国王与阿尔西诺伊女王之子，托勒密国王已成为神殿与</p>
+</li>
+<li><p>栖身神殿之人以及他的所有臣民的恩人，成为一对男神与女神结合而诞生的神(就像伊西斯与奥西里斯之子，为他父亲报仇雪恨的荷鲁斯)<sup><a href="#fn_12" id="reffn_12">12</a></sup>，(并且)仁慈地心向</p>
+</li>
+<li><p>神明，已将钱谷税收献给了神殿，并且承担了神殿的大量开支，以使埃及走向繁荣，建立新的神殿，</p>
+</li>
+<li><p>并且他毫不吝惜自己的所有金钱，在埃及征收的各种税款，有的被他完全免除，有的被他减轻，以便让所有人在他的统治下都能过得</p>
+</li>
+<li><p>欣欣向荣，埃及和王国其他地方的人欠国王许多债，却都被他免除了；那些坐牢的和控告很久的人，</p>
+</li>
+<li><p>却都被他释放了；他还指示道诸神将继续享受神殿的收入与每年给予他们的津贴，包括</p>
+</li>
+<li><p>谷物与金钱，同样地，他还指示诸神从葡萄园、菜园以及其他在他父亲时代属于诸神的财产中获得收入。</p>
+</li>
+<li><p>他又带着对祭司的尊重指示道，祭司们不需要再为了祭司职分像从他父亲统治期间直到他统治的第一年那样缴纳为他们安排的税款，他还使神职人员</p>
+</li>
+<li><p>不用每年都要赶到亚历山大里亚；他还指示不得再强征海军；并且神殿需向国王缴纳的亚麻布<sup><a href="#fn_13" id="reffn_13">13</a></sup>税也被他</p>
+</li>
+<li><p>免除了三分之二；他使得整个国家百废俱兴，注重以适当的方式向众神履行传统职责</p>
+</li>
+<li><p>同样地，他还公正地对待每一个人，就像是伟大的赫尔墨斯<sup><a href="#fn_14" id="reffn_14">14</a></sup>；他还规定了解甲归乡的战士，以及其他在动乱时期<sup><a href="#fn_15" id="reffn_15">15</a></sup></p>
+</li>
+<li><p>遭到苦难的人，允许他们在返乡时占有他们原先的财产；他下令派遣骑兵、步兵和战舰抵御那些从陆路和海路</p>
+</li>
+<li><p>入侵埃及的人，他还拨出了大量的金钱与粮食，以保证神殿和所有生活在这片土地上的人们的安全；还</p>
+</li>
+<li><p>去了布西里特省的利科波利斯，这座城被叛军占据，并抵挡住了我军的一轮围攻，叛军兵革坚利，物资充裕(因为聚集</p>
+</li>
+<li><p>在那里的不敬神明的人久已心怀不满，他们还多次毁坏神殿，伤害埃及的百姓)，并且</p>
+</li>
+<li><p>安营围攻这座城，还用土堆、壕沟和精心设计的堡垒将其包围；尼罗河在(他统治的)第八年泛滥时，这样通常会淹没</p>
+</li>
+<li><p>平原，但他通过在许多水道的泄洪点筑坝阻止了这样的惨剧的发生(在这上面花费了不少钱)，并且安排骑兵和步兵守卫</p>
+</li>
+<li><p>它们，他在很短的时间内像暴风一样攻占了这座城镇，消灭了城内所有不敬神明的人，就像赫尔墨斯和荷鲁斯——伊西斯和奥西里斯的儿子以前镇压这片地区的叛军<sup><a href="#fn_16" id="reffn_16">16</a></sup></p>
+</li>
+<li><p>一样，至于那些在他父亲时代纠集叛军、为非作歹、破坏神庙的人，国王亲赴孟斐斯为他的父亲和他自己的王位雪耻。</p>
+</li>
+<li><p>让他们所有人都得到了应得的惩罚，这时他来到这里举行了正式的加冕仪式；他还免除了</p>
+</li>
+<li><p>神殿直到他统治的第八年的赋税，一笔数量可观的谷物与金钱；还有未将亚麻布上交王室的</p>
+</li>
+<li><p>罚金以及那些以及需要上交给王室的布料，同时也免除了核查税收的费用；他还免除了神殿每一阿鲁拉<sup><a href="#fn_17" id="reffn_17">17</a></sup>的神圣土地的一阿塔贝<sup><a href="#fn_18" id="reffn_18">18</a></sup>的赋税，并且同样</p>
+</li>
+<li><p>免除了每阿鲁拉的葡萄园的一罐酒的赋税；他还将大量供品赠予阿比斯和姆奈维斯<sup><a href="#fn_19" id="reffn_19">19</a></sup>和埃及其他的神兽，因为他比历代先王对众神的东西考虑得都更加周到；</p>
+</li>
+<li><p>他还慷慨大方地为它们的葬礼提供了大量合适的用品，还定期向它们的专门的神龛捐款，并且举行了祭祀、节日和其他传统仪式；</p>
+</li>
+<li><p>并且他依据律法，维护着神殿和整个埃及的尊荣；他花费大量金银宝石将阿比斯的神殿</p>
+</li>
+<li><p>好好装饰了一番；他还建立了许多神殿、神龛和祭坛，并且修好了那些失修的，在宗教事务上展现出了一位慈爱的神明般的</p>
+</li>
+<li><p>精神；经询问，他还在他统治的期间重建了最华贵的神殿，这是十分得当的；作为回报，众神赐予他健康、胜利与力量，以及其他一切美好的事物，</p>
+</li>
+<li><p>并且他和他的子孙将永远保有王位。<strong>吉祥如意</strong>：这片土地上的所有神殿的每一位祭司都下定决心为<strong>永生的，受普塔眷恋的，「神显者」</strong></p>
+</li>
+<li><p>如他父母「爱父神」、祖宗「施惠神」「姐弟神」「救主神」一般的国王<strong>托勒密</strong>增光添彩，</p>
+</li>
+<li><p>并在每座神殿最显眼的地方为<strong>永生的，受普塔眷恋的，「神显者」</strong>立一个塑像，</p>
+</li>
+<li><p>这个塑像将被称作<strong>「托勒密，埃及的守护者」</strong>，旁边立着神庙的主神，交给他胜利的武器<sup><a href="#fn_20" id="reffn_20">20</a></sup>，所有的一切都将以(埃及的)时尚的风格</p>
+</li>
+<li><p>进行制造；祭司们应当一天三次向神像致敬，给祂们穿上神圣的衣装，执行其他通常的圣事，比如在埃及的节日为其他神明献上</p>
+</li>
+<li><p>祭品；并为国王<strong>托勒密「神显者」</strong>，国王托勒密和阿尔西诺伊「爱父神」的后人，在每座</p>
+</li>
+<li><p>神殿里都建立一座雕像和一尊黄金神龛，并将它与其他神龛一起设置在内室中；盛大的节日中，游行的队伍会抬着神龛，「神显者」的神龛也和它们一起被抬着。</p>
+</li>
+<li><p>以示区分，国王的十个金冠要放在神龛上，其上还应加上一个蛇形<sup><a href="#fn_21" id="reffn_21">21</a></sup>标记，但不是</p>
+</li>
+<li><p>其他神龛上那样的蛇形冠冕，在它们的中心还要放上一顶红白双冠<sup><a href="#fn_22" id="reffn_22">22</a></sup>，这是他在孟斐斯神殿</p>
+</li>
+<li><p>举行登基大典时戴上的王冠;在王冠周围的正方形表面上，在前面所提到的王冠的旁边，金色的符号(用八个数字表示)，</p>
+</li>
+<li><p>这是让上下两国熠熠生辉的国王(的神龛)。因为梅索尔<sup><a href="#fn_23" id="reffn_23">23</a></sup>月30日是国王庆生的日子，相应的</p>
+</li>
+<li><p>(法奥菲<sup><a href="#fn_24" id="reffn_24">24</a></sup>月17日)是他继承他父亲王位的日子，所以他们在神殿中把这两天作为纪念日，因为它们是一切伟大幸事之源；又下旨全埃及的神殿都要保留在每个月的</p>
+</li>
+<li><p>这两天举行节日的的传统，在节日期间举行献祭和奠酒仪式，并照其他节日的惯例举行各类典礼(并且要将祭品交给神殿中)</p>
+</li>
+<li><p>供职的祭司。还将保留为<strong>永生的，受普塔眷恋的，「神显者」</strong>国王<strong>托勒密</strong>，每年在</p>
+</li>
+<li><p>这片土地上的所有神殿从托特<sup><a href="#fn_25" id="reffn_25">25</a></sup>月1日起举行为期五天的节日的传统，在这个节日，他们要带上花环，为神明献上与祭品和美酒并举行其他常规的活动，(每个神殿的)祭司</p>
+</li>
+<li><p>除了他们所侍奉的神明外还要被称为<strong>「神显者」</strong>的祭司；并且他的神职还要以这种形式登记在一切正式的文档里(并镌刻在他们所佩戴的指环上)；</p>
+</li>
+<li><p>也允许个人保留这一节日，在家中设立上述神明的神龛，每年举行上述庆祝</p>
+</li>
+<li><p>活动，以使埃及的众人知道赞美与崇敬<strong>「神显者」</strong>国王，依据法律如上。这谕旨要以圣书体[象形文字]和世俗体和希腊文刻在硬石碑</p>
+</li>
+<li><p>上，并且安放在第一、第二、第三[级]神殿的永生的国王的像旁。</p>
+</li>
+</ol>
+<blockquote id="fn_1">
+<sup>1</sup>. 赫卜赛德节在国王加冕三十年后每四年举行一次，以恢复国王的体力。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 埃及语版本为普塔。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 埃及语版本为拉。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 埃及的南北部，两个伟大的前王朝时期的王国，作为国王的头衔用以纪念。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 古埃及语版本为阿蒙。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. 亚历山大「大帝」、托勒密一世、贝勒尼基一世、托勒密二世、阿尔西诺伊二世、托勒密三世、贝勒尼基二世、托勒密四世与阿尔西诺伊三世的敬称。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. Athlophoros，女祭司的头衔，意为持奖品者(译者注)。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. Kanephoros，女祭司的头衔，意为持篮者(译者注)。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_9">
+<sup>9</sup>. 齐名的祭司；男女祭司，总是使用希腊名，是国王崇拜的重要组成部分，在他们的岗位上效力了一年后被安排在两个完全希腊式的学院中。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_10">
+<sup>10</sup>. Xandikos，古马其顿历法的六月，大致对应公历的三月(译者注)。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. Mekhir，古埃及历法的八月，大致对应公历的2月20日到3月21日(译者注)。<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_12">
+<sup>12</sup>. 荷鲁斯，父亲的复仇者，在希腊被称为哈伦多特斯。<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_13">
+<sup>13</sup>. 精细的亚麻布。<a href="#reffn_13" title="Jump back to footnote [13] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_14">
+<sup>14</sup>. 埃及语版本为托特。<a href="#reffn_14" title="Jump back to footnote [14] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_15">
+<sup>15</sup>. 指公元前205年以来，上埃及由两个反叛的本地法老控制的时期，第一个是霍-文内弗(先前被误读为霍-埃姆-阿赫特)，另一个是公元前199年开始统治的安赫-文内弗(被误读为安赫-埃姆-阿赫特)。<a href="#reffn_15" title="Jump back to footnote [15] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_16">
+<sup>16</sup>. 根据奥西里斯传说的一个版本，荷鲁斯和托特带领着两人的追随者在赫尔莫波利斯帕尔瓦击败了赛特的支持者。<a href="#reffn_16" title="Jump back to footnote [16] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_17">
+<sup>17</sup>. 土地测量单位，大致相当于2/3英亩(约2,735平方米)。<a href="#reffn_17" title="Jump back to footnote [17] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_18">
+<sup>18</sup>. 谷物计量单位，大致相当于38-40升(译者注)。<a href="#reffn_18" title="Jump back to footnote [18] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_19">
+<sup>19</sup>. 阿比斯和姆奈维斯都是古埃及科密特崇拜中的圣牛(译者注)。<a href="#reffn_19" title="Jump back to footnote [19] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_20">
+<sup>20</sup>. 赫帕什(Khepesh)，亦称弯刀，常被描述为神明赐予国王的皇家武器。<a href="#reffn_20" title="Jump back to footnote [20] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_21">
+<sup>21</sup>. 眼镜蛇，王权的象征。<a href="#reffn_21" title="Jump back to footnote [21] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_22">
+<sup>22</sup>. 来源于埃及语Pa-sekhemty，双冠象征着上、下埃及的两部分王权，结合了下埃及的红冠和上埃及的白冠。<a href="#reffn_22" title="Jump back to footnote [22] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_23">
+<sup>23</sup>. Mesore，古埃及历法的十二月，大致对应公历的8月7日至9月5日(译者注)。<a href="#reffn_23" title="Jump back to footnote [23] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_24">
+<sup>24</sup>. Paophi，古埃及历法的二月，大致对应公历的10月11日至11月9日(译者注)。<a href="#reffn_24" title="Jump back to footnote [24] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_24">
+<sup>24</sup>. Thoth，古埃及历法的一月，大致对应公历的8月29日至9月27日(译者注)。<a href="#reffn_24" title="Jump back to footnote [24] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>历史</category>
+        <category>古代史</category>
+        <category>埃及</category>
+        <category>后王国时代(公元前1070-332年)[第21-31王朝]</category>
+      </categories>
+      <tags>
+        <tag>渣翻</tag>
+        <tag>古埃及</tag>
+        <tag>石碑</tag>
       </tags>
   </entry>
 </search>
