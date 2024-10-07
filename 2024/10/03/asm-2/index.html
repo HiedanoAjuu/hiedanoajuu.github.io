@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fa_32x32.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fa_16x16.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=RuiZH:300,300italic,400,400italic,700,700italic|WHJZT:300,300italic,400,400italic,700,700italic|consola:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="阿柔的汇编语言札记-2 寄存器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿柔的汇编语言札记-2 寄存器">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/index.html">
+<meta property="og:site_name" content="稗田阿柔">
+<meta property="og:description" content="阿柔的汇编语言札记-2 寄存器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/debug.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/r%20read.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/r%20write.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/r%20cs:ip.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/d.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/d%20init.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/d%20continue.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/d%20address.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/e%201-9.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/e%20qa.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/e%20str.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/e%20bin.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/u.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/e%20bin.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/t.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/t.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-0.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-1.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-2.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-3.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-4.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-5.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-6.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-7.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-8.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-9.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-1-A.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-2-0.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/2-2-1.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/date.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/vm.png">
+<meta property="article:published_time" content="2024-10-02T23:38:33.000Z">
+<meta property="article:modified_time" content="2024-10-07T01:10:32.016Z">
+<meta property="article:author" content="稗田阿柔">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hiedanoajuu.github.io/2024/10/03/asm-2/debug.png">
+
+<link rel="canonical" href="https://hiedanoajuu.github.io/2024/10/03/asm-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>阿柔的汇编语言札记-2 寄存器 | 稗田阿柔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="稗田阿柔" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- aplayer -->
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">稗田阿柔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">阿柔的小图书馆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2024/10/03/asm-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田阿柔">
+      <meta itemprop="description" content="见过一次的东西就不会再忘记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿柔的汇编语言札记-2 寄存器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-10-03 07:38:33" itemprop="dateCreated datePublished" datetime="2024-10-03T07:38:33+08:00">2024-10-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-07 09:10:32" itemprop="dateModified" datetime="2024-10-07T09:10:32+08:00">2024-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">汇编语言</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+            <div class="post-description">阿柔的汇编语言札记-2 寄存器</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>CPU</strong>: 由<strong>运算器</strong>、<strong>控制器</strong>、<strong>寄存器</strong>等器件构成，依靠内部总线相连；</p>
+<ul>
+<li><strong>运算器</strong>: 信息处理；</li>
+<li><strong>寄存器</strong>: 信息存储；</li>
+<li><strong>控制器</strong>: 控制器件进行工作；</li>
+<li><strong>内部总线</strong>: 连接器件，传送数据；</li>
+</ul>
+<p>8086CPU有<strong>14</strong>个寄存器，分别是<code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>、<code>SI</code>、<code>DI</code>、<code>SP</code>、<code>BP</code>、<code>IP</code>、<code>CS</code>、<code>SS</code>、<code>DS</code>、<code>ES</code>、<code>PSW</code>；</p>
+<h1 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h1><p>8086CPU的所有寄存器都为<strong>16位</strong>，可以存放$2\ Byte$；<br><strong>通用寄存器</strong>: <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>常被用于存放一般性的数据，被称为通用寄存器；<br>在寄存器中，存储模式为<strong>小端法</strong>；<br>每个通用寄存器都可分为2个可独立使用的<strong>8位寄存器</strong>，例<code>AX</code>的低8位(0-7)构成<code>AL</code>，高8位(8-15)构成<code>AH</code>；</p>
+<h1 id="字在寄存器中的存储"><a href="#字在寄存器中的存储" class="headerlink" title="字在寄存器中的存储"></a>字在寄存器中的存储</h1><p>高位字节存储于高8位寄存器，低位字节存储于低8位寄存器；<br>例如将<code>1145H</code>存入<code>AX</code>，<code>AH</code>中存储<code>11H</code>，<code>AL</code>中存储<code>45H</code>；</p>
+<blockquote>
+<h2 id="进制的讨论"><a href="#进制的讨论" class="headerlink" title="进制的讨论"></a>进制的讨论</h2><p><strong>二进制</strong>: 计算机中的数据本身以<strong>二进制</strong>形式存放；<br><strong>十进制</strong>: 人类本身习惯的进制；<br><strong>十六进制</strong>: 一位相当于四位<strong>二进制</strong>；</p>
+<p>计算机中的数据大多以<strong>8位</strong>数据形式出现，如<strong>内存单元</strong>、<strong>寄存器</strong>，因此使用<strong>十六进制</strong>更为直观；<br>以示区分，<strong>十进制</strong>后不加后缀，<strong>二进制</strong>后加<strong>B</strong>，<strong>十六进制</strong>后加<strong>H</strong>；<br>如 <code>4421</code> = <code>1145H</code> = <code>0001000101000101B</code>;</p>
+<h1 id="几条汇编指令"><a href="#几条汇编指令" class="headerlink" title="几条汇编指令"></a>几条汇编指令</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>汇编指令</th>
+<th>控制CPU完成的操作</th>
+<th>用高级语言的语法表述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mov ax,1145</td>
+<td>将1145送入寄存器AX</td>
+<td>AX = 1145</td>
+</tr>
+<tr>
+<td>mov ah,14</td>
+<td>将14送入寄存器AH</td>
+<td>AH = 14</td>
+</tr>
+<tr>
+<td>add ax,11</td>
+<td>将寄存器AX中的数值加上11</td>
+<td>AH += 11</td>
+</tr>
+<tr>
+<td>mov ax,BX</td>
+<td>将寄存器BX中的数据送入寄存器AX</td>
+<td>AX = BX</td>
+</tr>
+<tr>
+<td>add ax,bx</td>
+<td>将寄存器AX与BX中的数值相加并存在AX中</td>
+<td>AX += BX</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意</strong>: 汇编语言汇编指令与寄存器名称不区分大小写；</p>
+</blockquote>
+<p>在进行<code>mov</code>和<code>add</code>操作时，<code>al</code>被认为是一个独立的寄存器，所进行的8位运算产生的进位并不会储存在<code>ah</code>中；<br>在进行数据传输或运算时，要注意指令的两个操作对象位数应当一致例如<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bx</span><br><span class="line">mov bx,cx</span><br><span class="line">mov ax,11H</span><br><span class="line">mov al,11H</span><br><span class="line">add ax,bx</span><br><span class="line">add ax,1145H</span><br></pre></td></tr></table></figure><br>都是正确的指令；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ax,bl ;8位寄存器与16位寄存器之间传送数据</span><br><span class="line">mov bh,ax ;16位寄存器与8位寄存器之间传送数据</span><br><span class="line">mov al,1145H ;将高于8位的数据写入8位寄存器</span><br><span class="line">add al,1145H ;将高于8位的数据加入8位寄存器</span><br></pre></td></tr></table></figure><br>都是错误的指令，两个操作对象位数不一致。</p>
+<h2 id="检测点2-1"><a href="#检测点2-1" class="headerlink" title="检测点2.1"></a>检测点2.1</h2><p>(1) 写出每条汇编指令执行后相关寄存器中的值<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mov ax,62627 ;AX=F4A3H</span><br><span class="line">mov ah,31H   ;AX=31A3H</span><br><span class="line">mov al,23H   ;AX=3123H</span><br><span class="line">add ax,ax    ;AX=6246H</span><br><span class="line">mov bx,826CH ;BX=826CH</span><br><span class="line">mov cx,ax    ;CX=6246H</span><br><span class="line">mov ax,bx    ;AX=826CH</span><br><span class="line">add ax,bx    ;AX=04D8H</span><br><span class="line">mov al,bh    ;AX=0482H</span><br><span class="line">mov ah,bl    ;AX=6C82H</span><br><span class="line">add ah,ah    ;AX=D882H</span><br><span class="line">add al,6     ;AX=D888H</span><br><span class="line">add al,al    ;AX=D810H</span><br><span class="line">mov ax,cx    ;AX=6246H</span><br></pre></td></tr></table></figure><br>(2) 只能使用目前学过的汇编指令，最多使用4条指令，编程计算2的4次方。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov ax,2</span><br><span class="line">add ax,ax</span><br><span class="line">add ax,ax</span><br><span class="line">add ax,ax</span><br></pre></td></tr></table></figure></p>
+<h1 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h1><ul>
+<li><strong>物理地址</strong>: 每一个<strong>内存单元</strong>在内存地址空间中的唯一的地址，CPU通过地址总线将其送入存储器；<br>接下来探讨8086CPU如何在内部形成内存单元的<strong>物理地址</strong>；</li>
+</ul>
+<h1 id="16位结构CPU"><a href="#16位结构CPU" class="headerlink" title="16位结构CPU"></a>16位结构CPU</h1><p><strong>16位结构</strong>(字长为<strong>16位</strong>)描述了一个CPU具有以下几方面的结构特性：</p>
+<ul>
+<li><strong>运算器</strong>一次最多可处理<strong>16位</strong>数据；</li>
+<li><strong>寄存器</strong>的最大宽度为<strong>16位</strong>；</li>
+<li><strong>寄存器</strong>和<strong>运算器</strong>之间的通路为<strong>16位</strong>；</li>
+</ul>
+<h1 id="8086CPU给出物理地址的方法"><a href="#8086CPU给出物理地址的方法" class="headerlink" title="8086CPU给出物理地址的方法"></a>8086CPU给出物理地址的方法</h1><p><strong>8086CPU</strong>有<strong>20位</strong>地址总线，寻址能力达到$1\ MB$。但8086CPU是<strong>16位结构</strong>，如果地址只是简单地从内部发出，寻址能力只有$64\ KB$；</p>
+<p><strong>8086CPU在内部通过用两个16位地址合成的方法来形成20位物理地址</strong>；<br>地址加法器采用$物理地址\ = 段地址 \times 16\ +\ 偏移地址$来合成物理地址；<br>例如8086CPU要访问地址为<code>11451H</code>的内存单元：</p>
+<ol>
+<li>相关部件提供16位的段地址和偏移地址 <strong>段地址</strong>:<code>1145H</code> <strong>偏移地址</strong>:<code>0001H</code></li>
+<li>$物理地址\ = 段地址 \times 16\ +\ 偏移地址$，得到<code>11451H</code></li>
+</ol>
+<blockquote>
+<h1 id="位移运算"><a href="#位移运算" class="headerlink" title="位移运算"></a>位移运算</h1><p>$段地址 \times 16$更常见的表述是左移4位;<br>一个$a$进制数左移$b$位相当于乘以$a^b$;</p>
+</blockquote>
+<h1 id="“段地址-16-偏移地址-物理地址”的本质含义"><a href="#“段地址-16-偏移地址-物理地址”的本质含义" class="headerlink" title="“段地址*16+偏移地址=物理地址”的本质含义"></a>“段地址*16+偏移地址=物理地址”的本质含义</h1><p>8086CPU寻址模式: $基础地址\ +\ 偏移地址\ = 物理地址$，<br>类似于通过<strong>参照物</strong>描述物体的<strong>位置</strong>。</p>
+<h1 id="段的概念"><a href="#段的概念" class="headerlink" title="段的概念"></a>段的概念</h1><p><strong>在编程中可以根据需要，将若干地址连续的内存看作一个段，用</strong>$段地址 \times 16$<strong>定位段的起始地址，用偏移地址定位段中的内存单元。</strong><br><strong>段的起始地址一定是16的倍数；偏移地址为16位，一个段的长度最大为</strong>$64\ KB$</p>
+<blockquote>
+<h2 id="内存单元地址小结"><a href="#内存单元地址小结" class="headerlink" title="内存单元地址小结"></a>内存单元地址小结</h2><p>在8086PC机中，一般不使用<strong>物理地址</strong>来描述内存地址，而是使用</p>
+<ol>
+<li>(段地址):(偏移地址)</li>
+<li>(段地址)中的(偏移地址)<br>这两种相似的方式来描述。</li>
+</ol>
+</blockquote>
+<h2 id="检测点2-2"><a href="#检测点2-2" class="headerlink" title="检测点2.2"></a>检测点2.2</h2><p>(1) 给定段地址为0001H，仅通过变化偏移地址寻址，CPU的寻址范围为<u>00010H</u>到<u>1000FH</u>。<br>(2) 有一数据存放在内存20000H单元中，现给定段地址为SA,若想用偏移地址寻到此单元，则SA应满足的条件是：最小为<u>1001H</u>，最大为<u>2000H</u>。</p>
+<h1 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h1><p><strong>段寄存器</strong>: 提供段地址的部件。<br>8086CPU共有4个<strong>段寄存器</strong>，分别为<code>CS</code>、<code>DS</code>、<code>SS</code>、<code>ES</code>，本章只涉及<code>CS</code>；</p>
+<h1 id="CS与IP"><a href="#CS与IP" class="headerlink" title="CS与IP"></a>CS与IP</h1><ul>
+<li><strong>CS</strong>: 代码段寄存器；</li>
+<li><strong>IP</strong>: 指令指针寄存器；<br>在8086PC机中，任意时刻，8086CPU将<code>CS:IP</code>指向的内容当作指令执行。<br>读取一条指令后，IP中的值自动增加，以使CPU可以读取下一条指令。</li>
+</ul>
+<p>8086CPU的工作过程可以简要描述为:<br>(1) 从<code>CS:IP</code>内存单元读取指令，读取的指令写入指令缓冲器；<br>(2) $IP\ =\ IP\ +\ 所读取指令的长度$，指向下一条指令；<br>(3) 执行指令。转到步骤(1)，循环；</p>
+<p>8086CPU在加电启动或复位后，<code>CS</code>和<code>IP</code>被设置为<code>CS=FFFFH</code>,<code>IP=0000H</code>，因此内存<code>FFFF0H</code>单元中的指令是8086CPU开机后执行的<strong>第一条指令</strong>；<br>CPU将<code>CS:IP</code>指向的内存单元中的内容视作<strong>指令</strong>；</p>
+<h1 id="修改CS、IP的指令"><a href="#修改CS、IP的指令" class="headerlink" title="修改CS、IP的指令"></a>修改CS、IP的指令</h1><p>程序员可以通过改变<code>CS</code>、<code>IP</code>中的内容来控制CPU执行目标指令；</p>
+<ul>
+<li>修改通用寄存器的指令: <code>mov</code>传送指令；</li>
+<li>修改CS、IP的指令: <code>jmp</code>转移指令；</li>
+</ul>
+<p>同时修改<code>CS</code>、<code>IP</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmp 段地址:偏移地址 ;用指令中给出的段地址修改CS，偏移地址修改IP</span><br><span class="line">jmp 1145:1 ;执行后: CS=1145H, IP=0001H, CPU从11451H处读取指令</span><br></pre></td></tr></table></figure></p>
+<p>仅修改<code>IP</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jmp 某一合法寄存器</span><br><span class="line">jmp ax ;mov IP,ax</span><br></pre></td></tr></table></figure><br><code>jmp ax</code>作用类似于<code>mov IP,ax</code>，但是并没有后者这种用法；<br>相应地<code>jmp 1145:1</code>类似于<code>mov CS,1145H</code>,<code>mov IP,1H</code></p>
+<h1 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h1><ul>
+<li><strong>代码段</strong>: 通过将一段长度为$N(N \leq 64\ KB)$的代码存放于一组地址连续、起始地址为16的倍数的内存单元中，从而定义了一个<strong>代码段</strong>；<br>执行代码段的指令，须让<code>CS:IP</code>指向所定义的代码段中的第一条指令；<h2 id="检测点2-3"><a href="#检测点2-3" class="headerlink" title="检测点2.3"></a>检测点2.3</h2>下面3条指令执行后，CPU几次修改IP？都是在什么时候？最后IP中的值为多少？<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">;第1次</span><br><span class="line">mov ax,bx</span><br><span class="line">;第2次</span><br><span class="line">sub ax,ax</span><br><span class="line">;第3次</span><br><span class="line">jmp ax    </span><br><span class="line">;第4次,IP=0H</span><br></pre></td></tr></table></figure>
+<h1 id="实验1-查看CPU和内存，用机器指令和汇编指令编程"><a href="#实验1-查看CPU和内存，用机器指令和汇编指令编程" class="headerlink" title="实验1 查看CPU和内存，用机器指令和汇编指令编程"></a>实验1 查看CPU和内存，用机器指令和汇编指令编程</h1><h2 id="1-预备知识-Debug的使用"><a href="#1-预备知识-Debug的使用" class="headerlink" title="1.预备知识: Debug的使用"></a>1.预备知识: Debug的使用</h2><h3 id="什么是Debug？"><a href="#什么是Debug？" class="headerlink" title="什么是Debug？"></a>什么是Debug？</h3><strong>Debug</strong>是DOS、<del>Windows</del>都提供(现在好像不提供了)的实模式(8086方式)程序的调试工具。使用它，可以查看CPU各种<strong>寄存器</strong>中的内容、<strong>内存</strong>的情况和在机器码级跟踪程序的运行。</li>
+</ul>
+<h3 id="我们用到的Debug功能"><a href="#我们用到的Debug功能" class="headerlink" title="我们用到的Debug功能"></a>我们用到的Debug功能</h3><ul>
+<li>用<strong>Debug</strong> <code>R</code>命令查看、修改CPU<strong>寄存器</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>D</code>命令查看<strong>内存</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>E</code>命令修改<strong>内存</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>U</code>命令将<strong>内存</strong>中的<strong>机器指令</strong>翻译为<strong>汇编指令</strong>；</li>
+<li>用<strong>Debug</strong> <code>T</code>命令执行一条<strong>机器指令</strong>；</li>
+<li>用<strong>Debug</strong> <code>A</code>命令以<strong>汇编指令</strong>格式在<strong>内存</strong>中写入一条<strong>机器指令</strong>；<br>以后的实验中还会用到<code>P</code>命令；</li>
+</ul>
+<h3 id="进入Debug"><a href="#进入Debug" class="headerlink" title="进入Debug"></a>进入Debug</h3><p>Debug是在<strong>DOS</strong>方式下使用的程序，因此就需要用到我们的<strong>DOSBox</strong>了;<br>根据<a href="https://hiedanoajuu.github.io/2024/08/09/asm-0">阿柔的汇编语言札记-0 学习环境配置</a>完成基础配置后，运行<strong>DOSBox</strong>；<br>在打开的命令行窗口中运行<code>debug</code>；<br><img src="debug.png" alt="debug" title="debug"></p>
+<h3 id="用R命令查看、修改CPU寄存器的内容；"><a href="#用R命令查看、修改CPU寄存器的内容；" class="headerlink" title="用R命令查看、修改CPU寄存器的内容；"></a>用R命令查看、修改CPU寄存器的内容；</h3><p>我们已经知道了<code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>、<code>CS</code>、<code>IP</code>这6个寄存器，现在看一下它们之中的内容。<br><img src="r read.png" alt="read" title="read"><br>注意<code>CS</code>与<code>IP</code>，<code>CS=072F,IP=0100</code>，也就是说，内存072F:0100处的指令为CPU当前要读取、执行的指令。在所有寄存器的下方，Debug还列出了<code>CS:IP</code>所指向的内存单元处所存放的<strong>机器码</strong>，并将它翻译为<strong>汇编指令</strong>，当然在上图中是<code>0000</code>。</p>
+<p>还可以用<code>R</code>命令修改寄存器中的内容；<br><img src="r write.png" alt="write" title="write"><br>用<code>r ax</code>修改，出现<code>;</code>提示符后输入要写入的数据；</p>
+<p>同样可以修改<code>CS:IP</code>；<br><img src="r cs:ip.png" alt="cs:ip" title="cs:ip"></p>
+<h3 id="用D命令查看内存中的内容"><a href="#用D命令查看内存中的内容" class="headerlink" title="用D命令查看内存中的内容"></a>用D命令查看内存中的内容</h3><p><img src="d.png" alt="d" title="d"><br>可以使用<code>d 段地址:偏移地址</code>查看内存；<br>Debug将输出3部分内容：</p>
+<ol>
+<li>中间是从指定地址开始的<strong>128</strong>个内存单元的内容，以<strong>十六进制</strong>格式输出，每行从<strong>16的整数倍</strong>的地址开始，输出<strong>16</strong>个单元的数据。中间的<code>-</code>是为便于查看；</li>
+<li>左边是每行的<strong>起始地址</strong>；</li>
+<li>右边是每个内存单元中的数据对应的可显示的<strong>ASCII</strong>字符，没有则用<code>·</code>代替；</li>
+</ol>
+<p>如果打开debug立刻通过<code>d</code>查看内存，将会列出预设地址处的内容；<br><img src="d init.png" alt="d init" title="d init"><br>在使用过<code>d</code>之后再使用<code>d</code>，则会显示后续的内容；<br><img src="d continue.png" alt="d continue" title="d continue"><br><code>d 起始内存地址 (结尾偏移地址)</code>查看某一范围内的内存(结尾偏移地址不加默认输出<strong>128</strong>个字节)；<br><img src="d address.png" alt="d address" title="d address"></p>
+<h3 id="用E命令修改内存的内容"><a href="#用E命令修改内存的内容" class="headerlink" title="用E命令修改内存的内容"></a>用E命令修改内存的内容</h3><p><code>e 起始地址 数据 数据 ...</code>；<br><img src="e 1-9.png" alt="e 1-9" title="e 1-9"><br><code>e 起始地址</code>以问答方式输入数据，每输入一个单元按一次空格，输入结束按回车；<br><img src="e qa.png" alt="e qa" title="e qa"><br>也可以用<code>e</code>写入字符串；<br><img src="e str.png" alt="e str" title="e str"></p>
+<h3 id="用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码"><a href="#用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码" class="headerlink" title="用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码"></a>用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码</h3><p>向内存<code>1000:0</code>单元写入这样一段代码:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,0001</span><br><span class="line">mov cx,0002</span><br><span class="line">add ax,cx</span><br></pre></td></tr></table></figure><br>对应的机器码是:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B8 01 00</span><br><span class="line">B9 02 00</span><br><span class="line">01 C8</span><br></pre></td></tr></table></figure><br><img src="e bin.png" alt="e bin" title="e bin"></p>
+<p>接下来用<code>u</code>查看对应的汇编代码:<br><img src="u.png" alt="u" title="u"><br><code>u</code>命令的显示分为3部分，每条机器指令的地址、机器指令以及机器指令所所对应的汇编指令；</p>
+<p>接下来用<code>t</code>执行机器指令，<code>t</code>命令可以执行<code>CS:IP</code>指向的一条或多条指令；<br>首先使CS:IP指向机器指令的地址<code>1000:0</code>:<br><img src="e bin.png" alt="e bin" title="e bin"><br>接着使用<code>t</code>来执行，注意下图CPU各相关寄存器的变化:<br><img src="t.png" alt="t" title="t"></p>
+<h3 id="用A命令以汇编指令形式写入机器指令"><a href="#用A命令以汇编指令形式写入机器指令" class="headerlink" title="用A命令以汇编指令形式写入机器指令"></a>用A命令以汇编指令形式写入机器指令</h3><p>用<code>e</code>写入机器指令有些过于繁琐了，可以使用<code>a</code>以汇编指令形式写入，输入完成后按回车:<br><img src="t.png" alt="a" title="a"><br>同<code>d</code>，如果不输入写入地址，会从一个预设的地址开始写入指令；</p>
+<h2 id="2-实验任务"><a href="#2-实验任务" class="headerlink" title="2.实验任务"></a>2.实验任务</h2><p>(1) 使用Debug，将下面的程序段写入内存，逐条执行，观察每条指令执行后CPU中相关寄存器中内容的变化。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4E20</span><br><span class="line">add ax,1416</span><br><span class="line">mov bx,2000</span><br><span class="line">add ax,bx</span><br><span class="line">mov bx,ax</span><br><span class="line">add ax,bx</span><br><span class="line">mov ax,001A</span><br><span class="line">mov bx,0026</span><br><span class="line">add al,bl</span><br><span class="line">add al,9C</span><br></pre></td></tr></table></figure><br><strong>勘误</strong>: 原书此处所有十六进制数后都加了<code>H</code>后缀，在<code>Debug</code>中默认数据为十六进制，加上会报错；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">B8 20 4E</span><br><span class="line">05 16 14</span><br><span class="line">BB 00 20</span><br><span class="line">01 D8</span><br><span class="line">89 C3</span><br><span class="line">01 D8</span><br><span class="line">B8 1A 00</span><br><span class="line">BB 26 00</span><br><span class="line">00 D8</span><br><span class="line">00 DC</span><br><span class="line">00 C7</span><br><span class="line">B4 00</span><br><span class="line">00 D8</span><br><span class="line">04 9C</span><br></pre></td></tr></table></figure><br>逐条执行效果如下:<br><img src="2-1-0.png" alt="2-1-0" title="2-1-0"><br><img src="2-1-1.png" alt="2-1-1" title="2-1-1"><br><img src="2-1-2.png" alt="2-1-2" title="2-1-2"><br><img src="2-1-3.png" alt="2-1-3" title="2-1-3"><br><img src="2-1-4.png" alt="2-1-4" title="2-1-4"><br><img src="2-1-5.png" alt="2-1-5" title="2-1-5"><br><img src="2-1-6.png" alt="2-1-6" title="2-1-6"><br><img src="2-1-7.png" alt="2-1-7" title="2-1-7"><br><img src="2-1-8.png" alt="2-1-8" title="2-1-8"><br><img src="2-1-9.png" alt="2-1-9" title="2-1-9"><br><img src="2-1-A.png" alt="2-1-A" title="2-1-A"></p>
+<p>(2) 将下面3条指令写入从2000:0开始的内存单元中，利用这三条指令计算2的8次方<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1</span><br><span class="line">add ax,ax</span><br><span class="line">jmp 2000:0003</span><br></pre></td></tr></table></figure><br>过程如下:<br><img src="2-2-0.png" alt="2-2-0" title="2-2-0"><br><img src="2-2-1.png" alt="2-2-1" title="2-2-1"><br>计算结果如上；</p>
+<p>(3) 查看内存中的内容<br>PC机主板上的ROM中写有一个生产日期，在内存FFF00H-FFFFFH的某几个单元中，请找到这个生产日期并试图改变它。<br><img src="date.png" alt="date" title="date"><br><strong>改变？这是ROM啊！</strong><br>(4) 向内存从B8100H开始的单元中填写数据，如:<br><code>-e B810:0000 01 01 02 02 03 03 04 04</code><br><img src="vm.png" alt="vm" title="vm"><br><strong>似乎有什么很可爱的东西……</strong><br><strong>毕竟这是显存嘛……</strong><br>如果对实验的结果感到疑惑，请仔细阅读<a href="https://hiedanoajuu.github.io/2024/08/15/asm-1/#内存地址空间">第一章中的1.15节</a></p>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ 本文已结束 <i class="fa fa-paw"></i> 感谢您的阅读 ~~~~~~~~~~~~~~</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田阿柔 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田阿柔 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>稗田阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hiedanoajuu.github.io/2024/10/03/asm-2/" title="阿柔的汇编语言札记-2 寄存器">https://hiedanoajuu.github.io/2024/10/03/asm-2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag"><i class="fa fa-tag"></i> 计算机</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 编程</a>
+              <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="tag"><i class="fa fa-tag"></i> 汇编语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/01/rosetta-stone-translation-greek/" rel="prev" title="罗塞塔石碑:古希腊语部分翻译">
+      <i class="fa fa-chevron-left"></i> 罗塞塔石碑:古希腊语部分翻译
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">通用寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E5%9C%A8%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">2.</span> <span class="nav-text">字在寄存器中的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E7%9A%84%E8%AE%A8%E8%AE%BA"><span class="nav-number">2.1.</span> <span class="nav-text">进制的讨论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E6%9D%A1%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">几条汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E7%82%B92-1"><span class="nav-number">3.1.</span> <span class="nav-text">检测点2.1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">物理地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#16%E4%BD%8D%E7%BB%93%E6%9E%84CPU"><span class="nav-number">5.</span> <span class="nav-text">16位结构CPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8086CPU%E7%BB%99%E5%87%BA%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">8086CPU给出物理地址的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%8D%E7%A7%BB%E8%BF%90%E7%AE%97"><span class="nav-number">7.</span> <span class="nav-text">位移运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E2%80%9C%E6%AE%B5%E5%9C%B0%E5%9D%80-16-%E5%81%8F%E7%A7%BB%E5%9C%B0%E5%9D%80-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E2%80%9D%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%90%AB%E4%B9%89"><span class="nav-number">8.</span> <span class="nav-text">“段地址*16+偏移地址&#x3D;物理地址”的本质含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AE%B5%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">9.</span> <span class="nav-text">段的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E5%9C%B0%E5%9D%80%E5%B0%8F%E7%BB%93"><span class="nav-number">9.1.</span> <span class="nav-text">内存单元地址小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E7%82%B92-2"><span class="nav-number">9.2.</span> <span class="nav-text">检测点2.2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">10.</span> <span class="nav-text">段寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CS%E4%B8%8EIP"><span class="nav-number">11.</span> <span class="nav-text">CS与IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9CS%E3%80%81IP%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="nav-number">12.</span> <span class="nav-text">修改CS、IP的指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%AE%B5"><span class="nav-number">13.</span> <span class="nav-text">代码段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E7%82%B92-3"><span class="nav-number">13.1.</span> <span class="nav-text">检测点2.3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C1-%E6%9F%A5%E7%9C%8BCPU%E5%92%8C%E5%86%85%E5%AD%98%EF%BC%8C%E7%94%A8%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E5%92%8C%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%BC%96%E7%A8%8B"><span class="nav-number">14.</span> <span class="nav-text">实验1 查看CPU和内存，用机器指令和汇编指令编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86-Debug%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">14.1.</span> <span class="nav-text">1.预备知识: Debug的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDebug%EF%BC%9F"><span class="nav-number">14.1.1.</span> <span class="nav-text">什么是Debug？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%BB%AC%E7%94%A8%E5%88%B0%E7%9A%84Debug%E5%8A%9F%E8%83%BD"><span class="nav-number">14.1.2.</span> <span class="nav-text">我们用到的Debug功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5Debug"><span class="nav-number">14.1.3.</span> <span class="nav-text">进入Debug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8R%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E3%80%81%E4%BF%AE%E6%94%B9CPU%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%9B"><span class="nav-number">14.1.4.</span> <span class="nav-text">用R命令查看、修改CPU寄存器的内容；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8D%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">14.1.5.</span> <span class="nav-text">用D命令查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8E%E5%91%BD%E4%BB%A4%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">14.1.6.</span> <span class="nav-text">用E命令修改内存的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8E%E5%91%BD%E4%BB%A4%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E7%A0%81%EF%BC%8C%E7%94%A8U%E5%91%BD%E4%BB%A4%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E6%9C%BA%E5%99%A8%E7%A0%81%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%8C%E7%94%A8T%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E7%A0%81"><span class="nav-number">14.1.7.</span> <span class="nav-text">用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8A%E5%91%BD%E4%BB%A4%E4%BB%A5%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E5%BD%A2%E5%BC%8F%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">14.1.8.</span> <span class="nav-text">用A命令以汇编指令形式写入机器指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1"><span class="nav-number">14.2.</span> <span class="nav-text">2.实验任务</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="稗田阿柔"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">稗田阿柔</p>
+  <div class="site-description" itemprop="description">见过一次的东西就不会再忘记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hiedanoajuu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hiedanoajuu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2703998852@qq.com" title="E-Mail → mailto:2703998852@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/chen-ge-97-73-47" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;chen-ge-97-73-47" rel="noopener" target="_blank"><i class="fa fa-lightbulb fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">稗田阿柔</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+  <div id="site-runtime">
+    <span class="post-meta-item-icon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+    <span id="runtime"></span>
+</div>
+
+ <script language="javascript">
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        for (var i = 0; i < agents.length; i++) {
+            if (userAgentInfo.indexOf(agents[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+}
+
+    function siteTime(openOnPC, start) {
+        window.setTimeout("siteTime(openOnPC, start)", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+            start = new Date("2023-08-23 15:24:00 +0800");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var diff = now - start;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        if (openOnPC) {
+            if (diffYears == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }
+        } else {
+            if (y == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + "年 " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }
+       
+        }
+    }
+
+    var showOnMobile = false;
+    var openOnPC = isPC();
+    var start = new Date();
+    siteTime(openOnPC, start);
+
+    if (!openOnPC && !showOnMobile) {
+        document.getElementById('site-runtime').style.display = 'none';
+    }
+</script>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+    </div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

@@ -458,10 +458,9 @@
     <url>/2024/08/09/asm-0/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>既然中考已经结束了，在漫长的暑假中总得有些事情做吧。于是，就盯上了王爽老师的《汇编语言》。作为初出茅庐的计算机新人(误)，想必都曾有过自己开发一款操作系统的想法。不过操作系统底层的东西自然是离不开汇编语言的。而汇编语言作为机器语言与高级语言之间的过渡，在如今被使用的频率已经大不如前了，几乎要被C语言淘汰了的说。</p>
 <p>「总得有人学学这些东西。」<br>于是，我翻开了这本书。</p>
-<h1 id="DOSBox"><a href="#DOSBox" class="headerlink" title="DOSBox"></a>DOSBox</h1><p>闲话少说，在正式开始汇编语言学习之前，要先把汇编语言学习的环境准备一下。<br>首先我们需要准备的是<strong>DOSBox</strong>，一个非常好用的DOS模拟器，想必很多人都用这个模拟器玩过一些上世纪的DOS游戏，比如<strong>金庸群侠传</strong>什么的，不过和新世纪出生的我并没有什么关系就是啦。<br>关于DOSBox的文件可以去官网<a href="https://www.dosbox.com/download.php?main=1">https://www.dosbox.com/download.php?main=1</a>下载，也可以在<a href="https://github.com/HiedanoAjuu/Ajuu-s-repository">阿柔的小图书馆的小储藏间</a>下载，不得不说Github作为网盘还是挺好用的(?)<br>下载完后就可以正常进行安装了，一路点下一步即可。如果安装好后是下面这样的界面那就没什么大问题了。<br><img src="dosbox.png" alt="DOSBox" title="DOSBox"></p>
-<h1 id="MASM六件套"><a href="#MASM六件套" class="headerlink" title="MASM六件套"></a>MASM六件套</h1><p>接下来可以到<a href="https://github.com/HiedanoAjuu/Ajuu-s-repository">阿柔的小图书馆的小储藏间</a>下载<strong>MASM</strong>六件套了，这是由微软开发的汇编语言开发套件，解压完后回到DOSBox的根目录，找到一个名为<code>DOSBox 0.74 Options.bat</code>的批处理文件并运行，在打开的<code>dosbox-0.74.conf</code>配置文件中找到<code>[autoexec]</code>部分，并且在该部分添加以下命令：</p>
-<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">mount (盘符) (你的MASM解压目录)</span><br><span class="line">(盘符):</span><br></pre></td></tr></table></figure>
-<p>在每次启动DOSBox时，<code>[autoexec]</code>部分的命令都会被自动执行，我们这里添加的命令意思是<strong>将MASM所在的目录挂载为指定的盘符，并切换到该目录下</strong>，便于我们后续利用这些工具进行学习与开发。<br>至于为什么是MASM……嗯，因为DOSBox是<strong>MS-DOS</strong>的模拟器。</p>
+<h1 id="DOSBox"><a href="#DOSBox" class="headerlink" title="DOSBox"></a>DOSBox</h1><p>闲话少说，在正式开始汇编语言学习之前，要先把汇编语言学习的环境准备一下。<br>首先我们需要准备的是<strong>DOSBox</strong>，一个非常好用的DOS模拟器，想必很多人都用这个模拟器玩过一些上世纪的DOS游戏，比如<strong>金庸群侠传</strong>什么的，不过和新世纪出生的我并没有什么关系就是啦。<br>关于DOSBox的文件可以去官网<a href="https://www.dosbox.com/download.php?main=1">https://www.dosbox.com/download.php?main=1</a>下载，也可以在<a href="https://github.com/HiedanoAjuu/Ajuu-s-repository">阿柔的小图书馆的小储藏间</a>下载，不得不说Github作为网盘还是挺好用的(?)<br>或者对于Linux就请使用命令行来安装吧，对于阿柔使用的Arch而言:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S dosbox</span><br></pre></td></tr></table></figure></p>
+<p>如果安装好后是下面这样的界面那就没什么大问题了。<br><img src="dosbox.png" alt="DOSBox" title="DOSBox"></p>
+<h1 id="MASM六件套"><a href="#MASM六件套" class="headerlink" title="MASM六件套"></a>MASM六件套</h1><p>接下来可以到<a href="https://github.com/HiedanoAjuu/Ajuu-s-repository">阿柔的小图书馆的小储藏间</a>下载<strong>MASM</strong>六件套了，这是由微软开发的汇编语言开发套件，解压完后找到<code>dosbox-0.74.conf</code>(Windows系统需运行安装目录的<code>DOSBox 0.74 Options.bat</code>,Linux系统则是在<code>/home/用户名/.dosbox</code>)配置文件中找到<code>[autoexec]</code>部分，并且在该部分添加以下命令：<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">mount (盘符) (你的MASM解压目录)</span><br><span class="line">(盘符):</span><br></pre></td></tr></table></figure><br>在每次启动DOSBox时，<code>[autoexec]</code>部分的命令都会被自动执行，我们这里添加的命令意思是<strong>将MASM所在的目录挂载为指定的盘符，并切换到该目录下</strong>，便于我们后续利用这些工具进行学习与开发。<br>至于为什么是MASM……嗯，因为DOSBox是<strong>MS-DOS</strong>的模拟器。</p>
 <p>那么这六件套分别是什么东西呢?又该怎么使用呢?</p>
 <p>六件套分别有以下几个文件：</p>
 <ul>
@@ -533,7 +532,7 @@
 <li>CPU通过<strong>控制总线</strong>选中存储器芯片，并发出内存<strong>写入</strong>命令;</li>
 <li>CPU通过<strong>数据总线</strong>将数据<strong>64</strong>内存的<strong>6号单元</strong>;</li>
 </ol>
-<p>对应的指令:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov AX,[n]</span><br></pre></td></tr></table></figure><br>含义: 将内存(偏移)地址为<strong>n</strong>的单元的数据读取寄存器<strong>AX</strong>(可替换为其他寄存器)</p>
+<p>对应的指令:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov AX,[6]</span><br></pre></td></tr></table></figure><br>含义: 将内存地址为<strong>6</strong>的单元的数据写入寄存器<strong>AX</strong>(可替换为其他寄存器)</p>
 <h1 id="地址总线"><a href="#地址总线" class="headerlink" title="地址总线"></a>地址总线</h1><script type="math/tex; mode=display">n\ =\ CPU地址总线根数\ =\ 地址总线位宽</script><script type="math/tex; mode=display">内存地址空间\ =\ 2^n</script><h1 id="数据总线"><a href="#数据总线" class="headerlink" title="数据总线"></a>数据总线</h1><script type="math/tex; mode=display">数据总线位宽\ =\ 单次可传输二进制数据位数</script><p><strong>8086CPU</strong>数据总线位宽为<strong>16</strong>;</p>
 <h1 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h1><p><strong>控制总线</strong>是不同控制线的总称，前面所讲的内存<strong>写入</strong>与<strong>读取</strong>命令是由几根控制线综合发出的，例如“读信号输出”控制线输出<strong>低电平</strong>向外传送<strong>读取</strong>命令。</p>
 <h1 id="内存地址空间-概述"><a href="#内存地址空间-概述" class="headerlink" title="内存地址空间(概述)"></a>内存地址空间(概述)</h1><p><strong>内存地址空间</strong>大小由<strong>CPU地址总线位宽</strong>决定，计算公式如<a href="https://hiedanoajuu.github.io/2024/08/15/asm-1/index.html#地址总线">前</a>所示;</p>
@@ -582,222 +581,146 @@
       </tags>
   </entry>
   <entry>
-    <title>平假名寻根——草书书法中的“平假名”</title>
-    <url>/2024/08/10/hiragana-in-chinese/</url>
-    <content><![CDATA[<p>平假名想必各位都很熟悉了。平假名是日语使用的一种表音文字，最初是为了写物语与和歌而用。平假名来源于汉字的草书，那么在汉字草书书法作品中，或许就能找到日语平假名的源头吧。下面我们就来看看一些日语片假名的来源。虽说有部分平假名与汉字之间的联系过于抽象，但基本上都还是能在书法作品中找到原型的。</p>
-<h1 id="あ行"><a href="#あ行" class="headerlink" title="あ行"></a>あ行</h1><h2 id="あ"><a href="#あ" class="headerlink" title="あ"></a>あ</h2><p><img src="a.jpg" alt="あ" title="あ"></p>
-<center>[晋]王羲之 《上虞帖》 “安”</center>
-
-<h2 id="い"><a href="#い" class="headerlink" title="い"></a>い</h2><p><img src="i.jpg" alt="い" title="い"></p>
-<center>[唐]李世民 《淳化阁唐太宗帖》 “以”</center>
-
-<h2 id="う"><a href="#う" class="headerlink" title="う"></a>う</h2><p><img src="u.jpg" alt="う" title="う"></p>
-<center>[唐]怀素 《草书千字文》 “宇”</center>
-
-<h2 id="え"><a href="#え" class="headerlink" title="え"></a>え</h2><p><img src="e.jpg" alt="え" title="え"></p>
-<center>[宋]黄庭坚 《廉颇蔺相如列传》 “衣”</center>
-
-<h2 id="お"><a href="#お" class="headerlink" title="お"></a>お</h2><p><img src="o.jpg" alt="お" title="お"></p>
-<center>[唐]张旭 《李青莲序》 “於(于)”</center>
-
-<h1 id="か行"><a href="#か行" class="headerlink" title="か行"></a>か行</h1><h2 id="か"><a href="#か" class="headerlink" title="か"></a>か</h2><p><img src="ka.jpg" alt="か" title="か"></p>
-<center>[宋]文天祥 《谢昌元座右自警辞》 “加”</center>
-
-<h2 id="き"><a href="#き" class="headerlink" title="き"></a>き</h2><p><img src="ki.jpg" alt="き" title="き"></p>
-<center>[唐]张旭 《李青莲序》 “幾(几)”</center>
-
-<h2 id="く"><a href="#く" class="headerlink" title="く"></a>く</h2><p><img src="ku.jpg" alt="く" title="く"></p>
-<center>[晋]王羲之 《知宝帖》 “久”</center>
-
-<h2 id="け"><a href="#け" class="headerlink" title="け"></a>け</h2><p><img src="ke.jpg" alt="け" title="け"></p>
-<center>[晋]王羲之 《一朝帖》 “計(计)”</center>
-
-<h2 id="こ"><a href="#こ" class="headerlink" title="こ"></a>こ</h2><p><img src="ko.jpg" alt="こ" title="こ"></p>
-<center>[宋]文天祥 《谢昌元座右自警辞》 “己”</center>
-
-<h1 id="さ行"><a href="#さ行" class="headerlink" title="さ行"></a>さ行</h1><h2 id="さ"><a href="#さ" class="headerlink" title="さ"></a>さ</h2><p><img src="sa.jpg" alt="さ" title="さ"></p>
-<center>[晋]王献之 《近与铁石帖》 “左”</center>
-
-<h2 id="し"><a href="#し" class="headerlink" title="し"></a>し</h2><p><img src="si.jpg" alt="し" title="し"></p>
-<center>[晋]王羲之 《其书帖》 “之”</center>
-
-<h2 id="す"><a href="#す" class="headerlink" title="す"></a>す</h2><p><img src="su.jpg" alt="す" title="す"></p>
-<center>[明]王铎 《自作诗十首》 “寸”</center>
-
-<h2 id="せ"><a href="#せ" class="headerlink" title="せ"></a>せ</h2><p><img src="se.jpg" alt="せ" title="せ"></p>
-<center>[唐]怀素 《圣母帖》 “世”</center>
-
-<h2 id="そ"><a href="#そ" class="headerlink" title="そ"></a>そ</h2><p><img src="so.jpg" alt="そ" title="そ"></p>
-<center>[唐]怀素 《自叙帖》 “曽(曾)”</center>
-
-<h1 id="た行"><a href="#た行" class="headerlink" title="た行"></a>た行</h1><h2 id="た"><a href="#た" class="headerlink" title="た"></a>た</h2><p><img src="ta.jpg" alt="た" title="た"></p>
-<center>[唐]张旭 《李青莲序》 “太”</center>
-
-<h2 id="ち"><a href="#ち" class="headerlink" title="ち"></a>ち</h2><p><img src="chi.jpg" alt="ち" title="ち"></p>
-<center>[晋]王羲之 《中郎帖》 “知”</center>
-
-<h2 id="つ"><a href="#つ" class="headerlink" title="つ"></a>つ</h2><p><img src="tsu.jpg" alt="つ" title="つ"></p>
-<center>[明]宋客 《进学解》 “川”</center>
-
-<h2 id="て"><a href="#て" class="headerlink" title="て"></a>て</h2><p><img src="te.jpg" alt="て" title="て"></p>
-<center>[唐]张旭 《李青莲序》 “天”</center>
-
-<h2 id="と"><a href="#と" class="headerlink" title="と"></a>と</h2><p><img src="so.jpg" alt="と" title="と"></p>
-<center>[唐]怀素 《四十二章经》 “止”</center>
-
-<h1 id="な行"><a href="#な行" class="headerlink" title="な行"></a>な行</h1><h2 id="な"><a href="#な" class="headerlink" title="な"></a>な</h2><p><img src="na.jpg" alt="な" title="な"></p>
-<center>[晋]谢安 《中郎帖》 “奈”</center>
-
-<h2 id="に"><a href="#に" class="headerlink" title="に"></a>に</h2><p><img src="ni.jpg" alt="に" title="に"></p>
-<center>[晋]王献之 《玄度帖》 “仁”</center>
-
-<h2 id="ぬ"><a href="#ぬ" class="headerlink" title="ぬ"></a>ぬ</h2><p><img src="nu.jpg" alt="ぬ" title="ぬ"></p>
-<center>[晋]王羲之 《大佳忧卿帖》 “奴”</center>
-
-<h2 id="ね"><a href="#ね" class="headerlink" title="ね"></a>ね</h2><p><img src="ne.png" alt="ね" title="ね"></p>
-<center>毛泽东 “祢”</center>
-
-<h2 id="の"><a href="#の" class="headerlink" title="の"></a>の</h2><p><img src="no.jpg" alt="の" title="の"></p>
-<center>[唐]怀素 《四十二章经》 “乃”</center>
-
-<h1 id="は行"><a href="#は行" class="headerlink" title="は行"></a>は行</h1><h2 id="は"><a href="#は" class="headerlink" title="は"></a>は</h2><p><img src="ha.jpg" alt="は" title="は"></p>
-<center>[明]文徵明 《早朝诗》 “波”</center>
-
-<h2 id="ひ"><a href="#ひ" class="headerlink" title="ひ"></a>ひ</h2><p><img src="hi.jpg" alt="ひ" title="ひ"></p>
-<center>[唐]孙过庭 《景福殿赋》 “比”</center>
-
-<h2 id="ふ"><a href="#ふ" class="headerlink" title="ふ"></a>ふ</h2><p><img src="fu.jpg" alt="ふ" title="ふ"></p>
-<center>[汉]张芝 《冠军帖》 “不”</center>
-
-<h2 id="へ"><a href="#へ" class="headerlink" title="へ"></a>へ</h2><p><img src="he.jpg" alt="へ" title="へ"></p>
-<center>[唐]怀素 《自叙帖》 “部”</center>
-
-<h2 id="ほ"><a href="#ほ" class="headerlink" title="ほ"></a>ほ</h2><p><img src="ho.jpg" alt="ほ" title="ほ"></p>
-<center>[晋]王羲之 《龙保帖》 “保”</center>
-
-<h1 id="ま行"><a href="#ま行" class="headerlink" title="ま行"></a>ま行</h1><h2 id="ま"><a href="#ま" class="headerlink" title="ま"></a>ま</h2><p><img src="ma.jpg" alt="ま" title="ま"></p>
-<center>[晋]王羲之 《上虞帖》 “末”</center>
-
-<h2 id="み"><a href="#み" class="headerlink" title="み"></a>み</h2><p><img src="mi.jpg" alt="み" title="み"></p>
-<center>[明]陈道复 《古诗十九首》 “美”</center>
-
-<h2 id="む"><a href="#む" class="headerlink" title="む"></a>む</h2><p><img src="mu.jpg" alt="む" title="む"></p>
-<center>[唐]怀素 《草书千字文》 “武”</center>
-
-<h2 id="め"><a href="#め" class="headerlink" title="め"></a>め</h2><p><img src="me.jpg" alt="め" title="め"></p>
-<center>[晋]王羲之 《中郎女帖》 “女”</center>
-
-<h2 id="も"><a href="#も" class="headerlink" title="も"></a>も</h2><p><img src="mo.jpg" alt="も" title="も"></p>
-<center>[明]王铎 《今夕行村外》 “毛”</center>
-
-<h1 id="や行"><a href="#や行" class="headerlink" title="や行"></a>や行</h1><h2 id="や"><a href="#や" class="headerlink" title="や"></a>や</h2><p><img src="ya.jpg" alt="や" title="や"></p>
-<center>[晋]王献之 《省前书帖》 “也”</center>
-
-<h2 id="ゆ"><a href="#ゆ" class="headerlink" title="ゆ"></a>ゆ</h2><p><img src="yu.jpg" alt="ゆ" title="ゆ"></p>
-<center>[唐]孙过庭 《书谱》 “由”</center>
-
-<h2 id="よ"><a href="#よ" class="headerlink" title="よ"></a>よ</h2><p><img src="yo.jpg" alt="よ" title="よ"></p>
-<center>[元]康里巎巎 《致彦中尺牍》 “与”</center>
-
-<h1 id="ら行"><a href="#ら行" class="headerlink" title="ら行"></a>ら行</h1><h2 id="ら"><a href="#ら" class="headerlink" title="ら"></a>ら</h2><p><img src="ra.jpg" alt="ら" title="ら"></p>
-<center>[唐]怀素 《大草千字文》 “良”</center>
-
-<h2 id="り"><a href="#り" class="headerlink" title="り"></a>り</h2><p><img src="ri.jpg" alt="り" title="り"></p>
-<center>[唐]孙过庭 《书谱》 “利”</center>
-
-<h2 id="る"><a href="#る" class="headerlink" title="る"></a>る</h2><p><img src="ru.jpg" alt="る" title="る"></p>
-<center>[唐]孙过庭 《书谱》 “留”</center>
-
-<h2 id="れ"><a href="#れ" class="headerlink" title="れ"></a>れ</h2><p><img src="re.jpg" alt="れ" title="れ"></p>
-<center>[唐]怀素 《自叙帖》 “礼”</center>
-
-<h2 id="ろ"><a href="#ろ" class="headerlink" title="ろ"></a>ろ</h2><p><img src="ro.jpg" alt="ろ" title="ろ"></p>
-<center>[元]邓文原 《书谱》 “呂(吕)”</center>
-
-<h1 id="わ行"><a href="#わ行" class="headerlink" title="わ行"></a>わ行</h1><h2 id="わ"><a href="#わ" class="headerlink" title="わ"></a>わ</h2><p><img src="wa.jpg" alt="わ" title="わ"></p>
-<center>[晋]王献之 《奉别贴》 “和”</center>
-
-<h2 id="ゐ"><a href="#ゐ" class="headerlink" title="ゐ"></a>ゐ</h2><p><img src="wi.jpg" alt="ゐ" title="ゐ"></p>
-<center>[汉]蔡琰 《胡笳帖》 “爲(为)”</center>
-
-<h2 id="ゑ"><a href="#ゑ" class="headerlink" title="ゑ"></a>ゑ</h2><p><img src="we.jpg" alt="ゑ" title="ゑ"></p>
-<center>[元]邓文原 《急就章》 “恵(惠)”</center>
-
-<h2 id="を"><a href="#を" class="headerlink" title="を"></a>を</h2><p><img src="wo.jpg" alt="を" title="を"></p>
-<center>[唐]怀素 《自叙帖》 “遠(远)”</center>
-
-<h1 id="ん"><a href="#ん" class="headerlink" title="ん"></a>ん</h1><p><img src="n.jpg" alt="ん" title="ん"></p>
-<center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
-
-<h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts7204" style="width: 85%;height: 400px;margin: 0 auto"></div>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
-
-    <script type="text/javascript">
-            // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts7204'));
-            // 指定图表的配置项和数据
-            var option = {
-    title: {
-        text: '书法家贡献统计图(三次以上)'
-    },
-    tooltip: {},
-    legend: {
-        data:['贡献']
-    },
-    xAxis: {
-        data: ["怀素","王羲之","孙过庭","王献之","张旭","王铎"]
-    },
-    yAxis: {},
-    series: [{
-        name: '贡献',
-        type: 'bar',
-        data: [11, 8, 4, 4, 4, 3]
-    }]
-};
-            // 使用刚指定的配置项和数据显示图表。
-            myChart.setOption(option);
-    </script>
-    
-
-    <div id="echarts5349" style="width: 85%;height: 400px;margin: 0 auto"></div>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
-
-    <script type="text/javascript">
-            // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts5349'));
-            // 指定图表的配置项和数据
-            var option = {
-    title: {
-        text: '朝代变化统计图'
-    },
-    tooltip: {},
-    legend: {
-        data:['贡献']
-    },
-    xAxis: {
-        data: ["汉","晋","唐","宋","元","明","清及以后"]
-    },
-    yAxis: {},
-    series: [{
-        name: '贡献',
-        type: 'line',
-        data: [2, 14, 19, 3, 3, 6, 1]
-    }]
-};
-            // 使用刚指定的配置项和数据显示图表。
-            myChart.setOption(option);
-    </script>
-    
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>平假名作为日语重要的表音符号，有着深远的历史。平假名由汉字的草书演变而来，从中我们便能一窥古代中日文化交流的情况。</p>
+    <title>阿柔的汇编语言札记-2 寄存器</title>
+    <url>/2024/10/03/asm-2/</url>
+    <content><![CDATA[<p><strong>CPU</strong>: 由<strong>运算器</strong>、<strong>控制器</strong>、<strong>寄存器</strong>等器件构成，依靠内部总线相连；</p>
+<ul>
+<li><strong>运算器</strong>: 信息处理；</li>
+<li><strong>寄存器</strong>: 信息存储；</li>
+<li><strong>控制器</strong>: 控制器件进行工作；</li>
+<li><strong>内部总线</strong>: 连接器件，传送数据；</li>
+</ul>
+<p>8086CPU有<strong>14</strong>个寄存器，分别是<code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>、<code>SI</code>、<code>DI</code>、<code>SP</code>、<code>BP</code>、<code>IP</code>、<code>CS</code>、<code>SS</code>、<code>DS</code>、<code>ES</code>、<code>PSW</code>；</p>
+<h1 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h1><p>8086CPU的所有寄存器都为<strong>16位</strong>，可以存放$2\ Byte$；<br><strong>通用寄存器</strong>: <code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>常被用于存放一般性的数据，被称为通用寄存器；<br>在寄存器中，存储模式为<strong>小端法</strong>；<br>每个通用寄存器都可分为2个可独立使用的<strong>8位寄存器</strong>，例<code>AX</code>的低8位(0-7)构成<code>AL</code>，高8位(8-15)构成<code>AH</code>；</p>
+<h1 id="字在寄存器中的存储"><a href="#字在寄存器中的存储" class="headerlink" title="字在寄存器中的存储"></a>字在寄存器中的存储</h1><p>高位字节存储于高8位寄存器，低位字节存储于低8位寄存器；<br>例如将<code>1145H</code>存入<code>AX</code>，<code>AH</code>中存储<code>11H</code>，<code>AL</code>中存储<code>45H</code>；</p>
+<blockquote>
+<h2 id="进制的讨论"><a href="#进制的讨论" class="headerlink" title="进制的讨论"></a>进制的讨论</h2><p><strong>二进制</strong>: 计算机中的数据本身以<strong>二进制</strong>形式存放；<br><strong>十进制</strong>: 人类本身习惯的进制；<br><strong>十六进制</strong>: 一位相当于四位<strong>二进制</strong>；</p>
+<p>计算机中的数据大多以<strong>8位</strong>数据形式出现，如<strong>内存单元</strong>、<strong>寄存器</strong>，因此使用<strong>十六进制</strong>更为直观；<br>以示区分，<strong>十进制</strong>后不加后缀，<strong>二进制</strong>后加<strong>B</strong>，<strong>十六进制</strong>后加<strong>H</strong>；<br>如 <code>4421</code> = <code>1145H</code> = <code>0001000101000101B</code>;</p>
+<h1 id="几条汇编指令"><a href="#几条汇编指令" class="headerlink" title="几条汇编指令"></a>几条汇编指令</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>汇编指令</th>
+<th>控制CPU完成的操作</th>
+<th>用高级语言的语法表述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mov ax,1145</td>
+<td>将1145送入寄存器AX</td>
+<td>AX = 1145</td>
+</tr>
+<tr>
+<td>mov ah,14</td>
+<td>将14送入寄存器AH</td>
+<td>AH = 14</td>
+</tr>
+<tr>
+<td>add ax,11</td>
+<td>将寄存器AX中的数值加上11</td>
+<td>AH += 11</td>
+</tr>
+<tr>
+<td>mov ax,BX</td>
+<td>将寄存器BX中的数据送入寄存器AX</td>
+<td>AX = BX</td>
+</tr>
+<tr>
+<td>add ax,bx</td>
+<td>将寄存器AX与BX中的数值相加并存在AX中</td>
+<td>AX += BX</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意</strong>: 汇编语言汇编指令与寄存器名称不区分大小写；</p>
+</blockquote>
+<p>在进行<code>mov</code>和<code>add</code>操作时，<code>al</code>被认为是一个独立的寄存器，所进行的8位运算产生的进位并不会储存在<code>ah</code>中；<br>在进行数据传输或运算时，要注意指令的两个操作对象位数应当一致例如<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,bx</span><br><span class="line">mov bx,cx</span><br><span class="line">mov ax,11H</span><br><span class="line">mov al,11H</span><br><span class="line">add ax,bx</span><br><span class="line">add ax,1145H</span><br></pre></td></tr></table></figure><br>都是正确的指令；<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,bl ;8位寄存器与16位寄存器之间传送数据</span><br><span class="line">mov bh,ax ;16位寄存器与8位寄存器之间传送数据</span><br><span class="line">mov al,1145H ;将高于8位的数据写入8位寄存器</span><br><span class="line">add al,1145H ;将高于8位的数据加入8位寄存器</span><br></pre></td></tr></table></figure><br>都是错误的指令，两个操作对象位数不一致。</p>
+<h2 id="检测点2-1"><a href="#检测点2-1" class="headerlink" title="检测点2.1"></a>检测点2.1</h2><p>(1) 写出每条汇编指令执行后相关寄存器中的值<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,62627 ;AX=F4A3H</span><br><span class="line">mov ah,31H   ;AX=31A3H</span><br><span class="line">mov al,23H   ;AX=3123H</span><br><span class="line">add ax,ax    ;AX=6246H</span><br><span class="line">mov bx,826CH ;BX=826CH</span><br><span class="line">mov cx,ax    ;CX=6246H</span><br><span class="line">mov ax,bx    ;AX=826CH</span><br><span class="line">add ax,bx    ;AX=04D8H</span><br><span class="line">mov al,bh    ;AX=0482H</span><br><span class="line">mov ah,bl    ;AX=6C82H</span><br><span class="line">add ah,ah    ;AX=D882H</span><br><span class="line">add al,6     ;AX=D888H</span><br><span class="line">add al,al    ;AX=D810H</span><br><span class="line">mov ax,cx    ;AX=6246H</span><br></pre></td></tr></table></figure><br>(2) 只能使用目前学过的汇编指令，最多使用4条指令，编程计算2的4次方。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,2</span><br><span class="line">add ax,ax</span><br><span class="line">add ax,ax</span><br><span class="line">add ax,ax</span><br></pre></td></tr></table></figure></p>
+<h1 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h1><ul>
+<li><strong>物理地址</strong>: 每一个<strong>内存单元</strong>在内存地址空间中的唯一的地址，CPU通过地址总线将其送入存储器；<br>接下来探讨8086CPU如何在内部形成内存单元的<strong>物理地址</strong>；</li>
+</ul>
+<h1 id="16位结构CPU"><a href="#16位结构CPU" class="headerlink" title="16位结构CPU"></a>16位结构CPU</h1><p><strong>16位结构</strong>(字长为<strong>16位</strong>)描述了一个CPU具有以下几方面的结构特性：</p>
+<ul>
+<li><strong>运算器</strong>一次最多可处理<strong>16位</strong>数据；</li>
+<li><strong>寄存器</strong>的最大宽度为<strong>16位</strong>；</li>
+<li><strong>寄存器</strong>和<strong>运算器</strong>之间的通路为<strong>16位</strong>；</li>
+</ul>
+<h1 id="8086CPU给出物理地址的方法"><a href="#8086CPU给出物理地址的方法" class="headerlink" title="8086CPU给出物理地址的方法"></a>8086CPU给出物理地址的方法</h1><p><strong>8086CPU</strong>有<strong>20位</strong>地址总线，寻址能力达到$1\ MB$。但8086CPU是<strong>16位结构</strong>，如果地址只是简单地从内部发出，寻址能力只有$64\ KB$；</p>
+<p><strong>8086CPU在内部通过用两个16位地址合成的方法来形成20位物理地址</strong>；<br>地址加法器采用$物理地址\ = 段地址 \times 16\ +\ 偏移地址$来合成物理地址；<br>例如8086CPU要访问地址为<code>11451H</code>的内存单元：</p>
+<ol>
+<li>相关部件提供16位的段地址和偏移地址 <strong>段地址</strong>:<code>1145H</code> <strong>偏移地址</strong>:<code>0001H</code></li>
+<li>$物理地址\ = 段地址 \times 16\ +\ 偏移地址$，得到<code>11451H</code></li>
+</ol>
+<blockquote>
+<h1 id="位移运算"><a href="#位移运算" class="headerlink" title="位移运算"></a>位移运算</h1><p>$段地址 \times 16$更常见的表述是左移4位;<br>一个$a$进制数左移$b$位相当于乘以$a^b$;</p>
+</blockquote>
+<h1 id="“段地址-16-偏移地址-物理地址”的本质含义"><a href="#“段地址-16-偏移地址-物理地址”的本质含义" class="headerlink" title="“段地址*16+偏移地址=物理地址”的本质含义"></a>“段地址*16+偏移地址=物理地址”的本质含义</h1><p>8086CPU寻址模式: $基础地址\ +\ 偏移地址\ = 物理地址$，<br>类似于通过<strong>参照物</strong>描述物体的<strong>位置</strong>。</p>
+<h1 id="段的概念"><a href="#段的概念" class="headerlink" title="段的概念"></a>段的概念</h1><p><strong>在编程中可以根据需要，将若干地址连续的内存看作一个段，用</strong>$段地址 \times 16$<strong>定位段的起始地址，用偏移地址定位段中的内存单元。</strong><br><strong>段的起始地址一定是16的倍数；偏移地址为16位，一个段的长度最大为</strong>$64\ KB$</p>
+<blockquote>
+<h2 id="内存单元地址小结"><a href="#内存单元地址小结" class="headerlink" title="内存单元地址小结"></a>内存单元地址小结</h2><p>在8086PC机中，一般不使用<strong>物理地址</strong>来描述内存地址，而是使用</p>
+<ol>
+<li>(段地址):(偏移地址)</li>
+<li>(段地址)中的(偏移地址)<br>这两种相似的方式来描述。</li>
+</ol>
+</blockquote>
+<h2 id="检测点2-2"><a href="#检测点2-2" class="headerlink" title="检测点2.2"></a>检测点2.2</h2><p>(1) 给定段地址为0001H，仅通过变化偏移地址寻址，CPU的寻址范围为<u>00010H</u>到<u>1000FH</u>。<br>(2) 有一数据存放在内存20000H单元中，现给定段地址为SA,若想用偏移地址寻到此单元，则SA应满足的条件是：最小为<u>1001H</u>，最大为<u>2000H</u>。</p>
+<h1 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h1><p><strong>段寄存器</strong>: 提供段地址的部件。<br>8086CPU共有4个<strong>段寄存器</strong>，分别为<code>CS</code>、<code>DS</code>、<code>SS</code>、<code>ES</code>，本章只涉及<code>CS</code>；</p>
+<h1 id="CS与IP"><a href="#CS与IP" class="headerlink" title="CS与IP"></a>CS与IP</h1><ul>
+<li><strong>CS</strong>: 代码段寄存器；</li>
+<li><strong>IP</strong>: 指令指针寄存器；<br>在8086PC机中，任意时刻，8086CPU将<code>CS:IP</code>指向的内容当作指令执行。<br>读取一条指令后，IP中的值自动增加，以使CPU可以读取下一条指令。</li>
+</ul>
+<p>8086CPU的工作过程可以简要描述为:<br>(1) 从<code>CS:IP</code>内存单元读取指令，读取的指令写入指令缓冲器；<br>(2) $IP\ =\ IP\ +\ 所读取指令的长度$，指向下一条指令；<br>(3) 执行指令。转到步骤(1)，循环；</p>
+<p>8086CPU在加电启动或复位后，<code>CS</code>和<code>IP</code>被设置为<code>CS=FFFFH</code>,<code>IP=0000H</code>，因此内存<code>FFFF0H</code>单元中的指令是8086CPU开机后执行的<strong>第一条指令</strong>；<br>CPU将<code>CS:IP</code>指向的内存单元中的内容视作<strong>指令</strong>；</p>
+<h1 id="修改CS、IP的指令"><a href="#修改CS、IP的指令" class="headerlink" title="修改CS、IP的指令"></a>修改CS、IP的指令</h1><p>程序员可以通过改变<code>CS</code>、<code>IP</code>中的内容来控制CPU执行目标指令；</p>
+<ul>
+<li>修改通用寄存器的指令: <code>mov</code>传送指令；</li>
+<li>修改CS、IP的指令: <code>jmp</code>转移指令；</li>
+</ul>
+<p>同时修改<code>CS</code>、<code>IP</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp 段地址:偏移地址 ;用指令中给出的段地址修改CS，偏移地址修改IP</span><br><span class="line">jmp 1145:1 ;执行后: CS=1145H, IP=0001H, CPU从11451H处读取指令</span><br></pre></td></tr></table></figure></p>
+<p>仅修改<code>IP</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jmp 某一合法寄存器</span><br><span class="line">jmp ax ;mov IP,ax</span><br></pre></td></tr></table></figure><br><code>jmp ax</code>作用类似于<code>mov IP,ax</code>，但是并没有后者这种用法；<br>相应地<code>jmp 1145:1</code>类似于<code>mov CS,1145H</code>,<code>mov IP,1H</code></p>
+<h1 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h1><ul>
+<li><strong>代码段</strong>: 通过将一段长度为$N(N \leq 64\ KB)$的代码存放于一组地址连续、起始地址为16的倍数的内存单元中，从而定义了一个<strong>代码段</strong>；<br>执行代码段的指令，须让<code>CS:IP</code>指向所定义的代码段中的第一条指令；<h2 id="检测点2-3"><a href="#检测点2-3" class="headerlink" title="检测点2.3"></a>检测点2.3</h2>下面3条指令执行后，CPU几次修改IP？都是在什么时候？最后IP中的值为多少？<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">;第1次</span><br><span class="line">mov ax,bx</span><br><span class="line">;第2次</span><br><span class="line">sub ax,ax</span><br><span class="line">;第3次</span><br><span class="line">jmp ax    </span><br><span class="line">;第4次,IP=0H</span><br></pre></td></tr></table></figure>
+<h1 id="实验1-查看CPU和内存，用机器指令和汇编指令编程"><a href="#实验1-查看CPU和内存，用机器指令和汇编指令编程" class="headerlink" title="实验1 查看CPU和内存，用机器指令和汇编指令编程"></a>实验1 查看CPU和内存，用机器指令和汇编指令编程</h1><h2 id="1-预备知识-Debug的使用"><a href="#1-预备知识-Debug的使用" class="headerlink" title="1.预备知识: Debug的使用"></a>1.预备知识: Debug的使用</h2><h3 id="什么是Debug？"><a href="#什么是Debug？" class="headerlink" title="什么是Debug？"></a>什么是Debug？</h3><strong>Debug</strong>是DOS、<del>Windows</del>都提供(现在好像不提供了)的实模式(8086方式)程序的调试工具。使用它，可以查看CPU各种<strong>寄存器</strong>中的内容、<strong>内存</strong>的情况和在机器码级跟踪程序的运行。</li>
+</ul>
+<h3 id="我们用到的Debug功能"><a href="#我们用到的Debug功能" class="headerlink" title="我们用到的Debug功能"></a>我们用到的Debug功能</h3><ul>
+<li>用<strong>Debug</strong> <code>R</code>命令查看、修改CPU<strong>寄存器</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>D</code>命令查看<strong>内存</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>E</code>命令修改<strong>内存</strong>的内容；</li>
+<li>用<strong>Debug</strong> <code>U</code>命令将<strong>内存</strong>中的<strong>机器指令</strong>翻译为<strong>汇编指令</strong>；</li>
+<li>用<strong>Debug</strong> <code>T</code>命令执行一条<strong>机器指令</strong>；</li>
+<li>用<strong>Debug</strong> <code>A</code>命令以<strong>汇编指令</strong>格式在<strong>内存</strong>中写入一条<strong>机器指令</strong>；<br>以后的实验中还会用到<code>P</code>命令；</li>
+</ul>
+<h3 id="进入Debug"><a href="#进入Debug" class="headerlink" title="进入Debug"></a>进入Debug</h3><p>Debug是在<strong>DOS</strong>方式下使用的程序，因此就需要用到我们的<strong>DOSBox</strong>了;<br>根据<a href="https://hiedanoajuu.github.io/2024/08/09/asm-0">阿柔的汇编语言札记-0 学习环境配置</a>完成基础配置后，运行<strong>DOSBox</strong>；<br>在打开的命令行窗口中运行<code>debug</code>；<br><img src="debug.png" alt="debug" title="debug"></p>
+<h3 id="用R命令查看、修改CPU寄存器的内容；"><a href="#用R命令查看、修改CPU寄存器的内容；" class="headerlink" title="用R命令查看、修改CPU寄存器的内容；"></a>用R命令查看、修改CPU寄存器的内容；</h3><p>我们已经知道了<code>AX</code>、<code>BX</code>、<code>CX</code>、<code>DX</code>、<code>CS</code>、<code>IP</code>这6个寄存器，现在看一下它们之中的内容。<br><img src="r read.png" alt="read" title="read"><br>注意<code>CS</code>与<code>IP</code>，<code>CS=072F,IP=0100</code>，也就是说，内存072F:0100处的指令为CPU当前要读取、执行的指令。在所有寄存器的下方，Debug还列出了<code>CS:IP</code>所指向的内存单元处所存放的<strong>机器码</strong>，并将它翻译为<strong>汇编指令</strong>，当然在上图中是<code>0000</code>。</p>
+<p>还可以用<code>R</code>命令修改寄存器中的内容；<br><img src="r write.png" alt="write" title="write"><br>用<code>r ax</code>修改，出现<code>;</code>提示符后输入要写入的数据；</p>
+<p>同样可以修改<code>CS:IP</code>；<br><img src="r cs:ip.png" alt="cs:ip" title="cs:ip"></p>
+<h3 id="用D命令查看内存中的内容"><a href="#用D命令查看内存中的内容" class="headerlink" title="用D命令查看内存中的内容"></a>用D命令查看内存中的内容</h3><p><img src="d.png" alt="d" title="d"><br>可以使用<code>d 段地址:偏移地址</code>查看内存；<br>Debug将输出3部分内容：</p>
+<ol>
+<li>中间是从指定地址开始的<strong>128</strong>个内存单元的内容，以<strong>十六进制</strong>格式输出，每行从<strong>16的整数倍</strong>的地址开始，输出<strong>16</strong>个单元的数据。中间的<code>-</code>是为便于查看；</li>
+<li>左边是每行的<strong>起始地址</strong>；</li>
+<li>右边是每个内存单元中的数据对应的可显示的<strong>ASCII</strong>字符，没有则用<code>·</code>代替；</li>
+</ol>
+<p>如果打开debug立刻通过<code>d</code>查看内存，将会列出预设地址处的内容；<br><img src="d init.png" alt="d init" title="d init"><br>在使用过<code>d</code>之后再使用<code>d</code>，则会显示后续的内容；<br><img src="d continue.png" alt="d continue" title="d continue"><br><code>d 起始内存地址 (结尾偏移地址)</code>查看某一范围内的内存(结尾偏移地址不加默认输出<strong>128</strong>个字节)；<br><img src="d address.png" alt="d address" title="d address"></p>
+<h3 id="用E命令修改内存的内容"><a href="#用E命令修改内存的内容" class="headerlink" title="用E命令修改内存的内容"></a>用E命令修改内存的内容</h3><p><code>e 起始地址 数据 数据 ...</code>；<br><img src="e 1-9.png" alt="e 1-9" title="e 1-9"><br><code>e 起始地址</code>以问答方式输入数据，每输入一个单元按一次空格，输入结束按回车；<br><img src="e qa.png" alt="e qa" title="e qa"><br>也可以用<code>e</code>写入字符串；<br><img src="e str.png" alt="e str" title="e str"></p>
+<h3 id="用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码"><a href="#用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码" class="headerlink" title="用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码"></a>用E命令写入机器码，用U命令查看内存中机器码的含义，用T命令执行内存中的机器码</h3><p>向内存<code>1000:0</code>单元写入这样一段代码:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,0001</span><br><span class="line">mov cx,0002</span><br><span class="line">add ax,cx</span><br></pre></td></tr></table></figure><br>对应的机器码是:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">B8 01 00</span><br><span class="line">B9 02 00</span><br><span class="line">01 C8</span><br></pre></td></tr></table></figure><br><img src="e bin.png" alt="e bin" title="e bin"></p>
+<p>接下来用<code>u</code>查看对应的汇编代码:<br><img src="u.png" alt="u" title="u"><br><code>u</code>命令的显示分为3部分，每条机器指令的地址、机器指令以及机器指令所所对应的汇编指令；</p>
+<p>接下来用<code>t</code>执行机器指令，<code>t</code>命令可以执行<code>CS:IP</code>指向的一条或多条指令；<br>首先使CS:IP指向机器指令的地址<code>1000:0</code>:<br><img src="e bin.png" alt="e bin" title="e bin"><br>接着使用<code>t</code>来执行，注意下图CPU各相关寄存器的变化:<br><img src="t.png" alt="t" title="t"></p>
+<h3 id="用A命令以汇编指令形式写入机器指令"><a href="#用A命令以汇编指令形式写入机器指令" class="headerlink" title="用A命令以汇编指令形式写入机器指令"></a>用A命令以汇编指令形式写入机器指令</h3><p>用<code>e</code>写入机器指令有些过于繁琐了，可以使用<code>a</code>以汇编指令形式写入，输入完成后按回车:<br><img src="t.png" alt="a" title="a"><br>同<code>d</code>，如果不输入写入地址，会从一个预设的地址开始写入指令；</p>
+<h2 id="2-实验任务"><a href="#2-实验任务" class="headerlink" title="2.实验任务"></a>2.实验任务</h2><p>(1) 使用Debug，将下面的程序段写入内存，逐条执行，观察每条指令执行后CPU中相关寄存器中内容的变化。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,4E20</span><br><span class="line">add ax,1416</span><br><span class="line">mov bx,2000</span><br><span class="line">add ax,bx</span><br><span class="line">mov bx,ax</span><br><span class="line">add ax,bx</span><br><span class="line">mov ax,001A</span><br><span class="line">mov bx,0026</span><br><span class="line">add al,bl</span><br><span class="line">add al,9C</span><br></pre></td></tr></table></figure><br><strong>勘误</strong>: 原书此处所有十六进制数后都加了<code>H</code>后缀，在<code>Debug</code>中默认数据为十六进制，加上会报错；<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">B8 20 4E</span><br><span class="line">05 16 14</span><br><span class="line">BB 00 20</span><br><span class="line">01 D8</span><br><span class="line">89 C3</span><br><span class="line">01 D8</span><br><span class="line">B8 1A 00</span><br><span class="line">BB 26 00</span><br><span class="line">00 D8</span><br><span class="line">00 DC</span><br><span class="line">00 C7</span><br><span class="line">B4 00</span><br><span class="line">00 D8</span><br><span class="line">04 9C</span><br></pre></td></tr></table></figure><br>逐条执行效果如下:<br><img src="2-1-0.png" alt="2-1-0" title="2-1-0"><br><img src="2-1-1.png" alt="2-1-1" title="2-1-1"><br><img src="2-1-2.png" alt="2-1-2" title="2-1-2"><br><img src="2-1-3.png" alt="2-1-3" title="2-1-3"><br><img src="2-1-4.png" alt="2-1-4" title="2-1-4"><br><img src="2-1-5.png" alt="2-1-5" title="2-1-5"><br><img src="2-1-6.png" alt="2-1-6" title="2-1-6"><br><img src="2-1-7.png" alt="2-1-7" title="2-1-7"><br><img src="2-1-8.png" alt="2-1-8" title="2-1-8"><br><img src="2-1-9.png" alt="2-1-9" title="2-1-9"><br><img src="2-1-A.png" alt="2-1-A" title="2-1-A"></p>
+<p>(2) 将下面3条指令写入从2000:0开始的内存单元中，利用这三条指令计算2的8次方<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,1</span><br><span class="line">add ax,ax</span><br><span class="line">jmp 2000:0003</span><br></pre></td></tr></table></figure><br>过程如下:<br><img src="2-2-0.png" alt="2-2-0" title="2-2-0"><br><img src="2-2-1.png" alt="2-2-1" title="2-2-1"><br>计算结果如上；</p>
+<p>(3) 查看内存中的内容<br>PC机主板上的ROM中写有一个生产日期，在内存FFF00H-FFFFFH的某几个单元中，请找到这个生产日期并试图改变它。<br><img src="date.png" alt="date" title="date"><br><strong>改变？这是ROM啊！</strong><br>(4) 向内存从B8100H开始的单元中填写数据，如:<br><code>-e B810:0000 01 01 02 02 03 03 04 04</code><br><img src="vm.png" alt="vm" title="vm"><br><strong>似乎有什么很可爱的东西……</strong><br><strong>毕竟这是显存嘛……</strong><br>如果对实验的结果感到疑惑，请仔细阅读<a href="https://hiedanoajuu.github.io/2024/08/15/asm-1/#内存地址空间">第一章中的1.15节</a></p>
 ]]></content>
       <categories>
-        <category>杂项</category>
+        <category>计算机</category>
+        <category>编程</category>
+        <category>汇编语言</category>
       </categories>
       <tags>
-        <tag>书法</tag>
-        <tag>文化</tag>
-        <tag>日语</tag>
+        <tag>计算机</tag>
+        <tag>编程</tag>
+        <tag>汇编语言</tag>
       </tags>
   </entry>
   <entry>
@@ -819,9 +742,9 @@
 </li>
 <li><p>众神更衣者、持扇者、圣书吏和所有其他的自全国各地神殿来孟斐斯见国王的祭司皆聚集于此，参加永生的，</p>
 </li>
-<li><p>受普塔眷恋的，显赫的施惠神，继承他父亲王位的托勒密安排的盛宴。他们这天齐聚在孟斐斯的神殿，一齐宣布：</p>
+<li><p>受普塔眷恋的，显赫的神显者，继承他父亲王位的托勒密安排的盛宴。他们这天齐聚在孟斐斯的神殿，一齐宣布：</p>
 </li>
-<li><p>鉴于永生的，受普塔眷恋的，显赫的施惠神，爱父神托勒密国王与阿尔西诺伊女王之子，托勒密国王已成为神殿与</p>
+<li><p>鉴于永生的，受普塔眷恋的，显赫的神显者，「爱父神」托勒密国王与阿尔西诺伊女王之子，托勒密国王已成为神殿与</p>
 </li>
 <li><p>栖身神殿之人以及他的所有臣民的恩人，成为一对男神与女神结合而诞生的神(就像伊西斯与奥西里斯之子，为他父亲报仇雪恨的荷鲁斯)<sup><a href="#fn_12" id="reffn_12">12</a></sup>，(并且)仁慈地心向</p>
 </li>
@@ -986,8 +909,8 @@
 <blockquote id="fn_24">
 <sup>24</sup>. Paophi，古埃及历法的二月，大致对应公历的10月11日至11月9日(译者注)。<a href="#reffn_24" title="Jump back to footnote [24] in the text."> &#8617;</a>
 </blockquote>
-<blockquote id="fn_24">
-<sup>24</sup>. Thoth，古埃及历法的一月，大致对应公历的8月29日至9月27日(译者注)。<a href="#reffn_24" title="Jump back to footnote [24] in the text."> &#8617;</a>
+<blockquote id="fn_25">
+<sup>25</sup>. Thoth，古埃及历法的一月，大致对应公历的8月29日至9月27日(译者注)。<a href="#reffn_25" title="Jump back to footnote [25] in the text."> &#8617;</a>
 </blockquote>
 ]]></content>
       <categories>
@@ -1000,6 +923,225 @@
         <tag>渣翻</tag>
         <tag>古埃及</tag>
         <tag>石碑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>平假名寻根——草书书法中的“平假名”</title>
+    <url>/2024/08/10/hiragana-in-chinese/</url>
+    <content><![CDATA[<p>平假名想必各位都很熟悉了。平假名是日语使用的一种表音文字，最初是为了写物语与和歌而用。平假名来源于汉字的草书，那么在汉字草书书法作品中，或许就能找到日语平假名的源头吧。下面我们就来看看一些日语片假名的来源。虽说有部分平假名与汉字之间的联系过于抽象，但基本上都还是能在书法作品中找到原型的。</p>
+<h1 id="あ行"><a href="#あ行" class="headerlink" title="あ行"></a>あ行</h1><h2 id="あ"><a href="#あ" class="headerlink" title="あ"></a>あ</h2><p><img src="a.jpg" alt="あ" title="あ"></p>
+<center>[晋]王羲之 《上虞帖》 “安”</center>
+
+<h2 id="い"><a href="#い" class="headerlink" title="い"></a>い</h2><p><img src="i.jpg" alt="い" title="い"></p>
+<center>[唐]李世民 《淳化阁唐太宗帖》 “以”</center>
+
+<h2 id="う"><a href="#う" class="headerlink" title="う"></a>う</h2><p><img src="u.jpg" alt="う" title="う"></p>
+<center>[唐]怀素 《草书千字文》 “宇”</center>
+
+<h2 id="え"><a href="#え" class="headerlink" title="え"></a>え</h2><p><img src="e.jpg" alt="え" title="え"></p>
+<center>[宋]黄庭坚 《廉颇蔺相如列传》 “衣”</center>
+
+<h2 id="お"><a href="#お" class="headerlink" title="お"></a>お</h2><p><img src="o.jpg" alt="お" title="お"></p>
+<center>[唐]张旭 《李青莲序》 “於(于)”</center>
+
+<h1 id="か行"><a href="#か行" class="headerlink" title="か行"></a>か行</h1><h2 id="か"><a href="#か" class="headerlink" title="か"></a>か</h2><p><img src="ka.jpg" alt="か" title="か"></p>
+<center>[宋]文天祥 《谢昌元座右自警辞》 “加”</center>
+
+<h2 id="き"><a href="#き" class="headerlink" title="き"></a>き</h2><p><img src="ki.jpg" alt="き" title="き"></p>
+<center>[唐]张旭 《李青莲序》 “幾(几)”</center>
+
+<h2 id="く"><a href="#く" class="headerlink" title="く"></a>く</h2><p><img src="ku.jpg" alt="く" title="く"></p>
+<center>[晋]王羲之 《知宝帖》 “久”</center>
+
+<h2 id="け"><a href="#け" class="headerlink" title="け"></a>け</h2><p><img src="ke.jpg" alt="け" title="け"></p>
+<center>[晋]王羲之 《一朝帖》 “計(计)”</center>
+
+<h2 id="こ"><a href="#こ" class="headerlink" title="こ"></a>こ</h2><p><img src="ko.jpg" alt="こ" title="こ"></p>
+<center>[宋]文天祥 《谢昌元座右自警辞》 “己”</center>
+
+<h1 id="さ行"><a href="#さ行" class="headerlink" title="さ行"></a>さ行</h1><h2 id="さ"><a href="#さ" class="headerlink" title="さ"></a>さ</h2><p><img src="sa.jpg" alt="さ" title="さ"></p>
+<center>[晋]王献之 《近与铁石帖》 “左”</center>
+
+<h2 id="し"><a href="#し" class="headerlink" title="し"></a>し</h2><p><img src="si.jpg" alt="し" title="し"></p>
+<center>[晋]王羲之 《其书帖》 “之”</center>
+
+<h2 id="す"><a href="#す" class="headerlink" title="す"></a>す</h2><p><img src="su.jpg" alt="す" title="す"></p>
+<center>[明]王铎 《自作诗十首》 “寸”</center>
+
+<h2 id="せ"><a href="#せ" class="headerlink" title="せ"></a>せ</h2><p><img src="se.jpg" alt="せ" title="せ"></p>
+<center>[唐]怀素 《圣母帖》 “世”</center>
+
+<h2 id="そ"><a href="#そ" class="headerlink" title="そ"></a>そ</h2><p><img src="so.jpg" alt="そ" title="そ"></p>
+<center>[唐]怀素 《自叙帖》 “曽(曾)”</center>
+
+<h1 id="た行"><a href="#た行" class="headerlink" title="た行"></a>た行</h1><h2 id="た"><a href="#た" class="headerlink" title="た"></a>た</h2><p><img src="ta.jpg" alt="た" title="た"></p>
+<center>[唐]张旭 《李青莲序》 “太”</center>
+
+<h2 id="ち"><a href="#ち" class="headerlink" title="ち"></a>ち</h2><p><img src="chi.jpg" alt="ち" title="ち"></p>
+<center>[晋]王羲之 《中郎帖》 “知”</center>
+
+<h2 id="つ"><a href="#つ" class="headerlink" title="つ"></a>つ</h2><p><img src="tsu.jpg" alt="つ" title="つ"></p>
+<center>[明]宋客 《进学解》 “川”</center>
+
+<h2 id="て"><a href="#て" class="headerlink" title="て"></a>て</h2><p><img src="te.jpg" alt="て" title="て"></p>
+<center>[唐]张旭 《李青莲序》 “天”</center>
+
+<h2 id="と"><a href="#と" class="headerlink" title="と"></a>と</h2><p><img src="so.jpg" alt="と" title="と"></p>
+<center>[唐]怀素 《四十二章经》 “止”</center>
+
+<h1 id="な行"><a href="#な行" class="headerlink" title="な行"></a>な行</h1><h2 id="な"><a href="#な" class="headerlink" title="な"></a>な</h2><p><img src="na.jpg" alt="な" title="な"></p>
+<center>[晋]谢安 《中郎帖》 “奈”</center>
+
+<h2 id="に"><a href="#に" class="headerlink" title="に"></a>に</h2><p><img src="ni.jpg" alt="に" title="に"></p>
+<center>[晋]王献之 《玄度帖》 “仁”</center>
+
+<h2 id="ぬ"><a href="#ぬ" class="headerlink" title="ぬ"></a>ぬ</h2><p><img src="nu.jpg" alt="ぬ" title="ぬ"></p>
+<center>[晋]王羲之 《大佳忧卿帖》 “奴”</center>
+
+<h2 id="ね"><a href="#ね" class="headerlink" title="ね"></a>ね</h2><p><img src="ne.png" alt="ね" title="ね"></p>
+<center>毛泽东 “祢”</center>
+
+<h2 id="の"><a href="#の" class="headerlink" title="の"></a>の</h2><p><img src="no.jpg" alt="の" title="の"></p>
+<center>[唐]怀素 《四十二章经》 “乃”</center>
+
+<h1 id="は行"><a href="#は行" class="headerlink" title="は行"></a>は行</h1><h2 id="は"><a href="#は" class="headerlink" title="は"></a>は</h2><p><img src="ha.jpg" alt="は" title="は"></p>
+<center>[明]文徵明 《早朝诗》 “波”</center>
+
+<h2 id="ひ"><a href="#ひ" class="headerlink" title="ひ"></a>ひ</h2><p><img src="hi.jpg" alt="ひ" title="ひ"></p>
+<center>[唐]孙过庭 《景福殿赋》 “比”</center>
+
+<h2 id="ふ"><a href="#ふ" class="headerlink" title="ふ"></a>ふ</h2><p><img src="fu.jpg" alt="ふ" title="ふ"></p>
+<center>[汉]张芝 《冠军帖》 “不”</center>
+
+<h2 id="へ"><a href="#へ" class="headerlink" title="へ"></a>へ</h2><p><img src="he.jpg" alt="へ" title="へ"></p>
+<center>[唐]怀素 《自叙帖》 “部”</center>
+
+<h2 id="ほ"><a href="#ほ" class="headerlink" title="ほ"></a>ほ</h2><p><img src="ho.jpg" alt="ほ" title="ほ"></p>
+<center>[晋]王羲之 《龙保帖》 “保”</center>
+
+<h1 id="ま行"><a href="#ま行" class="headerlink" title="ま行"></a>ま行</h1><h2 id="ま"><a href="#ま" class="headerlink" title="ま"></a>ま</h2><p><img src="ma.jpg" alt="ま" title="ま"></p>
+<center>[晋]王羲之 《上虞帖》 “末”</center>
+
+<h2 id="み"><a href="#み" class="headerlink" title="み"></a>み</h2><p><img src="mi.jpg" alt="み" title="み"></p>
+<center>[明]陈道复 《古诗十九首》 “美”</center>
+
+<h2 id="む"><a href="#む" class="headerlink" title="む"></a>む</h2><p><img src="mu.jpg" alt="む" title="む"></p>
+<center>[唐]怀素 《草书千字文》 “武”</center>
+
+<h2 id="め"><a href="#め" class="headerlink" title="め"></a>め</h2><p><img src="me.jpg" alt="め" title="め"></p>
+<center>[晋]王羲之 《中郎女帖》 “女”</center>
+
+<h2 id="も"><a href="#も" class="headerlink" title="も"></a>も</h2><p><img src="mo.jpg" alt="も" title="も"></p>
+<center>[明]王铎 《今夕行村外》 “毛”</center>
+
+<h1 id="や行"><a href="#や行" class="headerlink" title="や行"></a>や行</h1><h2 id="や"><a href="#や" class="headerlink" title="や"></a>や</h2><p><img src="ya.jpg" alt="や" title="や"></p>
+<center>[晋]王献之 《省前书帖》 “也”</center>
+
+<h2 id="ゆ"><a href="#ゆ" class="headerlink" title="ゆ"></a>ゆ</h2><p><img src="yu.jpg" alt="ゆ" title="ゆ"></p>
+<center>[唐]孙过庭 《书谱》 “由”</center>
+
+<h2 id="よ"><a href="#よ" class="headerlink" title="よ"></a>よ</h2><p><img src="yo.jpg" alt="よ" title="よ"></p>
+<center>[元]康里巎巎 《致彦中尺牍》 “与”</center>
+
+<h1 id="ら行"><a href="#ら行" class="headerlink" title="ら行"></a>ら行</h1><h2 id="ら"><a href="#ら" class="headerlink" title="ら"></a>ら</h2><p><img src="ra.jpg" alt="ら" title="ら"></p>
+<center>[唐]怀素 《大草千字文》 “良”</center>
+
+<h2 id="り"><a href="#り" class="headerlink" title="り"></a>り</h2><p><img src="ri.jpg" alt="り" title="り"></p>
+<center>[唐]孙过庭 《书谱》 “利”</center>
+
+<h2 id="る"><a href="#る" class="headerlink" title="る"></a>る</h2><p><img src="ru.jpg" alt="る" title="る"></p>
+<center>[唐]孙过庭 《书谱》 “留”</center>
+
+<h2 id="れ"><a href="#れ" class="headerlink" title="れ"></a>れ</h2><p><img src="re.jpg" alt="れ" title="れ"></p>
+<center>[唐]怀素 《自叙帖》 “礼”</center>
+
+<h2 id="ろ"><a href="#ろ" class="headerlink" title="ろ"></a>ろ</h2><p><img src="ro.jpg" alt="ろ" title="ろ"></p>
+<center>[元]邓文原 《书谱》 “呂(吕)”</center>
+
+<h1 id="わ行"><a href="#わ行" class="headerlink" title="わ行"></a>わ行</h1><h2 id="わ"><a href="#わ" class="headerlink" title="わ"></a>わ</h2><p><img src="wa.jpg" alt="わ" title="わ"></p>
+<center>[晋]王献之 《奉别贴》 “和”</center>
+
+<h2 id="ゐ"><a href="#ゐ" class="headerlink" title="ゐ"></a>ゐ</h2><p><img src="wi.jpg" alt="ゐ" title="ゐ"></p>
+<center>[汉]蔡琰 《胡笳帖》 “爲(为)”</center>
+
+<h2 id="ゑ"><a href="#ゑ" class="headerlink" title="ゑ"></a>ゑ</h2><p><img src="we.jpg" alt="ゑ" title="ゑ"></p>
+<center>[元]邓文原 《急就章》 “恵(惠)”</center>
+
+<h2 id="を"><a href="#を" class="headerlink" title="を"></a>を</h2><p><img src="wo.jpg" alt="を" title="を"></p>
+<center>[唐]怀素 《自叙帖》 “遠(远)”</center>
+
+<h1 id="ん"><a href="#ん" class="headerlink" title="ん"></a>ん</h1><p><img src="n.jpg" alt="ん" title="ん"></p>
+<center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
+
+<h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
+    <div id="echarts5449" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
+
+    <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('echarts5449'));
+            // 指定图表的配置项和数据
+            var option = {
+    title: {
+        text: '书法家贡献统计图(三次以上)'
+    },
+    tooltip: {},
+    legend: {
+        data:['贡献']
+    },
+    xAxis: {
+        data: ["怀素","王羲之","孙过庭","王献之","张旭","王铎"]
+    },
+    yAxis: {},
+    series: [{
+        name: '贡献',
+        type: 'bar',
+        data: [11, 8, 4, 4, 4, 3]
+    }]
+};
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+    </script>
+    
+
+    <div id="echarts8212" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
+
+    <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('echarts8212'));
+            // 指定图表的配置项和数据
+            var option = {
+    title: {
+        text: '朝代变化统计图'
+    },
+    tooltip: {},
+    legend: {
+        data:['贡献']
+    },
+    xAxis: {
+        data: ["汉","晋","唐","宋","元","明","清及以后"]
+    },
+    yAxis: {},
+    series: [{
+        name: '贡献',
+        type: 'line',
+        data: [2, 14, 19, 3, 3, 6, 1]
+    }]
+};
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+    </script>
+    
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>平假名作为日语重要的表音符号，有着深远的历史。平假名由汉字的草书演变而来，从中我们便能一窥古代中日文化交流的情况。</p>
+]]></content>
+      <categories>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>书法</tag>
+        <tag>文化</tag>
+        <tag>日语</tag>
       </tags>
   </entry>
 </search>
