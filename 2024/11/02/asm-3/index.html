@@ -21,18 +21,22 @@
     var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="见过一次的东西就不会再忘记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="稗田阿柔">
-<meta property="og:url" content="https://hiedanoajuu.github.io/tags/%E4%B8%9C%E6%96%B9/index.html">
+  <meta name="description" content="阿柔的汇编语言札记-3 寄存器(内存访问)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿柔的汇编语言札记-3 寄存器(内存访问)">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2024/11/02/asm-3/index.html">
 <meta property="og:site_name" content="稗田阿柔">
-<meta property="og:description" content="见过一次的东西就不会再忘记">
+<meta property="og:description" content="阿柔的汇编语言札记-3 寄存器(内存访问)">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-02T04:21:06.000Z">
+<meta property="article:modified_time" content="2024-11-02T06:25:34.000Z">
 <meta property="article:author" content="稗田阿柔">
-<meta property="article:tag" content="幻想乡的记忆">
+<meta property="article:tag" content="计算机">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="汇编语言">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hiedanoajuu.github.io/tags/%E4%B8%9C%E6%96%B9/">
+<link rel="canonical" href="https://hiedanoajuu.github.io/2024/11/02/asm-3/">
 
 
 <script id="page-configurations">
@@ -40,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 东方 | 稗田阿柔</title>
+  <title>阿柔的汇编语言札记-3 寄存器(内存访问) | 稗田阿柔</title>
   
 
 
@@ -189,51 +193,171 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">东方
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2024/11/02/asm-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田阿柔">
+      <meta itemprop="description" content="见过一次的东西就不会再忘记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿柔的汇编语言札记-3 寄存器(内存访问)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-11-02 12:21:06 / 修改时间：14:25:34" itemprop="dateCreated datePublished" datetime="2024-11-02T12:21:06+08:00">2024-11-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%BC%96%E7%A8%8B/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">汇编语言</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>141</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+            <div class="post-description">阿柔的汇编语言札记-3 寄存器(内存访问)</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+        <h1 id="内存中字的存储"><a href="#内存中字的存储" class="headerlink" title="内存中字的存储"></a>内存中字的存储</h1><p><strong>字</strong>存储在<strong>内存</strong>中时，<strong>高位</strong>地址存放<strong>高位</strong>字节，<strong>低位</strong>地址存放<strong>低位</strong>字节(小端法)。<br>例如<code>1234H</code>在内存中的存储：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">地址: 00 01</span><br><span class="line">数据: 34 12</span><br></pre></td></tr></table></figure><br><strong>字单元</strong>: 存放一个<strong>字</strong>(16位)的内存单元，由两个地址连续的内存单元组成。其中高位地址单元存放高位字节，低位地址单元存放低位字节，起始地址为<code>N</code>的字单元简称为<strong>N地址字单元</strong>；</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-08-07T00:00:00+08:00"
-              content="2024-08-07">
-          08-07
-        </time>
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ 本文已结束 <i class="fa fa-paw"></i> 感谢您的阅读 ~~~~~~~~~~~~~~</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田阿柔 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田阿柔 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/07/akyuu/" itemprop="url">
-            <span itemprop="name">博丽神社及大结界管理委员会 人类村落居民委员会讣告 稗田阿求同志逝世</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>稗田阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hiedanoajuu.github.io/2024/11/02/asm-3/" title="阿柔的汇编语言札记-3 寄存器(内存访问)">https://hiedanoajuu.github.io/2024/11/02/asm-3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag"><i class="fa fa-tag"></i> 计算机</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 编程</a>
+              <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="tag"><i class="fa fa-tag"></i> 汇编语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/07/manetho/" rel="prev" title="曼涅托 埃及史(24-10-26)">
+      <i class="fa fa-chevron-left"></i> 曼涅托 埃及史(24-10-26)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/11/10/family-system/" rel="next" title="费孝通《生育制度》读后感">
+      费孝通《生育制度》读后感 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -287,6 +411,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%B8%AD%E5%AD%97%E7%9A%84%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">内存中字的存储</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

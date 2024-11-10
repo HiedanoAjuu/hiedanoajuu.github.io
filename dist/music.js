@@ -8,8 +8,8 @@ const ap = new APlayer({
     audio: [
         {
             name: "Bad Apple!!",
-            artist: "上海アリス幻樂団",
-            url: "http://music.163.com/song/media/outer/url?id=510051.mp3",
+            artist: "霊戦 ～ Perdition Crisis",
+            url: "http://music.163.com/song/media/outer/url?id=510056.mp3",
             cover:
                 "https://p1.music.126.net/zM4G5cgsfQxsgDftD4RJIw==/109951169299510813.jpg",
         }

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hiedanoajuu.github.io/2024/11/10/family-system/</loc>
+    <lastmod>2024-11-10</lastmod>
+  </url>
+  <url>
+    <loc>https://hiedanoajuu.github.io/2024/11/02/asm-3/</loc>
+    <lastmod>2024-11-02</lastmod>
+  </url>
+  <url>
     <loc>https://hiedanoajuu.github.io/2024/10/07/manetho/</loc>
+    <lastmod>2024-11-02</lastmod>
+  </url>
+  <url>
+    <loc>https://hiedanoajuu.github.io/2024/10/01/rosetta-stone-translation-greek/</loc>
     <lastmod>2024-10-26</lastmod>
   </url>
   <url>
@@ -15,10 +27,6 @@
   <url>
     <loc>https://hiedanoajuu.github.io/2024/08/15/asm-1/</loc>
     <lastmod>2024-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://hiedanoajuu.github.io/2024/10/01/rosetta-stone-translation-greek/</loc>
-    <lastmod>2024-10-02</lastmod>
   </url>
   <url>
     <loc>https://hiedanoajuu.github.io/2024/08/10/hiragana-in-chinese/</loc>

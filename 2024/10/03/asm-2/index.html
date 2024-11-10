@@ -443,7 +443,7 @@
 <h2 id="2-实验任务"><a href="#2-实验任务" class="headerlink" title="2.实验任务"></a>2.实验任务</h2><p>(1) 使用Debug，将下面的程序段写入内存，逐条执行，观察每条指令执行后CPU中相关寄存器中内容的变化。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4E20</span><br><span class="line">add ax,1416</span><br><span class="line">mov bx,2000</span><br><span class="line">add ax,bx</span><br><span class="line">mov bx,ax</span><br><span class="line">add ax,bx</span><br><span class="line">mov ax,001A</span><br><span class="line">mov bx,0026</span><br><span class="line">add al,bl</span><br><span class="line">add al,9C</span><br></pre></td></tr></table></figure><br><strong>勘误</strong>: 原书此处所有十六进制数后都加了<code>H</code>后缀，在<code>Debug</code>中默认数据为十六进制，加上会报错；<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">B8 20 4E</span><br><span class="line">05 16 14</span><br><span class="line">BB 00 20</span><br><span class="line">01 D8</span><br><span class="line">89 C3</span><br><span class="line">01 D8</span><br><span class="line">B8 1A 00</span><br><span class="line">BB 26 00</span><br><span class="line">00 D8</span><br><span class="line">00 DC</span><br><span class="line">00 C7</span><br><span class="line">B4 00</span><br><span class="line">00 D8</span><br><span class="line">04 9C</span><br></pre></td></tr></table></figure><br>逐条执行效果如下:<br><img src="2-1-0.png" alt="2-1-0" title="2-1-0"><br><img src="2-1-1.png" alt="2-1-1" title="2-1-1"><br><img src="2-1-2.png" alt="2-1-2" title="2-1-2"><br><img src="2-1-3.png" alt="2-1-3" title="2-1-3"><br><img src="2-1-4.png" alt="2-1-4" title="2-1-4"><br><img src="2-1-5.png" alt="2-1-5" title="2-1-5"><br><img src="2-1-6.png" alt="2-1-6" title="2-1-6"><br><img src="2-1-7.png" alt="2-1-7" title="2-1-7"><br><img src="2-1-8.png" alt="2-1-8" title="2-1-8"><br><img src="2-1-9.png" alt="2-1-9" title="2-1-9"><br><img src="2-1-A.png" alt="2-1-A" title="2-1-A"></p>
 <p>(2) 将下面3条指令写入从2000:0开始的内存单元中，利用这三条指令计算2的8次方<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1</span><br><span class="line">add ax,ax</span><br><span class="line">jmp 2000:0003</span><br></pre></td></tr></table></figure><br>过程如下:<br><img src="2-2-0.png" alt="2-2-0" title="2-2-0"><br><img src="2-2-1.png" alt="2-2-1" title="2-2-1"><br>计算结果如上；</p>
 <p>(3) 查看内存中的内容<br>PC机主板上的ROM中写有一个生产日期，在内存FFF00H-FFFFFH的某几个单元中，请找到这个生产日期并试图改变它。<br><img src="date.png" alt="date" title="date"><br><strong>改变？这是ROM啊！</strong><br>(4) 向内存从B8100H开始的单元中填写数据，如:<br><code>-e B810:0000 01 01 02 02 03 03 04 04</code><br><img src="vm.png" alt="vm" title="vm"><br><strong>似乎有什么很可爱的东西……</strong><br><strong>毕竟这是显存嘛……</strong><br>如果对实验的结果感到疑惑，请仔细阅读<a href="https://hiedanoajuu.github.io/2024/08/15/asm-1/#内存地址空间">第一章中的1.15节</a></p>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
     </div>
 
     
@@ -592,7 +592,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -605,7 +605,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -659,12 +659,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">28k</span>
+    <span title="站点总字数">30k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">26 分钟</span>
+    <span title="站点阅读时长">27 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
