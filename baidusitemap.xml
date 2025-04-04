@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hiedanoajuu.github.io/2025/04/04/th-sst/</loc>
+    <lastmod>2025-04-04</lastmod>
+  </url>
+  <url>
+    <loc>https://hiedanoajuu.github.io/2024/10/07/manetho/</loc>
+    <lastmod>2025-02-09</lastmod>
+  </url>
+  <url>
     <loc>https://hiedanoajuu.github.io/2025/02/09/qemu-ms-dos/</loc>
     <lastmod>2025-02-09</lastmod>
   </url>
@@ -11,10 +19,6 @@
   <url>
     <loc>https://hiedanoajuu.github.io/2025/02/04/int9/</loc>
     <lastmod>2025-02-04</lastmod>
-  </url>
-  <url>
-    <loc>https://hiedanoajuu.github.io/2024/10/07/manetho/</loc>
-    <lastmod>2025-02-01</lastmod>
   </url>
   <url>
     <loc>https://hiedanoajuu.github.io/2025/01/25/power-idea/</loc>
