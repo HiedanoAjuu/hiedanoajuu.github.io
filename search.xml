@@ -946,12 +946,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts4715" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts4096" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts4715'));
+            var myChart = echarts.init(document.getElementById('echarts4096'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -976,12 +976,12 @@
     </script>
     
 
-    <div id="echarts447" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts9177" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts447'));
+            var myChart = echarts.init(document.getElementById('echarts9177'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1437,7 +1437,7 @@
 <p>说到酸碱度，就要想起朝仓老师了。为父亲服满四十九日后，铃奈庵的常客朝仓小姐叫我跟着她学了一段时间科学，所以这些东西我还算是略通一二。</p>
 <p>「你又在发呆，人类。<br>不是你要种花的吗？怎么现在又这么没精神？」<br>幽香把一把铁锹扔给我。<br>「最佳的播种深度是一寸，给我记住了，偏一分我都要剥了你的皮。」<br>幽香的死亡威胁，令我握着铁锹的手不觉紧了几分。</p>
 <p>「坑坑洼洼，参差不齐，你还真是不想活了。」<br>幽香一把夺过我手中的铁锹，照着我的小腿肚敲了一下。</p>
-<p>「行了，接下来开始播种吧。间距一尺，这次给你的误差是千分之三。」<br>我战战兢兢地接过种子，小腿上的肌肉还在作痛。我半跪在地上，用皮尺和粉笔在土地上隔一尺标一个点，接着在各个点位上放上种子。</p>
+<p>「行了，接下来开始播种吧。间距一尺，这次给你的误差是百分之三。」<br>我战战兢兢地接过种子，小腿上的肌肉还在作痛。我半跪在地上，用皮尺和粉笔在土地上隔一尺标一个点，接着在各个点位上放上种子。</p>
 <p>「你自己看看你播的什么东西。」<br>幽香挥舞着手中的皮尺，狠狠抽在我的身上，发出皮鞭一般的声音。<br>我倒在田垄上，想要舔舐自己的伤口，却已起不了身。<br>她背过身去，伞面阴影下的嗤笑越来越模糊。</p>
 <p><strong>幽香的培养日记</strong><br>编号：一<br>日期：第百一十三季皐月初二</p>
 <ul>
