@@ -946,12 +946,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts391" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts4715" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts391'));
+            var myChart = echarts.init(document.getElementById('echarts4715'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -976,12 +976,12 @@
     </script>
     
 
-    <div id="echarts1557" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts447" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts1557'));
+            var myChart = echarts.init(document.getElementById('echarts447'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1412,9 +1412,9 @@
 <p>没有绝望，没有不甘，只是脖子上有坚硬的触感。<br>或许是一把阳伞指向了脖颈，喉结在伞尖上微微颤动。</p>
 <p>「妖怪小姐，这里就是终点了吗？」<br>我苍白地笑了一下，像是舞台剧演员退场的台词，</p>
 <p>风吹起焦土中的灰烬，阳伞轻轻挑起我的下巴。<br>「不过啊，我听说，你还有一个心愿没有了却。」<br>我又听到了她的笑声。<br>「不如，就由你亲手栽种如何？」<br>说着，她将一包什么东西抛到我的脸上，落在我的膝盖边。是一包种子。</p>
-<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>身后的妖怪小姐不像是在跟着我，倒像是在把我向我家的方向驱赶。<br>拿着那包种子，那位妖怪小姐理直气壮地跟着我回了家。</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>身后的妖怪小姐不像是在跟着我，倒像是在把我向我家的方向驱赶。<br>拿着那包种子，那位妖怪小姐理直气壮地赶着我回了家。</p>
 <p>「要想让鲜花开满河岸，你这人类要干的事情还多着呢。<br>得先育种才行。要足够健壮，足够耐寒、耐热，才能栽过去。」<br>这是她让我带她回家的理由。<br>「在你培育出完美的品种前，我可是哪里都不会去的。」<br>她的嘴角又一次勾起一丝玩味的笑，似乎想看看我听到她这句话会有什么反应。</p>
-<p>「妖怪小姐可是妖怪啊，要是被人类们发现可就惨了。」<br>虚张声势从来都不是我擅长的。<br>「哟，人类，你在威胁我吗？<br>你们人类在我的魔炮面前不还是和那田里的杂草一样？」<br>父亲的稻田在眼前坍缩为灰烬，轮廓像是被橡皮擦去，视野中只剩下惨白。风把烧焦的气息吹入我的鼻腔，这下又轮到我的膝盖发软了。</p>
+<p>「妖怪小姐可是妖怪啊，要是被人类们发现可就惨了。」<br>虚张声势从来都不是我擅长的。<br>「哟，人类，你在威胁我吗？<br>你们人类在我的魔炮面前不还是和那田里的杂草一样？」<br>父亲的稻田在眼前坍缩为灰烬，视野中只剩下惨白。风把烧焦的气息吹入我的鼻腔，这下又轮到我的膝盖发软了。</p>
 <p>「哼，正好拿来种花。」</p>
 <p>推开积灰的纸门，妖怪小姐倚着门框，伞尖不耐烦地敲打着地板。<br>我简单地掸去了屋内的灰尘，为妖怪小姐铺好床单，叠好被子。<br>「真小，你姐姐是鸽子吗？」<br>简要地作了评价后，妖怪小姐躺在葵的旧榻上，苦艾绿的发丝散在枕边，像是未被驯服的荆棘。</p>
 <p>她哪里知道，鸽子好歹知道回家。</p>
@@ -1444,7 +1444,7 @@
 <li>清空田地，焚草肥田；</li>
 <li>土壤弱碱，适宜种植；</li>
 <li>播种深度：平均一寸三分，误差<font color="red">十分之三</font>；</li>
-<li>播种间距：平均一尺零六分，误差<font color="red">千分之六</font>；</li>
+<li>播种间距：平均一尺零六分，误差<font color="red">百分之六</font>；</li>
 </ul>
 <p>备注：<br><strong>人类真是脆弱的生物啊，不过拿来当肥料也算是不浪费。</strong></p>
 <h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><p><strong>待续。</strong></p>
