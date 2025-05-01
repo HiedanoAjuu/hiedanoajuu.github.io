@@ -1199,7 +1199,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #134012;
+  background: #69abe8;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2775,4 +2775,8 @@ pre {
 @font-face {
   font-family: 'consola';
   src: url("../fonts/consola.ttf");
+}
+@font-face {
+  font-family: 'TH-Times';
+  src: url("../fonts/th-times.ttf");
 }
