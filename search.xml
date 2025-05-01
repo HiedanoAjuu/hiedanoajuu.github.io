@@ -946,12 +946,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts2353" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts2826" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2353'));
+            var myChart = echarts.init(document.getElementById('echarts2826'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -976,12 +976,12 @@
     </script>
     
 
-    <div id="echarts2987" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts6679" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2987'));
+            var myChart = echarts.init(document.getElementById('echarts6679'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1462,7 +1462,7 @@
 日期：第百一十三季水无月初二<br/>
 
 <ul>
-清空田地，焚草肥田；<br/>
+<li>清空田地，焚草肥田；</li>
 <li> 土壤弱碱，适宜种植；</li>
 <li> 播种深度：平均一寸三分，误差<font color="red">十分之三</font>；</li>
 <li> 播种间距：平均一尺零六分，误差<font color="red">百分之六</font>；</li>
@@ -1484,40 +1484,11 @@
 <p>幽香抄起那本最厚的《幻想乡花卉图鉴》，对着我的额头，但还是放下了。<br>「幽香，你差点又要害我添新伤了。」<br>我捂着被她放过的额顶。</p>
 <p>接下来一个星期大体上是平静的。每天早上被幽香戳起来做饭，背诵父亲留下来的植物学和园艺学书籍。</p>
 <p>那本《幻想乡花卉图鉴》每页都有父亲用片假名做的批注，尤以菊科的向日葵和马齿苋科的太阳花为最。<br>在我翻到向日葵那两页的时候，还有一张纸条从其中抖落出来。<br><br/></p>
-<font face="TH-Times">
-ヒマワリノタネ　　ヨンセン𛄡ン<br/>
-テグワ　　　　　　ハッピャク𛄡ン<br/>
-イショクゴテ　　　ロッピャク𛄡ン<br/>
-センテイハサミ　　イチセンゴヒャク𛄡ン<br/>
-ジョウロ　　　　　ゴヒャク𛄡ン<br/>
-クマデ　　　　　　ゴヒャク𛄡ン<br/>
-テオケ　　　　　　ヨンヒャク𛄡ン<br/>
-アブラシボリキ　　ゴマン𛄡ン<br/>
-ゴウケイ　　　　　ゴマンハチセンサンビャク𛄡ン<br/>
-
-シキン　　　　　　イチマン𛄡ン<br/>
-
-カハゴメシニナリマセン<br/>
-ショウワロクジュサントシ　ロクガツイツカ<br/>
-</font>
-<br/>
-父亲的片假名写得歪歪斜斜，要想拼出来还真是不容易。<br/><br/>
-<font face="TH-Times">
-向日葵种子   4000円<br/>
-手锄         800円<br/>
-小铲         600円<br/>
-剪刀         1500円<br/>
-如雨露       500円<br/>
-耙子         500円<br/>
-手桶         400円<br/>
-榨油机       50000円<br/>
-合计         58,300円<br/>
-
-资金         10000円<br/>
-「花哪能当饭吃啊。」<br/>
-昭和六十三年  六月初四<br/>
-</font>
-
+<p><font face="TH-Times"><br>ヒマワリノタネ　　ヨンセン𛄡ン<br/><br>テグワ　　　　　　ハッピャク𛄡ン<br/><br>イショクゴテ　　　ロッピャク𛄡ン<br/><br>センテイハサミ　　イチセンゴヒャク𛄡ン<br/><br>ジョウロ　　　　　ゴヒャク𛄡ン<br/><br>クマデ　　　　　　ゴヒャク𛄡ン<br/><br>テオケ　　　　　　ヨンヒャク𛄡ン<br/><br>アブラシボリキ　　ゴマン𛄡ン<br/><br>ゴウケイ　　　　　ゴマンハチセンサンビャク𛄡ン<br/></p>
+<p>シキン　　　　　　イチマン𛄡ン<br/></p>
+<p>カハゴメシニナリマセン<br/><br>ショウワロクジュサントシ　ロクガツイツカ<br/><br>&lt;/font&gt;<br><br/><br>父亲的片假名写得歪歪斜斜，要想拼出来还真是不容易。<br/><br/></p>
+<p><font face="TH-Times"><br>向日葵种子   4000円<br/><br>手锄         800円<br/><br>小铲         600円<br/><br>剪刀         1500円<br/><br>如雨露       500円<br/><br>耙子         500円<br/><br>手桶         400円<br/><br>榨油机       50000円<br/><br>合计         58,300円<br/></p>
+<p>资金         10000円<br/><br>「花哪能当饭吃啊。」<br/><br>昭和六十三年  六月初四<br/><br>&lt;/font&gt;<br><br/></p>
 <p>「求求你了，让这里再次绽放出鲜花吧，哪怕一朵也好。」<br>也许，在某个夜深人静的时候，四下无人的地方，他也许下过这样的愿望。</p>
 <p><strong>幻想乡花卉图鉴(节选)</strong><br><strong>菊科·向日葵</strong></p>
 <p>「黄昏里，举空杯，<br>   残阳绽放时，<br>   微风动纱衣。」</p>
