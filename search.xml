@@ -946,12 +946,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts2826" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts3767" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2826'));
+            var myChart = echarts.init(document.getElementById('echarts3767'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -976,12 +976,12 @@
     </script>
     
 
-    <div id="echarts6679" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts9172" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts6679'));
+            var myChart = echarts.init(document.getElementById('echarts9172'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1456,22 +1456,14 @@
 <p>「坑坑洼洼，参差不齐，你还真是不想活了。」<br>幽香一把夺过我手中的铁锹，照着我的小腿肚敲了一下。</p>
 <p>「行了，接下来开始播种吧。间距一尺，这次给你的误差是百分之三。」<br>我战战兢兢地接过种子，小腿上的肌肉还在作痛。我半跪在地上，用皮尺和粉笔在土地上隔一尺标一个点，接着在各个点位上放上种子。</p>
 <p>「你自己看看你播的什么东西。」<br>幽香挥舞着手中的皮尺，狠狠抽在我的身上，发出皮鞭一般的声音。<br>我倒在田垄上，想要舔舐自己的伤口，却已起不了身。<br>她的身影越来越模糊，目光在阳伞的阴影之下也许闪了闪，我也不确定了。</p>
-<font face="TH-Times">
-<b>幽香的培养日记</b><br/>
-编号：一<br/>
-日期：第百一十三季水无月初二<br/>
-
+<p><strong>幽香的培养日记</strong><br>编号：一<br>日期：第百一十三季水无月初二</p>
 <ul>
 <li>清空田地，焚草肥田；</li>
-<li> 土壤弱碱，适宜种植；</li>
-<li> 播种深度：平均一寸三分，误差<font color="red">十分之三</font>；</li>
-<li> 播种间距：平均一尺零六分，误差<font color="red">百分之六</font>；</li>
+<li>土壤弱碱，适宜种植；</li>
+<li>播种深度：平均一寸三分，误差<font color="red">十分之三</font>；</li>
+<li>播种间距：平均一尺零六分，误差<font color="red">百分之六</font>；</li>
 </ul>
-
-备注：<br/>
-**人类真是脆弱的生物啊，不过拿来当肥料也算是不浪费。**<br/>
-</font>
-
+<p>备注：<br><strong>人类真是脆弱的生物啊，不过拿来当肥料也算是不浪费。</strong></p>
 <h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><p>「半夏、陈皮、茯苓、甘草，配二陈汤。」<br>我郑重地从八意大夫手中接过处方笺，紧紧地攥在手中。</p>
 <p>照着铃奈庵的医书，我将这几味药材煎成一锅。那种带着辛酸的苦味是永远也忘不掉的。<br>「父亲，药好了，父亲。」<br>我把药端到病榻前，轻轻为他吹了口热气。</p>
 <p>「风见，你醒了？」<br>煎药的苦味令我再次睁开眼睛，不过，这次躺在床上的并不是父亲。<br>幽香坐在我的床边。那曾令我毛骨悚然的猩红的双眸，此刻荡漾其中的竟是温柔。</p>
@@ -1484,11 +1476,28 @@
 <p>幽香抄起那本最厚的《幻想乡花卉图鉴》，对着我的额头，但还是放下了。<br>「幽香，你差点又要害我添新伤了。」<br>我捂着被她放过的额顶。</p>
 <p>接下来一个星期大体上是平静的。每天早上被幽香戳起来做饭，背诵父亲留下来的植物学和园艺学书籍。</p>
 <p>那本《幻想乡花卉图鉴》每页都有父亲用片假名做的批注，尤以菊科的向日葵和马齿苋科的太阳花为最。<br>在我翻到向日葵那两页的时候，还有一张纸条从其中抖落出来。<br><br/></p>
-<p><font face="TH-Times"><br>ヒマワリノタネ　　ヨンセン𛄡ン<br/><br>テグワ　　　　　　ハッピャク𛄡ン<br/><br>イショクゴテ　　　ロッピャク𛄡ン<br/><br>センテイハサミ　　イチセンゴヒャク𛄡ン<br/><br>ジョウロ　　　　　ゴヒャク𛄡ン<br/><br>クマデ　　　　　　ゴヒャク𛄡ン<br/><br>テオケ　　　　　　ヨンヒャク𛄡ン<br/><br>アブラシボリキ　　ゴマン𛄡ン<br/><br>ゴウケイ　　　　　ゴマンハチセンサンビャク𛄡ン<br/></p>
-<p>シキン　　　　　　イチマン𛄡ン<br/></p>
-<p>カハゴメシニナリマセン<br/><br>ショウワロクジュサントシ　ロクガツイツカ<br/><br>&lt;/font&gt;<br><br/><br>父亲的片假名写得歪歪斜斜，要想拼出来还真是不容易。<br/><br/></p>
-<p><font face="TH-Times"><br>向日葵种子   4000円<br/><br>手锄         800円<br/><br>小铲         600円<br/><br>剪刀         1500円<br/><br>如雨露       500円<br/><br>耙子         500円<br/><br>手桶         400円<br/><br>榨油机       50000円<br/><br>合计         58,300円<br/></p>
-<p>资金         10000円<br/><br>「花哪能当饭吃啊。」<br/><br>昭和六十三年  六月初四<br/><br>&lt;/font&gt;<br><br/></p>
+<font face="TH-Times">
+ヒマワリノタネ　　ヨンセン𛄡ン<br/>
+テグワ　　　　　　ハッピャク𛄡ン<br/>
+イショクゴテ　　　ロッピャク𛄡ン<br/>
+センテイハサミ　　イチセンゴヒャク𛄡ン<br/>
+ジョウロ　　　　　ゴヒャク𛄡ン<br/>
+クマデ　　　　　　ゴヒャク𛄡ン<br/>
+テオケ　　　　　　ヨンヒャク𛄡ン<br/>
+アブラシボリキ　　ゴマン𛄡ン<br/>
+ゴウケイ　　　　　ゴマンハチセンサンビャク𛄡ン<br/>
+
+シキン　　　　　　イチマン𛄡ン<br/>
+<br/>
+カハゴメシニナリマセン<br/>
+ショウワロクジュサントシ　ロクガツイツカ<br/>
+<br/>
+</font>
+
+<p>父亲的片假名写得歪歪斜斜，要想拼出来还真是不容易。</p>
+<p>向日葵种子   4000円<br>手锄         800円<br>小铲         600円<br>剪刀         1500円<br>如雨露       500円<br>耙子         500円<br>手桶         400円<br>榨油机       50000円<br>合计         58,300円</p>
+<p>资金         10000円</p>
+<p>「花哪能当饭吃啊。」<br>昭和六十三年  六月初四</p>
 <p>「求求你了，让这里再次绽放出鲜花吧，哪怕一朵也好。」<br>也许，在某个夜深人静的时候，四下无人的地方，他也许下过这样的愿望。</p>
 <p><strong>幻想乡花卉图鉴(节选)</strong><br><strong>菊科·向日葵</strong></p>
 <p>「黄昏里，举空杯，<br>   残阳绽放时，<br>   微风动纱衣。」</p>
