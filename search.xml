@@ -454,6 +454,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Arch Linux Bochs虚拟机配置</title>
+    <url>/2025/05/31/bochs/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>想必各位都还记得在之前<a href="https://hiedanoajuu.github.io/2025/05/03/masm-bootloader/">编写引导程序</a>时我因微软公司的<code>debug</code>在此情况下不可用而只能对着<code>QEMU</code>的窗口“鬼打墙”的可怜样子。</p>
+<p>不过，<code>Bochs</code>为我们提供了一个新的选择。支持断点调试、单步执行。但是在Arch Linux中配置<code>Bochs</code>却颇费一番功夫（当然也可能是我走了弯路（?</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>首先，如果想要像下载其他包一样无脑<code>pacman</code>是不可能的，因为Arch Linux的官方仓库（截至本文发布时间）并没有包含<code>Bochs</code>。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S bochs</span><br></pre></td></tr></table></figure><br><img src="repo.png" alt="仓库查询" title="仓库查询"></p>
+<p>那么，就要放弃了吗？<br><code>Bochs</code>的官网<a href="https://bochs.sourceforge.io/">https://bochs.sourceforge.io/</a>还提供了<code>Bochs</code>的下载方式，选择最新的<code>bochs-3.0-1.x86_64.rpm</code>下载即可；</p>
+<p>当然也可以下那个<code>bochs-3.0.tar.gz</code>手动编译，但我就懒得自己编译了。<br><code>.rpm</code>是Red Hat的软件包文件，可以先把其中的文件提取出来:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpmextract.sh bochs-*.rpm</span><br></pre></td></tr></table></figure>
+<p>接下来会得到一个<code>/usr</code>目录，把该目录拷到根目录；<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> -rf ./usr /</span><br></pre></td></tr></table></figure><br>这样就相当于安装完成了。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>此时如果你运行<code>bochs</code>，会发现这样一个报错:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00000000000i[      ] LTDL_LIBRARY_PATH not <span class="built_in">set</span>. using compile time default <span class="string">&#x27;/usr/lib64/bochs/plugins&#x27;</span></span><br><span class="line">00000000000p[      ] &gt;&gt;PANIC&lt;&lt; <span class="string">bx_plugin_ctrl_init() failure: no plugins found</span></span><br><span class="line"><span class="string">00000000000e[SIM   ] notify called, but no bxevent_callback function is registered</span></span><br><span class="line"><span class="string">00000000000e[SIM   ] notify called, but no bxevent_callback function is registered</span></span><br><span class="line"><span class="string">========================================================================</span></span><br><span class="line"><span class="string">Bochs is exiting with the following message:</span></span><br><span class="line"><span class="string">[      ] bx_plugin_ctrl_init</span>() failure: no plugins found</span><br><span class="line">========================================================================</span><br><span class="line">00000000000i[SIM   ] quit_sim called with <span class="built_in">exit</span> code 1</span><br></pre></td></tr></table></figure><br>提示<code>bochs</code>找不到插件。这其实是我们前一步暴力安装的遗留问题，不过解决起来也很简单，编辑一下环境变量<code>LTDL_LIBRARY_PATH</code>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LTDL_LIBRARY_PATH=/usr/lib64/bochs/plugins</span><br></pre></td></tr></table></figure><br>然后再重新运行<code>bochs</code>即可:<br><img src="bochs.png" alt="Bochs" title="Bochs"></p>
+<p>如果想要调试特定的硬盘镜像，则需要新建一个<code>bochsrc.txt</code>文件(这里以<code>asm.vhd</code>为例):<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># boshsrc.txt</span><br><span class="line"></span><br><span class="line">megs: 32              # 模拟内存大小，32MB足够</span><br><span class="line">boot: disk            # 从硬盘启动</span><br><span class="line">ata0-master: type=disk, path=&quot;asm.vhd&quot;, mode=vpc, biosdetect=auto, translation=auto</span><br><span class="line"></span><br><span class="line">display_library: x</span><br><span class="line"># 显示库可依据具体桌面环境设为: (w)x,sdl,gtk</span><br><span class="line">cpu: count=1, ips=1000000</span><br></pre></td></tr></table></figure><br>别忘了还要再建一个启动脚本，指定<code>bochsrc.txt</code>为配置文件，并带上<code>-dbg</code>的参数:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bochs -f bochsrc.txt -q -dbg</span><br></pre></td></tr></table></figure></p>
+<p><img src="b.png" alt="效果" title="效果"><br>最后效果如图所示，左边窗口是<code>bochs</code>的控制台，右边窗口则是虚拟显示器，便于监控和调试汇编程序的运行。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>汇编语言</category>
+        <category>Nasm</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>绕路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>埃及地图</title>
     <url>/2025/01/10/egypt-maps/</url>
     <content><![CDATA[<h1 id="下埃及"><a href="#下埃及" class="headerlink" title="下埃及"></a>下埃及</h1><p><img src="lower_egypt.gif" alt="下埃及" title="下埃及"></p>
@@ -759,8 +783,8 @@
         <category>Masm</category>
       </categories>
       <tags>
-        <tag>内存</tag>
         <tag>计算机</tag>
+        <tag>内存</tag>
         <tag>汇编语言</tag>
       </tags>
   </entry>
@@ -946,12 +970,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts3335" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts656" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts3335'));
+            var myChart = echarts.init(document.getElementById('echarts656'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -976,12 +1000,12 @@
     </script>
     
 
-    <div id="echarts7397" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts3511" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts7397'));
+            var myChart = echarts.init(document.getElementById('echarts3511'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1044,8 +1068,8 @@
         <category>Masm</category>
       </categories>
       <tags>
-        <tag>内存</tag>
         <tag>计算机</tag>
+        <tag>内存</tag>
         <tag>高危</tag>
       </tags>
   </entry>
@@ -1245,8 +1269,8 @@
         <category>Masm</category>
       </categories>
       <tags>
-        <tag>内存</tag>
         <tag>计算机</tag>
+        <tag>内存</tag>
         <tag>汇编语言</tag>
       </tags>
   </entry>
@@ -1483,7 +1507,7 @@
 <li>本作品原创内容(原创角色、情节及世界观扩展)采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a>协议； </li>
 <li>禁止AI训练/NFT化/未授权盈利性使用；</li>
 <li>转载须标注原作者笔名：<strong>稗田阿柔</strong>；</li>
-<li>插图由作者<strong>稗田阿柔</strong>手绘；</li>
+<li>目前插图由AI绘制；</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>日语文本目前为机翻润色，准确度不保证；</li>
@@ -1492,10 +1516,21 @@
 <li>若无特殊说明，在旧作中出场过的角色（幽香、灵梦、魔梨沙等）人设遵照旧作；</li>
 <li>若无特殊说明，魔梨沙与魔理沙为同一人的不同称呼；</li>
 <li>若无特殊说明，靈梦与霊梦为同一人物同一名称的不同写法，且在本作中统一写作灵梦；</li>
+<li>目前角色插图统一画成新作着装；</li>
 <li>幻想乡与外界物种交流情况遵照1885年；</li>
 <li>幻想乡平均寿命45-55岁；</li>
+<li>文中使用的日语汉字词，请依据日语的含义进行理解；</li>
+<li>假设幻想乡位于关西，亚热带气候；</li>
 </ul>
 <h1 id="献词"><a href="#献词" class="headerlink" title="献词"></a>献词</h1><p><strong>献给永远的鲜花之主。 ——您最卑微的肥料候补 风见莳人</strong></p>
+<h1 id="序幕-新"><a href="#序幕-新" class="headerlink" title="序幕(新)"></a>序幕(新)</h1><p>我是平成八年开始成为幻想乡的巫女的，至今已有三十多年了，但这样奇怪的事情还是第一次见。</p>
+<p>竹帚擦过阶台的沙沙声在拂晓时分还空荡荡的山门前回荡，我漫不经心地扫着飘落的樱花。带着清香的风灌入巫女的衣袖。<br>这时，一道人影切过那寂寞的鸟居。那是一位少年，粗布衣上还带着晨露与泥土的气息。<br>「巫女大人！求您……」<br>他的膝盖突然哐当一声砸在正殿前的石阶上。<br>我蹙眉看着他，等着他接着说下去。<br>「我是来给父亲祈祷的！我……我……」<br>他的声音中带着喘息。</p>
+<p>「神社的规矩不知道吗？」<br>扫帚尖敲在赛钱箱上。<br>他慌乱地去够自己的衣袋，揉出两张一千円的钞票。油墨的气息非常浓郁，也许到他手上还没有多久。</p>
+<p>「这是两千円，巫女大人。请您一定要……」<br>「名字？」我打断他。<br>「人里南郊，风见莳人，求您……」<br>「博丽神社受理了，请回吧。」<br>少年咬着嘴唇，再看了一眼神社的正殿，转身走下石阶。</p>
+<p>扫帚扫过每一处砖石的缝隙。<br>真是个奇怪的家伙。<br>毕竟，神明什么的可是连作为巫女的我都不信的。</p>
+<p><img src="reimu.png" alt="序章" title="序章"></p>
+<center>原画:比良坂真琴，东方三月精～Visionary Fairies in Shrine 第〇话</center>
+
 <h1 id="第一卷-垂死夜雀的哀鸣"><a href="#第一卷-垂死夜雀的哀鸣" class="headerlink" title="第一卷 垂死夜雀的哀鸣"></a>第一卷 垂死夜雀的哀鸣</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>我干过最蠢的事情，就是在一个夜晚孤身一人踏出人间之里，然后到那条河边吹口琴。</p>
 <p>那是一个仲夏之夜，日历虽刚翻进六月，但夜晚蚱蝉的歌声已清晰可闻，雾之湖的莲花也已在闰五月开了一轮，如墨晕染而成的天空，若是能穿过云层，定能看到那朔月的微弱光芒。<br>大概是想要闻闻六月的花香吧。总之，那天夜晚，我带上母亲留给我的口琴，走出了家门。</p>
 <p>我一直都是很爱花的。<br>我们风见家世代务农，但水稻花显然不是我父亲的最爱。如果他能够选择，一定会在自己的田地里种满向日葵。他从未有机会埋下任何一粒花种，却在书架上摆满了各种园艺书籍，尽管我知道他并不识得几个汉字。他甚至给他的女儿，也就是我的姐姐，取名为「葵」，然而还需要他在铃奈庵的那位店长朋友帮他在纸上写下来。<br>可能是父亲的缘故吧，我也从小就很喜欢花。</p>
@@ -1640,12 +1675,12 @@
 <p>「那我想看这本。」<br>我努力伸长自己的手臂，中指离书架顶端的那本书尚三指有余。而幽香踮起脚尖，如探囊取物一般就把这本《向日葵品种一览》拿了下来，像是在嘲讽我比她矮一寸有余的身高。</p>
 <h2 id="8"><a href="#8" class="headerlink" title="8"></a>8</h2><p>大概临近中午了，如果不是幽香强烈抗议，我大概还能再多记住几个向日葵品种吧。</p>
 <p>「风见，你这可恶的人类，看看现在都几点了。」<br>幽香双臂抱胸，不满地嘟囔着。<br>「午时二刻。」</p>
-<p>顺着运河望去，那座少有的双层建筑便是人间之里生意最兴隆的酒家，鲵吞亭。鲵吞亭的掌柜兼看板娘奥野田小姐热情而又不失精明，在顾客之间广受欢迎。最重要的是，价格非常实惠。二十日元就能温一碗酒，再加五日元就可以上一碟小菜，如果加到五十日元就可以开荤了。</p>
+<p>顺着运河望去，那座少有的双层建筑便是人间之里生意最兴隆的酒家，鲵吞亭。鲵吞亭的掌柜兼看板娘奥野田小姐热情而又不失精明，在顾客之间广受欢迎。最重要的是，价格非常实惠。二十円就能温一碗酒，再加五円就可以上一碟小菜，如果加到五十円就可以开荤了。</p>
 <p>「呀呀，风见家的儿子，真是稀客。还带着……这不是幽香大人嘛。」<br>奥野田小姐轻笑了两下，带着难以言说的意味。<br>「风见幽香大人想要点什么？」</p>
 <p>我的脸颊顿时发烫，不由自主地埋了下去。<br>「不要把这家伙愚蠢的姓加在我头上。」<br>幽香说这话的时候有点咬牙切齿了。<br>「行了，你俩真是开不了玩笑。」<br>奥野田小姐自顾自地笑了笑，拿出便条。</p>
 <p>幽香拍了一下我的手臂，我才抬起头来。<br>「奥野田小姐，先温两碗酒，要一碟豌豆。」</p>
 <p>鲵吞亭的清酒口感柔和，味道甘甜，比父亲在家里常喝的那些要好太多了。<br>「幽香，你还记不记得豌豆的花语？」<br>我夹起一颗豌豆，放在幽香的碗里。<br>「你这家伙，真是，就不应该让你背那些东西。」<br>幽香一脸无语地看着我。</p>
-<p>「你看，那不是魔梨沙吗？」<br>魔梨沙一到店，所有喝酒的人便都看着他笑，有的叫道，<br>「魔理沙，你脸上又添上新伤疤了！」<br>她不回答，对柜里的奥野田小姐说，<br>「温两碗酒，要一碟茴香豆。」<br>便排出九枚十日元硬币，青铜制的硬币带着淡淡的金属光泽。</p>
+<p>「你看，那不是魔梨沙吗？」<br>魔梨沙一到店，所有喝酒的人便都看着他笑，有的叫道，<br>「魔理沙，你脸上又添上新伤疤了！」<br>她不回答，对柜里的奥野田小姐说，<br>「温两碗酒，要一碟茴香豆。」<br>便排出九枚十円硬币，青铜制的硬币带着淡淡的金属光泽。</p>
 <p>「你一定又偷了人家的东西了！」<br>他们又故意高声嚷道。<br>「你怎么这样凭空污人清白……」<br>魔梨沙睁大眼睛说。<br>「什么清白？我今天上午还看到你到斯卡雷特家去偷书，吊着打。」<br>魔理沙便涨红了脸，额上的青筋条条绽出，争辩道，「借书不能算偷……暂时借走！……魔法使的事情，能算偷吗？」<br>引得众人都哄笑起来；店内外都充满了快活的空气。</p>
 <p>魔梨沙一直都是个非常有趣的人，之前在铃奈庵的时候，我也很乐意和她一起讨论，从魔法到日常琐事。<br>「这家伙现在已经沦落到这个地步了吗？」<br>幽香看着魔梨沙狼狈的样子，叹了口气。</p>
 <p>我的酒量一向是不好的。哪怕是在葵的婚礼上，我也是喝了不到两杯就倒了。<br>「风见，你这没出息的，怎么才喝这么点就不行了。」<br>幽香一脸鄙夷地看着我。</p>
@@ -1664,12 +1699,21 @@
 <li>无害化清理杂草，<font color="red">除草剂绝对禁止</font>； </li>
 <li>杂草种类统计：马齿苋、蒲公英、狗尾草、稗草、酢浆草等；<br>备注：<br><strong>风见这家伙除得真是够干净的，才除的杂草第二天又发出来不少。</strong><br><strong>第百一十三季水无月二十四。</strong></li>
 </ul>
-<h2 id="10"><a href="#10" class="headerlink" title="10"></a>10</h2><p>今夜的人里灯火阑珊。酉时左右，人里中心的人群还未散去，打扮得花枝招展的小町们表演着的大概是某种传统的歌舞吧。<br>「幽香，来得有点晚了呢。」<br>我瞄了一眼河童摊上摆放的手表。<br>「再早半刻钟还能听到幺乐团的幻奏呢。」<br>「那有什么好听的，不过是老掉牙的音色。」<br>幽香白了我一眼。</p>
+<h2 id="10-新"><a href="#10-新" class="headerlink" title="10(新)"></a>10(新)</h2><p>今夜的人里灯火阑珊。酉时左右，人里中心的人群还未散去，打扮得花枝招展的小町们表演着的大概是某种传统的歌舞吧。<br>「幽香，来得有点晚了呢。」<br>我瞄了一眼河童摊上摆放的手表。<br>「再早半刻钟还能听到幺乐团的幻奏呢。」<br>「那有什么好听的，不过是老掉牙的音色。」<br>幽香白了我一眼。</p>
 <p>「幽香，这个想不想要？」<br>我从河童摊上随手拿了一个护身符，放在幽香手上。<br>「这是什么？又是你们这些人类弄的无聊的小玩意儿？」<br>幽香抬起手，仔细端详着。</p>
 <p>「这是护身符，可以保你平安的。」<br>「切，我才不需要这东西来保护我。」<br>幽香把护身符摔到地上。到我捡起来时，护身符上已被敲掉了一个小角了。<br>「不要就不要，至于摔地上吗？」<br>我叹了口气，嘟囔道，拍拍护身符上沾上的尘土，然后收进衣袋。</p>
-<p>「哼，你们人类总是那么愚蠢，居然妄想能与死人对话。」<br>「是真的！巫女大人不会骗我的。神社的御手洗川直通三途川，只要在盂兰盆节的夜晚到御手洗川送灯，给逝者的话语就能随着纸灯一路飘到三途川的彼岸。」<br>幽香听了这话后陷入沉默，也许是被我说服了，又或许是对人类的愚蠢彻底无语了。<br><strong>待续。</strong></p>
+<p>「哼，你们人类总是那么愚蠢，居然妄想能与死人对话。」<br>「是真的！巫女大人不会骗我的。神社的御手洗川直通三途川，只要在盂兰盆节的夜晚到御手洗川送灯，给逝者的话语就能随着纸灯一路飘到三途川的彼岸。」<br>幽香听了这话后陷入沉默，也许是被我说服了，又或许是对人类的愚蠢彻底无语了。</p>
+<p>我拿出一张《文文。新闻》，简单几步，一个纸灯笼便叠了出来。<br>「那还得有根蜡烛呢，蜡烛，是你买得起的吗？」<br>幽香的声音中带着些许兴趣。</p>
+<p>「人里只有大户人家用得起蜡烛，但是……他们却并不会总是等蜡烛燃尽再扔掉。」<br>盐家大院后门的垃圾桶，还未燃到一半就被随手丢弃的蜡烛比比皆是。</p>
+<p>「莳人，你……」<br>幽香和垃圾桶之间保持着距离。<br>「幽香，人类的愚蠢与智慧都体现在这里。」<br>我笑了笑。</p>
+<p>解决了纸灯的问题，我带着幽香走出人间之里，走上那条我曾经无数次走过的参拜道。<br>酉正时分，太阳依偎在西边的妖怪之山旁将天空晕染成橘色。幻想乡的妖怪们大概也要开始躁动了。</p>
+<p>「远处那是夜雀与山彦的歌声吧，真是的。」<br>夜雀和山彦对人类来说也许都可以归入妖怪一类。夜雀会在夜晚用歌声使人夜盲；而山彦会正直地回应朝空荡的山谷大喊的人类，不过也有人说，那不过是回声罢了。</p>
+<p>每到夜幕降临之时，一只夜雀与一只山彦就会结伴出来唱歌。<br>「他们的组合名叫鸟兽伎乐，她们的噪音也和组合的名字一样愚蠢。这附近的妖怪早就要受不了他们了。」<br>幽香撇撇嘴，脸上露出很不屑的表情。</p>
+<p>「喂，所以你才说我的口琴是垂死夜雀的哀鸣！」<br>「怎么啦？找到组织啦。」幽香看着我，饶有兴味地笑了笑。</p>
+<p>口琴在胸前闪着淡淡的光芒，是此时已升起的满月。</p>
+<h2 id="11-新"><a href="#11-新" class="headerlink" title="11(新)"></a>11(新)</h2><p>人里流传着许多关于夜雀的传说。<br><strong>待续</strong></p>
 <h1 id="第二卷"><a href="#第二卷" class="headerlink" title="第二卷"></a>第二卷</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h2><p><strong>待续。</strong></p>
-<h1 id="第三卷"><a href="#第三卷" class="headerlink" title="第三卷"></a>第三卷</h1><h2 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h2><p>自我从平成八年成为巫女以来，已经过了三十多年了，但这样奇怪的事情还是第一次见。<br><strong>待续。</strong></p>
+<h1 id="第三卷"><a href="#第三卷" class="headerlink" title="第三卷"></a>第三卷</h1><h2 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h2><p><strong>待续。</strong></p>
 ]]></content>
       <categories>
         <category>东方</category>
