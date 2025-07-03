@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fa_32x32.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fa_16x16.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=RuiZH:300,300italic,400,400italic,700,700italic|WHJZT:300,300italic,400,400italic,700,700italic|consola:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="微软技术文档（翻译：稗田阿柔），2006年10月11日 - 版本1.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟硬盘映像格式规范">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2025/07/03/vhd/index.html">
+<meta property="og:site_name" content="稗田阿柔">
+<meta property="og:description" content="微软技术文档（翻译：稗田阿柔），2006年10月11日 - 版本1.0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/07/03/vhd/map.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/07/03/vhd/read.png">
+<meta property="article:published_time" content="2025-07-03T01:46:25.000Z">
+<meta property="article:modified_time" content="2025-07-03T13:05:13.500Z">
+<meta property="article:author" content="稗田阿柔">
+<meta property="article:tag" content="渣翻">
+<meta property="article:tag" content="计算机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hiedanoajuu.github.io/2025/07/03/vhd/map.png">
+
+<link rel="canonical" href="https://hiedanoajuu.github.io/2025/07/03/vhd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>虚拟硬盘映像格式规范 | 稗田阿柔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="稗田阿柔" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- aplayer -->
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">稗田阿柔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">阿柔的小图书馆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2025/07/03/vhd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田阿柔">
+      <meta itemprop="description" content="见过一次的东西就不会再忘记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          虚拟硬盘映像格式规范
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-07-03 09:46:25 / 修改时间：21:05:13" itemprop="dateCreated datePublished" datetime="2025-07-03T09:46:25+08:00">2025-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">汇编语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/Nasm/" itemprop="url" rel="index"><span itemprop="name">Nasm</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+            <div class="post-description">微软技术文档（翻译：稗田阿柔），2006年10月11日 - 版本1.0</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>本文描述了微软虚拟PC和虚拟服务器支持的不同虚拟硬盘格式，并提供了有关如何存储数据的信息。<br>如评论或提问，请通过电子邮件联系vhdtalk@microsoft.com。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+  <li>引言</li>
+  <li>虚拟硬盘映像类型总览<ul>
+  <li>静态硬盘映像</li>
+  <li>动态硬盘映像</li>
+  <li>差分硬盘映像</li>
+  </ul></li>
+  <li>硬盘文件尾格式</li>
+  <li>动态磁盘文件头格式</li>
+  <li>块分配表和数据块</li>
+  <li>动态磁盘实现</li>
+  <li>映射磁盘扇区到块扇区</li>
+  <li>分割硬盘映像</li>
+  <li>差分硬盘实现<ul>
+  <li>差分硬盘的写操作</li>
+  <li>差分硬盘的读操作</li>
+  <li>父硬盘映像的识别</li>
+  <li>父硬盘映像的修改</li>
+  </ul></li>
+  <li>附录：CHS计算</li>
+</ul>
+
+<p>© 2005 微软公司。保留所有权利。本规范依据微软开放规范承诺提供。关于微软开放规范承诺的进一步细节，请参见：<a target="_blank" rel="noopener" href="https://www.microsoft.com/interop/osp/default.mspx">https://www.microsoft.com/interop/osp/default.mspx</a>。微软拥有与本材料主题相关的专利、专利程序、商标、版权或其他知识产权。除在微软开放规范承诺中明确授权，提供这些材料不代表授予您使用这些专利、商标、版权或其他知识产权的任何许可。</p>
+<p>© 2005 微软公司。保留所有权利。<br>Microsoft、Windows和Windows NT均为微软公司在美国和/或其他国家/地区的注册商标或商标。<br>文中提及的实际公司名称和产品名称为各自所有者的商标。</p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文描述了微软虚拟PC和虚拟服务器产品支持的不同硬盘格式，既不解释硬盘如何与虚拟机连接，也不提供有关ATA（AT附加装置）硬盘或小型计算机接口（SCSI）硬盘的信息，而是聚焦如何以文件形式在主机文件系统上存储数据。<br>读者应当熟悉虚拟机技术和术语，例如名词<em>客机</em>（guest）、<em>主机</em>（host）在虚拟机架构语境下的运用。用户同样应当熟悉硬盘技术并应当理解数据在现代存储介质上的访问和布局方式。文中使用的术语如下：</p>
+<p><strong>系统（System）</strong><br>指虚拟PC、虚拟服务器，或二者兼有。</p>
+<p><strong>绝对字节偏移（Absolute Byte Offset）</strong><br>指从文件开头开始的字节偏移地址。</p>
+<p><strong>保留字段（Reserved）</strong><br>被标记为保留的字段已被弃用，或留作未来使用。</p>
+<p><strong>扇区长度（Sector length）</strong><br>扇区长度总为512字节。</p>
+<p>若无特殊说明，文件格式中的所有值都以网络字节顺序（大端序）存储。同样，若无特殊说明，所有保留字段值需置零。</p>
+<h1 id="虚拟硬盘映像类型总览"><a href="#虚拟硬盘映像类型总览" class="headerlink" title="虚拟硬盘映像类型总览"></a>虚拟硬盘映像类型总览</h1><p>虚拟机硬盘被实现为位于主机文件系统本地的文件。下列虚拟硬盘格式类型由微软虚拟PC和虚拟服务器支持：</p>
+<ul>
+<li>静态硬盘映像（Fixed hard disk image）</li>
+<li>动态硬盘映像（Dynamic hard disk image）</li>
+<li>差分硬盘映像（Differencing hard disk image）<br>每种虚拟硬盘映像具有专属的文件格式，将在下面的部分中介绍。</li>
+</ul>
+<h2 id="静态硬盘映像"><a href="#静态硬盘映像" class="headerlink" title="静态硬盘映像"></a>静态硬盘映像</h2><p>静态硬盘映像是分配了虚拟磁盘大小的空间的文件。例如，如果你创建一块大小2GB的虚拟硬盘，系统将在主机上创建一个大小约为2GB的文件。</p>
+<p>为数据分配的空间后是文件尾（footer）结构。整个文件的大小是客机操作系统硬盘的容量加上文件尾的大小。由于主机文件系统的文件大小限制，静态硬盘的大小可能受限。例如，在FAT32文件系统，虚拟硬盘的最大容量为4GB。</p>
+<h2 id="动态硬盘映像"><a href="#动态硬盘映像" class="headerlink" title="动态硬盘映像"></a>动态硬盘映像</h2><p>动态硬盘映像是在任何时候大小都等于写入的数据加上文件头（header）和尾大小的文件。分配以块的形式完成。每当写入更多数据，文件大小会因分配了更多块而动态增长。例如，一块2GB虚拟硬盘的文件在主机文件系统上最初的大小在2MB左右。随着向映像中写入数据，文件的大小增长到2GB的最大值。<br>动态硬盘存储用于访问存储在硬盘上的用户数据的元数据。动态硬盘的最大容量为2040GB。实际大小受底层硬盘协议限制。例如，ATA硬盘有127GB的限制。<br>动态硬盘的基本格式如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>动态磁盘头字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬盘文件尾备份（512字节）</td>
+</tr>
+<tr>
+<td>动态硬盘文件头（1024字节）</td>
+</tr>
+<tr>
+<td>BAT（块分配表）</td>
+</tr>
+<tr>
+<td>数据块1</td>
+</tr>
+<tr>
+<td>数据块2</td>
+</tr>
+<tr>
+<td>…</td>
+</tr>
+<tr>
+<td>数据块n</td>
+</tr>
+<tr>
+<td>硬盘文件尾（512字节）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>每添加一个数据块，硬盘文件尾必须移动到文件的结尾。因为硬盘文件尾是硬盘映像至关重要的一部分，所以文件尾出于冗余目的在文件头中被镜像了一份。</p>
+<h2 id="差分硬盘映像"><a href="#差分硬盘映像" class="headerlink" title="差分硬盘映像"></a>差分硬盘映像</h2><p>差分硬盘映像通过记录相对于父镜像发生修改的数据块的集合，表示虚拟硬盘的当前状态。此类硬盘映像并非独立；需要依赖其他硬盘格式实现完整功能。父硬盘映像可以是提到的任何一种硬盘映像类型，包括另一个差分硬盘映像。<br>关于此格式的细节，参见后文“差分硬盘实现”。</p>
+<h1 id="硬盘文件尾格式"><a href="#硬盘文件尾格式" class="headerlink" title="硬盘文件尾格式"></a>硬盘文件尾格式</h1><p>所有硬盘映像共享基本文件尾格式。每种硬盘类型根据需要扩展此格式。<br>硬盘文件尾格式如下表所列：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>硬盘文件尾字段</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标识符</td>
+<td>8</td>
+</tr>
+<tr>
+<td>特性</td>
+<td>4</td>
+</tr>
+<tr>
+<td>文件格式版本</td>
+<td>4</td>
+</tr>
+<tr>
+<td>数据偏移</td>
+<td>8</td>
+</tr>
+<tr>
+<td>时间戳</td>
+<td>4</td>
+</tr>
+<tr>
+<td>创建应用</td>
+<td>4</td>
+</tr>
+<tr>
+<td>创建应用版本</td>
+<td>4</td>
+</tr>
+<tr>
+<td>创建主机操作系统</td>
+<td>4</td>
+</tr>
+<tr>
+<td>原始大小</td>
+<td>8</td>
+</tr>
+<tr>
+<td>目前大小</td>
+<td>8</td>
+</tr>
+<tr>
+<td>磁盘几何参数</td>
+<td>4</td>
+</tr>
+<tr>
+<td>磁盘类型</td>
+<td>4</td>
+</tr>
+<tr>
+<td>校验和</td>
+<td>4</td>
+</tr>
+<tr>
+<td>唯一标识</td>
+<td>16</td>
+</tr>
+<tr>
+<td>保存状态</td>
+<td>1</td>
+</tr>
+<tr>
+<td>保留字段</td>
+<td>427</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注</strong>：早于微软虚拟PC 2004的版本创建的硬盘映像文件尾大小为511字节，因此硬盘文件尾可以位于存放硬盘映像的文件的最后511或512字节。</p>
+<p><strong>硬盘文件尾字段描述</strong><br>下文提供了硬盘文件尾字段的详细定义。</p>
+<p><strong>标识符（Cookie）</strong><br>标识符用于唯一标识硬盘映像的原始创建者。值区分大小写。<br>微软使用“conectix”字符串作为微软虚拟服务器、虚拟PC和早期产品创建的硬盘映像文件的标识。标识符以八字符的ASCII字符串形式存储，“c”位于第一个字节上，“o”位于第二个字节上，以此类推。</p>
+<p><strong>特性（Features）</strong><br>这是一个用于指示特定的功能支持的位字段。特性的列表如下表所示。未被展示的字段视为保留。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无特性启用</td>
+<td>0x00000000</td>
+</tr>
+<tr>
+<td>临时</td>
+<td>0x00000001</td>
+</tr>
+<tr>
+<td>保留</td>
+<td>0x00000002</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>无特性启用（No features enabled）</strong>：硬盘映像上没有特别启用的特性。<br><strong>临时（Temporary）</strong>：当前磁盘为临时磁盘时设置此位。指定为临时磁盘向应用程序表明，磁盘是关闭时待删除的磁盘。<br><strong>保留</strong>：此位必须始终置1。<br>所有其他位均被保留，并应置0。</p>
+<p><strong>文件格式版本（File Format Version）</strong><br>该字段分为主/次版本，并与创建文件时的规范版本相匹配。两高位字节为主版本，低位字节为次版本。必须与文件格式规范相匹配。当前规范下，字段需初始化为<code>0x00010000</code>。<br>主版本仅当文件格式进行不兼容旧版本的修改时才会递增。</p>
+<p><strong>数据偏移（Data Offset）</strong><br>该字段保存从文件开头至下一结构的绝对字节偏移。该字段用于动态磁盘和差分磁盘，但并不用于静态磁盘。静态磁盘此字段需置为0xFFFFFFFF。</p>
+<p><strong>时间戳（Time Stamp）</strong><br>该字段存储硬盘映像的创建时间。数据是从UTC/GMT 2000年1月1日 12：00：00 AM开始的秒数。</p>
+<p><strong>创建应用（Creator Application）</strong><br>该字段用于记录创建硬盘的应用程序。此字段为左对齐文本字段，使用单字节字符集。<br>如果硬盘由微软虚拟PC创建，“vpc ”将被写入该字段。如果硬盘映像由微软虚拟服务器创建，“vs  ”将被写入该字段。<br>其他应用程序应使用其专属的标识符。</p>
+<p><strong>创建应用版本（Creator Version）</strong><br>该字段存放创建硬盘映像的程序的主/次版本。<br>虚拟服务器2004置<code>0x00010000</code>，虚拟PC2004置<code>0x00050000</code>。</p>
+<p><strong>创建主机操作系统（Creator Host OS）</strong><br>该字段存储创建磁盘镜像的主机操作系统类型。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>主机操作系统类型</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>0x5769326B(Wi2k)</td>
+</tr>
+<tr>
+<td>Macintosh</td>
+<td>0x4D616320(Mac )</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>原始大小（Original Size）</strong><br>该字段在创建文件时以虚拟机的视角以字节数形式存储硬盘的原始大小。该字段仅供参考。</p>
+<p><strong>当前大小（Current Size）</strong><br>该字段以虚拟机的视角以字节数形式存储硬盘的当前大小。<br>该值同原始大小一样在创建硬盘时生成。该值可依据硬盘是否扩展改变。</p>
+<p><strong>磁盘几何参数（Disk Geometry）</strong><br>该字段存储硬盘的柱面（cylinder）、磁头（heads）和每磁道（track）的扇区（sectors）数。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>磁盘几何参数字段</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>柱面</td>
+<td>2</td>
+</tr>
+<tr>
+<td>磁头</td>
+<td>1</td>
+</tr>
+<tr>
+<td>每磁道/柱面扇区数</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当一块磁盘被编辑为ATA硬盘，CHS值（<strong>C</strong>ylinder,<strong>H</strong>eads,<strong>S</strong>ectors per track）由ATA控制器使用，决定磁盘的大小。当用户创建一块确定大小的硬盘，硬盘映像的大小小于用户创建的大小。因为由硬盘大小计算得来的CHS值向下舍入。决定CHS值算法的伪代码见本文档的附录。</p>
+<p><strong>磁盘类型</strong><br>| 磁盘类型字段      | 值 |<br>| —————- | —————- |<br>| 空      | 0       |<br>| 保留（废弃）   | 1        |<br>| 静态硬盘 | 2 |<br>| 动态硬盘 | 3 |<br>| 差分硬盘 | 4 |<br>| 保留（废弃） | 5 |<br>| 保留（废弃） | 6 |</p>
+<p><strong>校验和（Checksum）</strong><br>该字段保存硬盘文件脚的基本校验和，只是文件脚中除校验和以外其他所有字段之一的补码。如果校验和验证失败，虚拟PC和虚拟服务器产品将会使用文件头作为替代。如果文件头中的校验和同样失败，文件应当被认为已损坏。用于决定校验和的算法的伪代码见本文档附录。</p>
+<p><strong>唯一标识（Unique ID）</strong><br>每一块硬盘拥有一个存在硬盘中的唯一标识，是128位的全局通用标识（UUID），用于识别硬盘。该字段用于关联父硬盘映像与其差分硬盘映像。</p>
+<p><strong>保存状态（Saved State）</strong><br>该字段保存了单字节标志，描述了系统是否处于保存状态。如果硬盘处于保存状态该值被置1。如压缩和扩展的操作在保存状态下的硬盘上无法执行。</p>
+<p><strong>保留字段（Reserved）</strong><br>该字段大小为427字节，均置零。</p>
+<h1 id="动态磁盘文件头格式"><a href="#动态磁盘文件头格式" class="headerlink" title="动态磁盘文件头格式"></a>动态磁盘文件头格式</h1><p>对于动态和差分磁盘映像，映像文件尾的“数据偏移”字段指向一个次级结构，该结构提供了有关磁盘映像的附加信息。动态磁盘文件头应出现在扇区（512字节）边界上。<br>动态磁盘文件头格式如下表所列。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>动态硬盘文件头字段</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标识符</td>
+<td>8</td>
+</tr>
+<tr>
+<td>数据偏移</td>
+<td>8</td>
+</tr>
+<tr>
+<td>表偏移</td>
+<td>8</td>
+</tr>
+<tr>
+<td>文件头版本</td>
+<td>8</td>
+</tr>
+<tr>
+<td>最大表项数</td>
+<td>4</td>
+</tr>
+<tr>
+<td>块大小</td>
+<td>4</td>
+</tr>
+<tr>
+<td>校验和</td>
+<td>4</td>
+</tr>
+<tr>
+<td>父唯一标识</td>
+<td>16</td>
+</tr>
+<tr>
+<td>父时间戳</td>
+<td>4</td>
+</tr>
+<tr>
+<td>保留字段</td>
+<td>4</td>
+</tr>
+<tr>
+<td>父Unicode名称</td>
+<td>512</td>
+</tr>
+<tr>
+<td>父定位器项1</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项2</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项3</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项4</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项5</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项6</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项7</td>
+<td>24</td>
+</tr>
+<tr>
+<td>父定位器项8</td>
+<td>24</td>
+</tr>
+<tr>
+<td>保留字段</td>
+<td>256</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>动态磁盘文件头字段描述</strong><br>下文提供了动态磁盘文件头字段的详细定义。</p>
+<p><strong>标识符</strong><br>该字段保存值“cxsparse”。该字段标识文件头。</p>
+<p><strong>数据偏移</strong><br>该字段包含到硬盘映像中下一结构的绝对字节偏移。当前未被现有格式使用，应置0xFFFFFFFF。</p>
+<p><strong>表偏移（Table Offset）</strong><br>该字段在文件中存储块分配表（BAT）的绝对字节偏移。</p>
+<p><strong>文件头版本（Header Version）</strong><br>该字段分为主/次版本，并与创建文件时的规范版本相匹配。两高位字节为主版本，低位字节为次版本。必须与文件格式规范相匹配。当前规范下，字段需初始化为<code>0x00010000</code>。<br>主版本仅当文件格式进行不兼容旧版本的修改时才会递增。</p>
+<p><strong>最大表项数（Max Table Entries）</strong><br>该字段保存BAT中呈现的最大表项数。应等于磁盘中的块数（磁盘大小除以块大小）。</p>
+<p><strong>块大小（Block Size）</strong><br>块是动态和差分硬盘扩展的单位，以字节数的形式存储。大小并不包括块位图的大小，只包含区块数据段的大小。每块的扇区数必须始终是2的幂。默认值为<code>0x00200000</code>（表示块大小为2MB）。</p>
+<p><strong>校验和</strong><br>该字段保存硬盘文件头的基本校验和，是文件头中除校验和以外其他所有字段之一的补码。如果校验和验证失败，文件应当被认为已损坏。</p>
+<p><strong>父唯一标识（Parent Unique ID）</strong><br>该字段用于差分硬盘。差分硬盘存储了父硬盘的128位UUID。关于更多信息，见后文“创建差分硬盘映像”。</p>
+<p><strong>父时间戳（Parent Time Stamp）</strong><br>该字段存储了父硬盘的修改时间戳。数据是从UTC/GMT 2000年1月1日 12：00：00 AM开始的秒数。</p>
+<p><strong>保留字段</strong><br>该字段需置零。</p>
+<p><strong>父Unicode名称（Parent Unicode Name）</strong><br>字段包含一个父硬盘文件名的Unicode字符串（UTF-16）。</p>
+<p><strong>父定位器项（Parent Locator Entries）</strong><br>这些项在文件中存储绝对字节偏移，其中存储了差分硬盘的父定位器。该字段仅在差分硬盘中使用，并在动态硬盘中应被置零。</p>
+<p>每个定位器项含有字段如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>父定位器表字段</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平台码</td>
+<td>4</td>
+</tr>
+<tr>
+<td>平台数据空间</td>
+<td>4</td>
+</tr>
+<tr>
+<td>平台数据长度</td>
+<td>4</td>
+</tr>
+<tr>
+<td>保留</td>
+<td>4</td>
+</tr>
+<tr>
+<td>平台数据偏移</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>平台码（Platform Code）</strong>。平台码描述了用于文件定位器的平台特定格式。对于Windows,文件定位器以路径存储（例如“c:\disksimages\ParentDisk.vhd”）。在Macintosh系统上，文件定位器是一个包含“替身”的二进制大对象（blob）。父定位器表用于支持跨平台移动硬盘映像。</p>
+<p>一些当前的平台码如下所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>平台码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空（0x0）</td>
+<td></td>
+</tr>
+<tr>
+<td>Wi2r(0x57693272)</td>
+<td>[弃用]</td>
+</tr>
+<tr>
+<td>Wi2k(0x5769326B)</td>
+<td>[弃用]</td>
+</tr>
+<tr>
+<td>W2ru(0x57327275)</td>
+<td>Windows上相对差分磁盘路径名的Unicocde路径名（UTF-16）</td>
+</tr>
+<tr>
+<td>W2ku(0x57326B75)</td>
+<td>Windows上绝对Unicode（UTF-16）路径名</td>
+</tr>
+<tr>
+<td>Mac (0x4D616320)</td>
+<td>（Mac OS以blob形式存储的替身）</td>
+</tr>
+<tr>
+<td>MacX(0x4D616358)</td>
+<td>符合RFC 2396的UTF-8编码的文件URL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>平台数据空间（Platform Data Space）</strong>。该字段存储了存储父硬盘定位器所需的512字节的扇区数。<br><strong>平台数据长度（Platform Data Length）</strong>。该字段以字节数的形式存储了父硬盘定位器的实际长度。<br><strong>保留字段</strong>。该字段需置零。<br><strong>平台数据偏移（Platform Data Offset）</strong>。该字段以字节形式存储了平台特定文件定位器存储位置的绝对字节偏移。</p>
+<p><strong>保留字段</strong><br>该字段需置零。</p>
+<h1 id="块分配表和数据块"><a href="#块分配表和数据块" class="headerlink" title="块分配表和数据块"></a>块分配表和数据块</h1><p>块分配表（BAT）是一张绝对扇区偏移的表，包含在硬盘映像文件中，由动态磁盘文件头的“表偏移”字段指向。<br>BAT的大小在创建硬盘时计算。BAT中的表项数是完整扩展时需要用于存储磁盘内容的块数。例如，一个使用2MB块的2GB磁盘映像需要1024个BAT表项。每个表项长四字节。所有未使用表项初始化为0xFFFFFFFF。<br>BAT总是扩展到扇区边界。动态磁盘文件头中的“最大表项数”字段显示有多少表项是有效的。</p>
+<p>BAT每个中每个表项代表磁盘映像中的一个块。<br><img src="map.png" alt="映射关系" title="映射关系"></p>
+<p>数据块由一个扇区位图和数据组成。对于动态磁盘，扇区位图展现了哪些扇区含有有效数据（1）以及哪些扇区没有被修改（0）过。对于差分磁盘，扇区位图展现了哪些扇区存在于差分磁盘中（1）和哪些扇区存在于父磁盘（0）中。位图需要填充到512字节扇区边界。<br>每个块的大小是扇区大小的二的整数次幂倍。默认情况下，块是4096个512字节的扇区（2MB）。一个映像中块的大小必须相等。大小由动态磁盘文件头中的“块大小”字段规定。<br>所有在位图中标记为零的块内扇区，其在磁盘上存储的必须512字节全为零。访问磁盘映像的软件可利用此假设优化性能。<br><strong>注</strong>：即使格式支持不同的块大小，微软虚拟PC 2004和虚拟服务器 2005目前只测试了512K和2MB的块大小。</p>
+<h1 id="动态磁盘实现"><a href="#动态磁盘实现" class="headerlink" title="动态磁盘实现"></a>动态磁盘实现</h1><p>块依据需求分配。创建动态磁盘时，最初没有块被分配。一个新创建的映像只包含如前所述的数据结构（包括动态磁盘文件头和BAT）。<br>数据被写入映像时，动态磁盘扩展出一个新的块。BAT也会更新，以包含映像中分配的每一个新块。</p>
+<h1 id="映射磁盘扇区到块扇区"><a href="#映射磁盘扇区到块扇区" class="headerlink" title="映射磁盘扇区到块扇区"></a>映射磁盘扇区到块扇区</h1><p>下面的公式可用于根据给出的扇区数计算块数：</p>
+<script type="math/tex; mode=display">块号 = floor(全局扇区数 / 每块的扇区数)</script><script type="math/tex; mode=display">块内扇区号 = 全局扇区数 % 每块扇区</script><p><em>块号</em>用作BAT中的索引。BAT表项包含块数据后的块位图的绝对扇区偏移。下面的公式可用于计算数据的位置：</p>
+<script type="math/tex; mode=display">实际扇区位置 = BAT[块号]+块位图所占扇区数+块内扇区号</script><p>通过这种方法，块可按任意顺序分配，同时通过BAT维持其逻辑序列。<br>一个块被分配时，映像文件尾必须被移动到文件的结尾。文件的扩展部分需置零。</p>
+<h1 id="分割硬盘映像"><a href="#分割硬盘映像" class="headerlink" title="分割硬盘映像"></a>分割硬盘映像</h1><p>如果磁盘映像的大小超过主机文件系统支持的最大文件大小，微软虚拟服务器 2005之前的版本支持拆分磁盘映像。<br>一些文件系统，例如FAT32文件系统，在文件大小上有4GB的限制。如果硬盘映像扩展到超过4GB,微软虚拟PC 2004及之前的版本将会将硬盘映像分割到另一个文件中。分割出来的文件不含有文件头和文件尾，只含有纯数据。只有最后一个文件的结尾存储文件尾。分割的磁盘中的第一个文件扩展名为.vhd。后续的分割文件使用<em>.v01</em>、<em>.v02</em>……作为文件扩展名。分割文件将被放在主硬盘映像的同一目录。映像分割分割出来的文件最多可以有64个。分割文件的大小无法改变。</p>
+<h1 id="实现差分硬盘"><a href="#实现差分硬盘" class="headerlink" title="实现差分硬盘"></a>实现差分硬盘</h1><p>差分硬盘自身内部存储着父硬盘的文件定位器。当虚拟机试图打开一个差分硬盘时，差分硬盘和父硬盘都会被打开。父硬盘同样可以是一块差分硬盘，在这种情况下，可能会形成一个由多个差分硬盘组成的链条，最终以一个非差分硬盘作为终点。<br>为了能够跨平台移动硬盘，硬盘格式设计为允许同时存储用于不同平台的父硬盘的文件定位器。<br>父定位器表仅由差分硬盘使用，见前文“动态硬盘文件头格式”所述。父定位器表为存储在文件中的每一个父文件定位器存储了一份平台码。虚拟机会读取当前平台所对应的父文件定位器并打开硬盘映像。<br>在Windows系统上，有两种平台定位器<strong>W2ku</strong>和<strong>W2ru</strong>。前者是父硬盘的绝对路径名，后者是父硬盘相对差分硬盘的路径名。<br>例如，一个位于系统分区的父硬盘映像在一台典型的基于Windows的机器上存储方式如下所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W2ku</td>
+<td>c:\directory\parent.vhd</td>
+</tr>
+<tr>
+<td>W2ru</td>
+<td>.\directory\parent.vhd</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例如，在典型的基于苹果Macintosh的机器上，父硬盘映像存储方式如下所示：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mac</td>
+<td>（Mac OS上替身以blob形式存储）</td>
+</tr>
+<tr>
+<td>MacX</td>
+<td>file://localhost/directory/parent.vhd</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>相对路径名的优点是允许将差分硬盘和父硬盘移到不同的位置。而采用绝对路径，无论何时移动父硬盘，父硬盘和子硬盘都要显式地重新连接。<br>差分硬盘创建时，如果可能，应当在各自的平台上初始化两种类型的平台定位器路径。<br><strong>注</strong>：微软虚拟PC 2004之前的版本只存储绝对路径名。</p>
+<h1 id="差分硬盘的写操作"><a href="#差分硬盘的写操作" class="headerlink" title="差分硬盘的写操作"></a>差分硬盘的写操作</h1><p>进行写操作，所有数据被写入差分硬盘映像。凡是被写入某个块的扇区，在位图上都会被标为非空。</p>
+<h1 id="差分硬盘的读操作"><a href="#差分硬盘的读操作" class="headerlink" title="差分硬盘的读操作"></a>差分硬盘的读操作</h1><p>当虚拟机读取硬盘映像扇区，差分硬盘子系统检查差分硬盘中的块位图。差分硬盘子系统从差分硬盘中读取被标记为非空的扇区和父硬盘中被标记为空的扇区。<br>例如，考虑一个在父硬盘映像和子硬盘映像中都包含扇区4096到8191的块。第一个扇区中存储了块的位图。下图中的每个单元格代表位图中的一个位，黑点表示该块中的特定扇区已被虚拟机写入。<br><img src="read.png" alt="读操作" title="读操作"><br>如果虚拟机发出读取扇区4098到4104的操作，差分硬盘子系统将从父硬盘块中读取扇区 4098到4101，并从子块中读取扇区4102到4104。<br>如果虚拟机发出写入扇区4102到4106的操作，则所有数据都会写入到子块中，并且位图中对应子块的4105和4106号扇区的部分将被标记为非空。</p>
+<h1 id="父硬盘映像的识别"><a href="#父硬盘映像的识别" class="headerlink" title="父硬盘映像的识别"></a>父硬盘映像的识别</h1><p>每个硬盘拥有存在硬盘文件尾的UUID。差分硬盘创建时，在差分硬盘内部存储父硬盘的UUID。UUID和父硬盘的名称被用于识别父硬盘。</p>
+<h1 id="父硬盘映像的修改"><a href="#父硬盘映像的修改" class="headerlink" title="父硬盘映像的修改"></a>父硬盘映像的修改</h1><p>在父硬盘的差分硬盘创建后，父硬盘将不会被修改。修改父硬盘会使差分硬盘状态失效。为避免这种情况，父硬盘的修改日期被存放在差分硬盘结构中。</p>
+<p>为确保存在有效的父-子硬盘关系，父硬盘UUID和父硬盘修改日期都需要检查。</p>
+<h1 id="附录：CHS计算"><a href="#附录：CHS计算" class="headerlink" title="附录：CHS计算"></a>附录：CHS计算</h1><p>CHS计算基于磁盘映像的总扇区数。</p>
+<p><strong>CHS计算</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>CHS计算的变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>totalSectors</td>
+<td>磁盘映像的数据扇区总数</td>
+</tr>
+<tr>
+<td>cylinders</td>
+<td>磁盘的柱面数</td>
+</tr>
+<tr>
+<td>heads</td>
+<td>磁盘的磁头总数</td>
+</tr>
+<tr>
+<td>sectorsPerTrack</td>
+<td>磁盘的每磁道扇区数</td>
+</tr>
+<tr>
+<td>cylinderTimesHead</td>
+<td>柱面数 x 磁头数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">                    C      H    S</span><br><span class="line">if (totalSectors &gt; 65535 * 16 * 255)</span><br><span class="line">&#123;</span><br><span class="line">totalSectors = 65535 * 16 * 255;</span><br><span class="line">&#125;</span><br><span class="line">if (totalSectors &gt;= 65535 * 16 * 63)</span><br><span class="line">&#123;</span><br><span class="line">sectorsPerTrack = 255;</span><br><span class="line">heads = 16;</span><br><span class="line">cylinderTimesHeads = totalSectors / sectorsPerTrack;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">sectorsPerTrack = 17;</span><br><span class="line">cylinderTimesHeads = totalSectors / sectorsPerTrack;</span><br><span class="line">heads = (cylinderTimesHeads + 1023) / 1024;</span><br><span class="line">if (heads &lt; 4)</span><br><span class="line">&#123;</span><br><span class="line">heads = 4;</span><br><span class="line">&#125;</span><br><span class="line">if (cylinderTimesHeads &gt;= (heads * 1024) || heads &gt; 16)</span><br><span class="line">&#123;</span><br><span class="line">sectorsPerTrack = 31;</span><br><span class="line">heads = 16;</span><br><span class="line">cylinderTimesHeads = totalSectors / sectorsPerTrack;</span><br><span class="line">&#125;</span><br><span class="line">if (cylinderTimesHeads &gt;= (heads * 1024))</span><br><span class="line">&#123;</span><br><span class="line">sectorsPerTrack = 63;</span><br><span class="line">heads = 16;</span><br><span class="line">cylinderTimesHead = totalSectors / sectorsPerTrack;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">cylinders = cylinderTimesHead / heads;</span><br></pre></td></tr></table></figure>
+<p><strong>校验和计算</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>校验和计算的变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>driveFooter</td>
+<td>保存磁盘文件尾的变量</td>
+</tr>
+<tr>
+<td>checksum</td>
+<td>存储校验和数值的变量</td>
+</tr>
+<tr>
+<td>driveFooterSize</td>
+<td>driveFooter结构的大小</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>本地计数器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">checksum = 0;</span><br><span class="line">driveFooter.Checksum = 0;</span><br><span class="line">for (counter = 0 ; counter &lt; driveFooterSize ; counter++)</span><br><span class="line">&#123;</span><br><span class="line">checksum += driveFooter[counter];</span><br><span class="line">&#125;</span><br><span class="line">driveFooter.Checksum = ~checksum;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ 本文已结束 <i class="fa fa-paw"></i> 感谢您的阅读 ~~~~~~~~~~~~~~</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田阿柔 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田阿柔 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>稗田阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hiedanoajuu.github.io/2025/07/03/vhd/" title="虚拟硬盘映像格式规范">https://hiedanoajuu.github.io/2025/07/03/vhd/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%A3%E7%BF%BB/" rel="tag"><i class="fa fa-tag"></i> 渣翻</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag"><i class="fa fa-tag"></i> 计算机</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/06/09/th-msk/" rel="prev" title="东方梦绡集 ～ Fragments of Dream">
+      <i class="fa fa-chevron-left"></i> 东方梦绡集 ～ Fragments of Dream
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F%E7%B1%BB%E5%9E%8B%E6%80%BB%E8%A7%88"><span class="nav-number">4.</span> <span class="nav-text">虚拟硬盘映像类型总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F"><span class="nav-number">4.1.</span> <span class="nav-text">静态硬盘映像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F"><span class="nav-number">4.2.</span> <span class="nav-text">动态硬盘映像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F"><span class="nav-number">4.3.</span> <span class="nav-text">差分硬盘映像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98%E6%96%87%E4%BB%B6%E5%B0%BE%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">硬盘文件尾格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%A3%81%E7%9B%98%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A0%BC%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">动态磁盘文件头格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9D%97%E5%88%86%E9%85%8D%E8%A1%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E5%9D%97"><span class="nav-number">7.</span> <span class="nav-text">块分配表和数据块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%A3%81%E7%9B%98%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.</span> <span class="nav-text">动态磁盘实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E7%A3%81%E7%9B%98%E6%89%87%E5%8C%BA%E5%88%B0%E5%9D%97%E6%89%87%E5%8C%BA"><span class="nav-number">9.</span> <span class="nav-text">映射磁盘扇区到块扇区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F"><span class="nav-number">10.</span> <span class="nav-text">分割硬盘映像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%B7%AE%E5%88%86%E7%A1%AC%E7%9B%98"><span class="nav-number">11.</span> <span class="nav-text">实现差分硬盘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E7%A1%AC%E7%9B%98%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-number">12.</span> <span class="nav-text">差分硬盘的写操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E7%A1%AC%E7%9B%98%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C"><span class="nav-number">13.</span> <span class="nav-text">差分硬盘的读操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%B6%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F%E7%9A%84%E8%AF%86%E5%88%AB"><span class="nav-number">14.</span> <span class="nav-text">父硬盘映像的识别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%B6%E7%A1%AC%E7%9B%98%E6%98%A0%E5%83%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="nav-number">15.</span> <span class="nav-text">父硬盘映像的修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95%EF%BC%9ACHS%E8%AE%A1%E7%AE%97"><span class="nav-number">16.</span> <span class="nav-text">附录：CHS计算</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="稗田阿柔"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">稗田阿柔</p>
+  <div class="site-description" itemprop="description">见过一次的东西就不会再忘记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hiedanoajuu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hiedanoajuu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hiedanoajuu@outlook.com" title="E-Mail → mailto:hiedanoajuu@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hiedano_ajuu" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hiedano_ajuu" rel="noopener" target="_blank"><i class="fa fa-lightbulb fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/HiedanoAjuu/Ajuu-s-repository" title="https:&#x2F;&#x2F;github.com&#x2F;HiedanoAjuu&#x2F;Ajuu-s-repository" rel="noopener" target="_blank">阿柔的小储藏间</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">稗田阿柔</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">51 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+  <div id="site-runtime">
+    <span class="post-meta-item-icon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+    <span id="runtime"></span>
+</div>
+
+ <script language="javascript">
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        for (var i = 0; i < agents.length; i++) {
+            if (userAgentInfo.indexOf(agents[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+}
+
+    function siteTime(openOnPC, start) {
+        window.setTimeout("siteTime(openOnPC, start)", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+            start = new Date("2023-08-23 15:24:00 +0800");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var diff = now - start;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        if (openOnPC) {
+            if (diffYears == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }
+        } else {
+            if (y == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + "年 " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }
+       
+        }
+    }
+
+    var showOnMobile = false;
+    var openOnPC = isPC();
+    var start = new Date();
+    siteTime(openOnPC, start);
+
+    if (!openOnPC && !showOnMobile) {
+        document.getElementById('site-runtime').style.display = 'none';
+    }
+</script>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+    </div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
