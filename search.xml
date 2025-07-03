@@ -970,12 +970,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts2210" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts5861" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2210'));
+            var myChart = echarts.init(document.getElementById('echarts5861'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1000,12 +1000,12 @@
     </script>
     
 
-    <div id="echarts2988" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts8152" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2988'));
+            var myChart = echarts.init(document.getElementById('echarts8152'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -2050,7 +2050,47 @@
 </table>
 </div>
 <p>当一块磁盘被编辑为ATA硬盘，CHS值（<strong>C</strong>ylinder,<strong>H</strong>eads,<strong>S</strong>ectors per track）由ATA控制器使用，决定磁盘的大小。当用户创建一块确定大小的硬盘，硬盘映像的大小小于用户创建的大小。因为由硬盘大小计算得来的CHS值向下舍入。决定CHS值算法的伪代码见本文档的附录。</p>
-<p><strong>磁盘类型</strong><br>| 磁盘类型字段      | 值 |<br>| —————- | —————- |<br>| 空      | 0       |<br>| 保留（废弃）   | 1        |<br>| 静态硬盘 | 2 |<br>| 动态硬盘 | 3 |<br>| 差分硬盘 | 4 |<br>| 保留（废弃） | 5 |<br>| 保留（废弃） | 6 |</p>
+<p><strong>磁盘类型</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>磁盘类型字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空</td>
+<td>0</td>
+</tr>
+<tr>
+<td>保留（废弃）</td>
+<td>1</td>
+</tr>
+<tr>
+<td>静态硬盘</td>
+<td>2</td>
+</tr>
+<tr>
+<td>动态硬盘</td>
+<td>3</td>
+</tr>
+<tr>
+<td>差分硬盘</td>
+<td>4</td>
+</tr>
+<tr>
+<td>保留（废弃）</td>
+<td>5</td>
+</tr>
+<tr>
+<td>保留（废弃）</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><strong>校验和（Checksum）</strong><br>该字段保存硬盘文件脚的基本校验和，只是文件脚中除校验和以外其他所有字段之一的补码。如果校验和验证失败，虚拟PC和虚拟服务器产品将会使用文件头作为替代。如果文件头中的校验和同样失败，文件应当被认为已损坏。用于决定校验和的算法的伪代码见本文档附录。</p>
 <p><strong>唯一标识（Unique ID）</strong><br>每一块硬盘拥有一个存在硬盘中的唯一标识，是128位的全局通用标识（UUID），用于识别硬盘。该字段用于关联父硬盘映像与其差分硬盘映像。</p>
 <p><strong>保存状态（Saved State）</strong><br>该字段保存了单字节标志，描述了系统是否处于保存状态。如果硬盘处于保存状态该值被置1。如压缩和扩展的操作在保存状态下的硬盘上无法执行。</p>
