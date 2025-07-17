@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://hiedanoajuu.github.io/2025/07/17/manetho/</loc>
+    <lastmod>2025-07-17</lastmod>
+  </url>
+  <url>
+    <loc>https://hiedanoajuu.github.io/2025/07/05/nasmdoc/</loc>
+    <lastmod>2025-07-05</lastmod>
+  </url>
+  <url>
     <loc>https://hiedanoajuu.github.io/2025/07/03/vhd/</loc>
     <lastmod>2025-07-03</lastmod>
   </url>
@@ -19,10 +27,6 @@
   <url>
     <loc>https://hiedanoajuu.github.io/2025/05/03/masm-bootloader/</loc>
     <lastmod>2025-05-03</lastmod>
-  </url>
-  <url>
-    <loc>https://hiedanoajuu.github.io/2024/10/07/manetho/</loc>
-    <lastmod>2025-04-13</lastmod>
   </url>
   <url>
     <loc>https://hiedanoajuu.github.io/2025/02/09/qemu-ms-dos/</loc>

@@ -970,12 +970,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts5861" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts3805" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts5861'));
+            var myChart = echarts.init(document.getElementById('echarts3805'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1000,12 +1000,12 @@
     </script>
     
 
-    <div id="echarts8152" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts4733" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts8152'));
+            var myChart = echarts.init(document.getElementById('echarts4733'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1074,8 +1074,8 @@
       </tags>
   </entry>
   <entry>
-    <title>曼涅托 埃及史(24-10-26)</title>
-    <url>/2024/10/07/manetho/</url>
+    <title>曼涅托 埃及史(25-07-17)</title>
+    <url>/2025/07/17/manetho/</url>
     <content><![CDATA[<h1 id="第一卷"><a href="#第一卷" class="headerlink" title="第一卷"></a>第一卷</h1><h2 id="1-（来自亚美尼亚语版《尤西比乌斯编年史》）"><a href="#1-（来自亚美尼亚语版《尤西比乌斯编年史》）" class="headerlink" title="1 （来自亚美尼亚语版《尤西比乌斯编年史》）"></a>1 （来自亚美尼亚语版《尤西比乌斯编年史》）</h2><p>神王朝、半神朝与亡灵朝。<br>摘自曼涅托《埃及史》，他将他对埃及历史的记叙写成这三卷书。从神明、半神、亡灵，以及统治埃及的人王朝，直到波斯国王大流士。</p>
 <ol>
 <li><p>埃及的第一个人（或者神）是赫菲斯托斯<sup><a href="#fn_1" id="reffn_1">1</a></sup>，在埃及人中也因发现火而闻名。他的儿子赫利俄斯（太阳神）由索西斯继承；然后依次是克洛诺斯、奥西里斯、奥西里斯的弟弟提丰，最后是奥西里斯和伊西斯的儿子奥鲁斯。他们是埃及的第一批统治者。此后，王位由上一个人传给下一个人，这样的继承持续了13,900年而未有中断，直到比迪斯（比特斯）<sup><a href="#fn_2" id="reffn_2">2</a></sup>。然而，这里的“年”我认为是阴历年，也就是说，每年只有30天：如今我们所说的“月”以前被埃及人称作“年”。<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
@@ -1094,10 +1094,30 @@
 </li>
 </ol>
 <p>（续见7（b））</p>
-<h2 id="2-（来自辛凯洛斯）"><a href="#2-（来自辛凯洛斯）" class="headerlink" title="2 （来自辛凯洛斯）"></a>2 （来自辛凯洛斯）</h2><p>此后<sup><a href="#fn_11" id="reffn_11">11</a></sup>，曼涅托还讲述了形成了三十个王朝的五个埃及部落，包括他所谓的神明、半神、亡灵和凡人。对于这些，尤西比乌斯，潘菲鲁斯之“子”，在他的《年代记》中这样描述道：“关于神明、半神、亡灵和凡人，埃及人有一长串愚蠢的神话。事实上，最古老的埃及国王宣称他们的年是由三十天组成的阴历年，而继承他们的半神则将三个月的长年命名为‘霍洛伊’。所以尤西比乌斯写信责备埃及人说话愚妄，是很有道理的；而且在我看来，帕诺多鲁斯<sup><a href="#fn_12" id="reffn_12">12</a></sup>在这里因为尤西比乌斯没有解释历史学家的意思而指责尤西比乌斯，是错误的，而帕诺多鲁斯自以为采用了一种较为新颖的方法成功地解释了这一点，具体如下：</p>
-<p>“事实上，从亚当诞生直至以诺，也就是直到创世1282年，那时的日子不是按月与年来计数的；但创世1000年降临大地的埃格雷戈雷（或者“守望者”）<sup><a href="#fn_13" id="reffn_13">13</a></sup>同人类交谈，并告诉他们日月二曜的轨道由黄道十二宫划分，由360个部分组成。人们观察到月球的轨道离地球更近、更小、更明显，而因为它的周期是三十天，人们就决定将其算作一年；而太阳的轨道同样由黄道十二宫划分为和月球相同的360个部分。于是，六个王朝的六代神明在人类中的统治以年进行计算，每一年由30天的月球周期组成。按阴历年总计11,985年，即969个阳历年。加上他们统治前的1058<sup><a href="#fn_14" id="reffn_14">14</a></sup>个阳历年，总计2027年。”类似地，在九个的两个王朝——这些王朝尽管从未存在，却被视为历史——帕诺多鲁斯试图将858个霍洛伊(即三个月)或者特罗波伊拼凑出214½年，加上前面的969年，他说，总计1183½年，这些，再加上从亚当时代到众神统治的1058年，到大洪水总计2242年。</p>
-<p>由此，帕诺多鲁斯试图表明反对神明和我们的神启经典的埃及作品和它们才是真正一致。他在此批评尤西比乌斯，却并未意识到自己的论点既无法证实也不合逻辑，反而自相矛盾且违背事实——毕竟……大洪水之前，巴比伦和迦勒底并未有君王统治，埃及在梅斯特里姆<sup><a href="#fn_$" id="reffn_$">$</a></sup>之前也并不存在，依我看来，在那之前那片土地甚至无人居住……</p>
-<p><strong>（施工中，敬请期待）</strong></p>
+<h2 id="2-（来自辛西卢斯）"><a href="#2-（来自辛西卢斯）" class="headerlink" title="2 （来自辛西卢斯）"></a>2 （来自辛西卢斯）</h2><p>此后<sup><a href="#fn_11" id="reffn_11">11</a></sup>，曼涅托还讲述了形成了三十个王朝的五个埃及部落，包括他所谓的神明、半神、亡灵和凡人。对于这些，尤西比乌斯，潘菲鲁斯之“子”，在他的《年代记》中这样描述道：“关于神明、半神、亡灵和凡人，埃及人有一长串愚蠢的神话。事实上，最古老的埃及国王宣称他们的年是由三十天组成的阴历年，而继承他们的半神则将三个月的长年命名为‘霍洛伊’。所以尤西比乌斯写信责备埃及人说话愚妄，是很有道理的；而且在我看来，帕诺多鲁斯<sup><a href="#fn_12" id="reffn_12">12</a></sup>在这里因为尤西比乌斯没有解释明白历史学家的意思而指责尤西比乌斯，是错误的，而帕诺多鲁斯自以为采用了一种较为新颖的方法成功地解释了这一点，具体如下：</p>
+<p>“事实上，从亚当诞生直至以诺，也就是直到创世1282年，那时的日子不是按月与年来计数的；但创世1000年降临大地的埃格雷戈雷（或者“守望者”）<sup><a href="#fn_13" id="reffn_13">13</a></sup>同人类交谈，并告诉他们日月二曜的轨道由黄道十二宫划分，由360个部分组成。人们观察到月球的轨道离地球更近、更小、更明显，而因为它的周期是三十天，人们就决定将其算作一年；而太阳的轨道同样由黄道十二宫划分为相等的360个部分。于是，六个王朝的六代神明在人类中的统治以年进行计算，每一年由30天的月球周期组成。按阴历年总计11,985年，即969个阳历年。加上他们统治前的1058<sup><a href="#fn_14" id="reffn_14">14</a></sup>个阳历年，总计2027年。”类似地，在九个的两个王朝——这些王朝尽管从未存在，却被视为历史——帕诺多鲁斯试图将858个霍洛伊（即三个月）或者特罗波伊<sup><a href="#fn_#" id="reffn_#">#</a></sup>拼凑出214½年，加上前面的969年，他说，总计1183½年，这些，再加上从亚当时代到众神统治的1058年，到大洪水总计2242年。</p>
+<p>由此，帕诺多鲁斯为反对神明和我们的神启经典而引用的埃及作品和它们实际上是一致的。他在此批评尤西比乌斯，却并未意识到自己的论点既无法证实也不合逻辑，反而自相矛盾且违背事实——毕竟……大洪水之前，巴比伦和迦勒底并未有君王统治，埃及在梅斯特里姆<sup><a href="#fn_$" id="reffn_$">$</a></sup>之前也并不存在，依我看来，在那之前那片土地甚至无人居住……</p>
+<h2 id="3-（来自辛西卢斯）"><a href="#3-（来自辛西卢斯）" class="headerlink" title="3 （来自辛西卢斯）"></a>3 （来自辛西卢斯）</h2><p>埃及古代史</p>
+<p>塞本尼托斯的曼涅托，埃及被诅咒的神庙的首席祭司，生活在贝罗索斯<sup><a href="#fn_%" id="reffn_%">%</a></sup>之后的托勒密“爱姐弟者”时代，他给这位托勒密写信，用和贝罗索斯一样的谎言，讲述了六个从未存在的王朝或者六个神明：他说统治了11,985年。第一个是神明赫菲斯托斯，当了9000年国王。现在我们的一些史学家将9000年按阴历的月份进行计算，将9000个阴历月所包含的天数除以每年的365天，发现总计是727¾年。他们自以为得到了一个惊人的结果，但我们更应该说，那只不过是他们试图对抗真相的可笑谎言罢了。</p>
+<p>埃及第一王朝</p>
+<ol>
+<li>赫菲斯托斯（Hêphaestus），统治727¾年。</li>
+<li>赫利俄斯（太阳神）（Hêlios），赫菲斯托斯之子，80⅙年。</li>
+<li>阿伽忒戴蒙（Agathodaemôn），56 7/12年。</li>
+<li>克洛诺斯（Cronos），40½年。</li>
+<li>奥西里斯（Osiris）与伊西斯（Isis），35年。</li>
+<li>提丰（Typhon），29年。<sup><a href="#fn_15" id="reffn_15">15</a></sup>半神朝：</li>
+<li>奥鲁斯（Ôrus），25年。</li>
+<li>阿瑞斯（Arês），23年。</li>
+<li>阿努比斯（Anubis），17年。</li>
+<li>赫拉克勒斯（Hêraclês），15年。</li>
+<li>阿波罗（Apollô），25年。</li>
+<li>阿蒙（Ammôn），30年。</li>
+<li>提托厄斯（Tithoês），<sup><a href="#fn_16" id="reffn_16">16</a></sup>27年。</li>
+<li>索苏斯（Sôsus），32年。</li>
+<li>宙斯（Zeus），20年。<sup><a href="#fn_17" id="reffn_17">17</a></sup></li>
+</ol>
+<p><strong>施工中。</strong></p>
 <blockquote id="fn_1">
 <sup>1</sup>. 前王朝始于一群神明，包括“在孟斐斯被供奉的赫利奥波利斯大九柱神”(T·E·皮特，《剑桥古代史》I p250)(译者注:见1924年的第一版)。在汇总了1-3章后皮特补充道：“从历史的角度来说，这并不能得出什么结论。”关于埃及前王朝时期的传说，见迈耶《古代史》5,I.ii p102及后续。都灵纸草上诸神的顺序如下：(普塔)、拉、(舒)、盖布、奥西里斯、塞特(200年)、荷鲁斯(300年)、托特(3126年)、玛阿特、荷尔。见迈耶《埃及年代学》6并参考片段3(译者注:没找到这本书)。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
@@ -1108,13 +1128,13 @@
 <sup>3</sup>. 尚无证据表明埃及的一年曾经等于一个月：有短年(每年360天)和长年(见片段49)。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_4">
-<sup>4</sup>. 见《野蛮人的拉丁文摘录》(片段4)中这个王朝的开始：“第一个，阿努比斯…”<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+<sup>4</sup>. 见《巴尔巴鲁斯的拉丁文摘录》(片段4)中这个王朝的开始：“第一个，阿努比斯…”<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_5">
 <sup>5</sup>. 与都灵纸草第II列相互印证：“孟斐斯的”。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_6">
-<sup>6</sup>. “半神”应该是“亡灵”(νέκυες ἡμίθεοι)的同位语，同《野蛮人的拉丁文摘录》(片段4)和阿非利加努斯(片段6.1)。这些或许是谢姆苏·荷尔，都灵纸草上荷鲁斯的追随者或是崇拜者：见H·R·霍尔《剑桥古代史》，I p265。征服了肥沃的三角洲并建立了第一王朝的美尼斯(片段6)王之前，——谢姆苏·荷尔，隼鹰家族的成员们，他们的老家在在西三角洲，他们通过征服上埃及建立了一个更早的统一王国：见V·戈登·蔡尔德《最古东方新看法》1934，基于布雷斯特德《法兰西东方考古学会年报》XXX(开罗，1930),p10及之后和谢费尔在《东方文学杂志》(1932)的批评，p704。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+<sup>6</sup>. “半神”应该是“亡灵”(νέκυες ἡμίθεοι)的同位语，同《巴尔巴鲁斯的拉丁文摘录》(片段4)和阿非利加努斯(片段6.1)。这些或许是谢姆苏·荷尔，都灵纸草上荷鲁斯的追随者或是崇拜者：见H·R·霍尔《剑桥古代史》，I p265。征服了肥沃的三角洲并建立了第一王朝的美尼斯(片段6)王之前，——谢姆苏·荷尔，隼鹰家族的成员们，他们的老家在在西三角洲，他们通过征服上埃及建立了一个更早的统一王国：见V·戈登·蔡尔德《最古东方新看法》1934，基于布雷斯特德《法兰西东方考古学会年报》XXX(开罗，1930),p10及之后和谢费尔在《东方文学杂志》(1932)的批评，p704。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_7">
 <sup>7</sup>. 上述各王朝统治年数之和确切为11,025年，下文的24,900也是24,925取整的结果。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
@@ -1135,7 +1155,7 @@
 <sup>11</sup>. 前见附录I，p210。<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_12">
-<sup>12</sup>. 帕诺多鲁斯（395-408 A.D.）和他同时代的安尼亚努斯都是埃及僧侣，他们撰写年表的目的是使迦勒底人和埃及人的体系与犹太人的体系相互协调。帕诺多鲁斯运用了（也许编纂了）《索提斯之书》（附录IV）。<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
+<sup>12</sup>. 帕诺多鲁斯（Panodôrus，395-408 A.D.）和他同时代的安尼亚努斯都是埃及僧侣，他们撰写年表的目的是使迦勒底人和埃及人的体系与犹太人的体系相互协调。帕诺多鲁斯运用了（也许编纂了）《索提斯之书》（附录IV）。<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
 </blockquote>
 <blockquote id="fn_13">
 <sup>13</sup>. 埃格雷戈雷（Ἐγρήγοροι），“守望者，天使”——在《以诺书》，179，指的是那些爱上人类女子的天使。希腊语词Ἐγρήγοροι是对《以诺书》179中的埃兰语词汇的误读。<a href="#reffn_13" title="Jump back to footnote [13] in the text."> &#8617;</a>
@@ -1148,6 +1168,18 @@
 </blockquote>
 <blockquote id="fn_$">
 <sup>$</sup>. 梅斯特里姆（Mestrem）同注9梅斯特拉伊姆（Mestraïm）（译者注）。<a href="#reffn_$" title="Jump back to footnote [$] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_%">
+<sup>%</sup>. 贝罗索斯（Bêrôssos），巴比伦僧侣，编纂《巴比伦志》（译者注）。<a href="#reffn_%" title="Jump back to footnote [%] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_15">
+<sup>15</sup>. 总计969年。<a href="#reffn_15" title="Jump back to footnote [15] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_16">
+<sup>16</sup>. 总计214年。神王朝与半神朝总计1183年，见片段2。<a href="#reffn_16" title="Jump back to footnote [16] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_17">
+<sup>17</sup>. 该摘录出自一位匿名且学识浅薄的抄写员之手，主要依靠阿非利加努斯的著作。见韦尔《埃及中王国末期》第640页，第642页及其后，第655页及其后。格尔泽与鲍尔推断，巴尔巴鲁斯所译希腊文记载要么出自埃及僧侣安尼亚努斯之手（见片段2，第11页注2），要么至少是衍生自他的材料（拉克尔，《古典古代学百科全书》XIV.1, 1081）。<a href="#reffn_17" title="Jump back to footnote [17] in the text."> &#8617;</a>
 </blockquote>
 ]]></content>
       <categories>
@@ -1245,6 +1277,64 @@
         <tag>计算机</tag>
         <tag>汇编语言</tag>
         <tag>高危</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NASM - 全网通用汇编器</title>
+    <url>/2025/07/05/nasmdoc/</url>
+    <content><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="什么是NASM？"><a href="#什么是NASM？" class="headerlink" title="什么是NASM？"></a>什么是NASM？</h2><p>全网通用汇编器（NASM，Netwide Assembler）是一款为可移植性和模块化而设计的80x86和x86-64汇编器，支持多种目标文件格式，包括Linux与*BSD的a.out、ELF、Mach-O、16位和32位的.obj（OMF）格式，COFF（包括其Win32和Win64变体）。同样可以输出原始二进制文件、Intel十六进制格式和以及Motorola S-Record。其语法设计得简单易懂，类似于Intel软件开发者手册中的语法，并尽可能降低了复杂性。支持当前所有已知的x86架构扩展，并提供了强大的宏命令支持。</p>
+<h3 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h3><p>NASM遵循所谓的2-clause BSD许可证，亦称BSD简化许可证：<br>版权所在 1996-2024 NASM作者 - 保留所有权利。<br>允许以源代码和二进制形式再分发与使用（无论修改与否），但须满足以下条件：</p>
+<ul>
+<li>源代码再分发须保留上述版权声明、本条件清单及下述免责声明。</li>
+<li>二进制形式再分发须在随分发的文档和/或其他材料中复制上述版权声明、本材料清单及下述免责声明。<br>本软件按”原样”提供，版权持有人及贡献者不承担任何明示或默示的担保责任，包括但不限于对适销性和特定用途适用性的默示担保。在任何情况下，无论基于何种法律理论（无论是合同责任、严格责任还是侵权责任，包括疏忽或其他原因），版权持有人或贡献者均不对因使用本软件而产生的任何直接、间接、偶然、特殊、典型或后果性损害（包括但不限于替代商品或服务的采购、使用损失、数据丢失或利润损失、业务中断）承担责任，即使已被告知发生此类损害的可能性。</li>
+</ul>
+<h1 id="运行NASM"><a href="#运行NASM" class="headerlink" title="运行NASM"></a>运行NASM</h1><h2 id="NASM命令行语法"><a href="#NASM命令行语法" class="headerlink" title="NASM命令行语法"></a>NASM命令行语法</h2><p>要汇编一个文件，可以使用以下形式的命令：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f &lt;格式&gt; &lt;文件名&gt; [-o &lt;输出文件名&gt;]</span><br></pre></td></tr></table></figure><br>例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f elf myfile.asm</span><br></pre></td></tr></table></figure><br>将汇编<code>myfile.asm</code>为ELF对象文件<code>myfile.o</code>，而：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f bin myfile.asm -o myfile.com</span><br></pre></td></tr></table></figure><br>将汇编<code>myfile.asm</code>为原始二进制文件<code>myfile.com</code>。<br>要生成在源代码左侧显示NASM输出的十六进制机器码的列表文件，添加<code>-l</code>选项并给出列表文件名，例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f coff myfile.asm -l myfile.lst</span><br></pre></td></tr></table></figure><br>要获取NASM的更多使用说明，请输入：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -h</span><br></pre></td></tr></table></figure><br>选项<code>-h</code>可替换为<code>--help</code>。<br>如果使用Linux但不确定系统使用的是<code>a.out</code>还是ELF，（在存放NASM二进制文件的目录）执行：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">file nasm</span><br></pre></td></tr></table></figure><br>如果输出结果类似：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm: ELF 32-bit LSB executable i386 (386 and up) Version 1</span><br></pre></td></tr></table></figure><br>则系统使用ELF，在编译Linux目标文件时应当使用<code>-f elf</code>选项。如果输出结果类似：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm: Linux/i386 demand-paged executable (QMAGIC)</span><br></pre></td></tr></table></figure><br>系统使用a.out，应当使用<code>-f aout</code>（Linux<code>a.out</code>系统早已废弃，如今已罕见）<br>和Unix编译器与汇编器一样，NASM除报错外没有其他提示。</p>
+<h3 id="o选项：输出文件名"><a href="#o选项：输出文件名" class="headerlink" title="-o选项：输出文件名"></a>-o选项：输出文件名</h3><p>NASM通常会自动选择输出文件名，具体命名规则取决于目标文件格式。对于Microsoft目标文件格式（<code>obj</code>、<code>win32</code>和<code>win64</code>），会将你的源文件名的<code>.asm</code>扩展名（或其他扩展名——NASM对此无限制）换成<code>.obj</code>。对于Unix目标文件格式（<code>aout</code>、<code>as86</code>、<code>coff</code>、<code>elf32</code>、<code>elf64</code>、<code>elfx32</code>、<code>ieee</code>、<code>macho32</code>与<code>macho64</code>），会换成<code>.o</code>。对于<code>dbg</code>、<code>ith</code>和<code>srec</code>，会分别使用<code>.dbg</code>、<code>.ith</code>和<code>.srec</code>。对于<code>bin</code>格式只是去掉扩展名，例如<code>myfile.asm</code>生成<code>myfile</code>文件。<br>如果输出文件已存在，<code>NASM</code>会将其覆盖。除非其名称与输入文件相同，这种情况将会给出警告并使用<code>nasm.out</code>作为输出文件名。<br>如果不接受该默认行为，NASM提供了<code>-o</code>命令行选项，用于指定自己想要的的输出文件名。可以在<code>-o</code>选项后加上自己想要的输出文件名，中间有无空格均可，例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f bin program.asm -o program.com</span><br><span class="line">nasm -f bin driver.asm -odriver.sys</span><br></pre></td></tr></table></figure><br>注意此处为小写o，与制定优化次数的大写O不同。见节<a href="&quot;#&quot;">2.1.24</a></p>
+<h3 id="f选项：输出文件格式"><a href="#f选项：输出文件格式" class="headerlink" title="-f选项：输出文件格式"></a>-f选项：输出文件格式</h3><p>如果未指定<code>-f</code>选项，NASM将自己选择输出文件格式。在NASM的发行版中，默认选项始终是<code>bin</code>；如果自行编译NASM，可以在编译时重新定义<code>OF_DEFAULT</code>并指定想要的默认选项。<br>和<code>-o</code>一样，<code>-f</code>和输出文件格式间的空格可有可无；因此<code>-f elf</code>和<code>-felf</code>均有效。<br>可用输出文件格式的完整列表可以由命令<code>nasm -h</code>给出。</p>
+<h3 id="l选项：生成列表文件"><a href="#l选项：生成列表文件" class="headerlink" title="-l选项：生成列表文件"></a>-l选项：生成列表文件</h3><p>如果指定<code>-l</code>选项并在其后（中间的空格可有可无）加上一个文件名，NASM会生成一个源代码列表文件。其中地址和生成的机器码会列在左侧，源代码和多行宏的展开内容（除特别声明不展开的宏外：见节<a href="&quot;#&quot;">4.5.11</a>）。例如：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nasm -f elf myfile.asm -l myfile.lst</span><br></pre></td></tr></table></figure><br>若已启用列表文件生成，可通过指令<code>[list -]</code>不列出源代码中的某一部分，通过<code>[list +]</code>恢复列出（默认）。该指令不存在（省略括号的）“使用形式”。该功能可用于仅列出目标的代码部分，避免生成过于冗长的列表文件。</p>
+<h2 id="L选项：附加或修改列表文件信息"><a href="#L选项：附加或修改列表文件信息" class="headerlink" title="-L选项：附加或修改列表文件信息"></a>-L选项：附加或修改列表文件信息</h2><p>使用该选项指定列表文件的输出细节。<br>支持的选项有：</p>
+<ul>
+<li><code>-Lb</code>显示内置宏包（标准和<code>%use</code>）</li>
+<li><code>-Ld</code>以十进制，而非十六进制显示字节计数和重复次数</li>
+<li><code>-Le</code>显示预处理输入</li>
+<li><code>-Lf</code>忽略<code>.nolist</code>并强制输出列表文件</li>
+<li><code>-Lm</code>显示带参数展开的多行宏调用</li>
+<li><code>-Lp</code>在每次编译过程输出列表文件，用于错误排查</li>
+<li><code>-Ls</code>显示所有单行宏定义</li>
+<li><code>-Lw</code>逐行刷新输出（极慢，主要用于调试NASM崩溃问题）</li>
+<li><code>-L+</code>启用除<code>-Lw</code>外的所有列表功能选项（极详细）<br>这些选项可以通过使用运行时指令<code>%pragma list options</code>启用或禁用：<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%pragma list options [+|-]标志...</span><br></pre></td></tr></table></figure>
+例如，启用<code>d</code>和<code>m</code>标志，禁用<code>s</code>标志：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%pragma list options +dm -s</span><br></pre></td></tr></table></figure>
+出于向前兼容性考虑，未定义的标志将忽略。因此，指定NASM新版本引入的标志并不会影响旧版本。列表文件选项标志始终为单字母数字字符，区分大小写。</li>
+</ul>
+<h3 id="M选项：生成Makefile依赖项"><a href="#M选项：生成Makefile依赖项" class="headerlink" title="-M选项：生成Makefile依赖项"></a>-M选项：生成Makefile依赖项</h3><p>该选项用于将makefile依赖项输出到stdout。可重定向到一个文件以进行后续处理。例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -M myfile.asm &gt; myfile.dep</span><br></pre></td></tr></table></figure></p>
+<h3 id="MG选项：生成Makefile依赖项"><a href="#MG选项：生成Makefile依赖项" class="headerlink" title="-MG选项：生成Makefile依赖项"></a>-MG选项：生成Makefile依赖项</h3><p>该选项用于将makefile依赖项输出到stdout。与<code>-M</code>选项不同，如果遇到不存在的文件，会将其视为生成的文件，并将其添加到依赖列表（无前缀）。</p>
+<h3 id="MF选项：设置Makefile依赖文件"><a href="#MF选项：设置Makefile依赖文件" class="headerlink" title="-MF选项：设置Makefile依赖文件"></a>-MF选项：设置Makefile依赖文件</h3><p>该选项和<code>-M</code>或<code>-MG</code>一起使用，将输出送入文件而不是stdout，例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -M -MF myfile.dep myfile.asm</span><br></pre></td></tr></table></figure></p>
+<h3 id="MD选项：汇编并生成依赖项"><a href="#MD选项：汇编并生成依赖项" class="headerlink" title="-MD选项：汇编并生成依赖项"></a>-MD选项：汇编并生成依赖项</h3><p><code>-MD</code>选项等效于同时使用<code>-M</code>和<code>-MF</code>选项（此时必须指定文件名）。但是，和<code>-M</code>与<code>-MG</code>选项不同，<code>-MD</code><em>没有</em>终止汇编器的正常功能。使用该选项在每次汇编时自动生成更新的依赖项。例如：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">nasm -f elf -o myfile.o -MD myfile.dep myfile.asm</span><br></pre></td></tr></table></figure><br>如果<code>-MD</code>后的参数是选项而非文件名，则按以下优先级确定输出文件名：</p>
+<ul>
+<li><code>-MF</code>选项设置的文件名；</li>
+<li><code>-o</code>选项的输出文件名加上<code>.d</code>；</li>
+<li>输入文件名，扩展名设为<code>.d</code>；</li>
+</ul>
+<h3 id="MT选项：依赖目标名称"><a href="#MT选项：依赖目标名称" class="headerlink" title="-MT选项：依赖目标名称"></a>-MT选项：依赖目标名称</h3><p><code>-MT</code>可用于覆盖依赖目标的默认名称。一般和输出文件名一致，由<code>-o</code>选项指定。</p>
+<h3 id="MQ选项：依赖目标名称（转义）"><a href="#MQ选项：依赖目标名称（转义）" class="headerlink" title="-MQ选项：依赖目标名称（转义）"></a>-MQ选项：依赖目标名称（转义）</h3><p><code>-MQ</code>选项与<code>-MT</code>选项功能类似，除了会试着对Makefile语法中的特殊字符转义。这并非万无一失，因为并非所有特殊字符都能在<code>make</code>中正确地转义。默认输出（如果未指定<code>-MT</code>或<code>-MQ</code>）会自动转义。</p>
+<h3 id="MP选项：生成伪Makefile目标"><a href="#MP选项：生成伪Makefile目标" class="headerlink" title="-MP选项：生成伪Makefile目标"></a>-MP选项：生成伪Makefile目标</h3><p>和任何依赖生成选项一起使用时，<code>-MP</code>选项会使NASM为每个头文件生成一个无依赖项的伪目标。阻止<code>make</code>在头文件被移除时报错。</p>
+<h3 id="MW选项：Watcom-make转义风格"><a href="#MW选项：Watcom-make转义风格" class="headerlink" title="-MW选项：Watcom make转义风格"></a>-MW选项：Watcom make转义风格</h3><p>该选项使NASM尝试根据Watcom <code>make</code>规则而非POSIX <code>make</code>规则（也被大多数<code>make</code>的变种所采用）转义依赖。这种规则转义<code>#</code>的方式是<code>$#</code>而不是<code>\#</code>，续行符使用<code>&amp;</code>而不是<code>\</code>，并将包含空格的文件名用引号括起来。</p>
+<h3 id="F选项：调试信息格式"><a href="#F选项：调试信息格式" class="headerlink" title="-F选项：调试信息格式"></a>-F选项：调试信息格式</h3><p>该选项用于选择输出文件中调试信息的格式，供调试器使用。在2.03.01版本前，启用此选项并不会输出所选的调试信息格式。使用<code>-g</code>启用输出，见节<a href="&quot;#&quot;">2.1.14</a>。版本2.03.01及后续版本在指定<code>-F</code>时自动启用<code>-g</code>。<br>输出格式可用的调试文件格式的完整列表可通过命令<code>nasm -h</code>查询。当前并非所有输出格式均支持调试输出。<br>请不要和<code>-f dbg</code>输出格式选项混淆，见节<a href="&quot;#&quot;">8.13</a>。</p>
+<h3 id="g选项：启用调试信息"><a href="#g选项：启用调试信息" class="headerlink" title="-g选项：启用调试信息"></a>-g选项：启用调试信息</h3><p>该选项可以用于生成制定格式的调试信息。见节[2.1.13]。不使用<code>-F</code>单独使用<code>-g</code>会以所选输出格式的默认调试格式（如果存在）输出调试信息。如果当前所选输出格式未实现调试信息，<code>-g</code>将被忽略。</p>
+<h3 id="X选项：选择报错格式"><a href="#X选项：选择报错格式" class="headerlink" title="-X选项：选择报错格式"></a>-X选项：选择报错格式</h3><p>该选项可被用于选择任何NASM产生的报错的格式。<br>目前有两种可选的报错格式。分别是<code>-Xvc</code>选项和<code>-Xgnu</code>选项。GNU格式为默认，如下所示：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">filename.asm:65: error: specific error messageerror is the severity of the error (this could be warning)</span><br></pre></td></tr></table></figure><br>其中<code>filename.asm</code>是发现错误的源文件的文件名，<code>65</code>是发现错误的源文件行号，<code>error</code>是错误的严重性（还可能是<code>warning</code>），<code>specific error message</code>是更详细的文本说明，帮助定位具体问题。<br>另一种格式，由<code>-Xvc</code>指定，是由微软Visual C++和其他一些程序使用的风格，如下所示：<br><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">filename.asm(<span class="number">65</span>) : error: specific error message</span><br></pre></td></tr></table></figure><br>唯一的区别是行号在括号中，而不是被分号分隔。<br>见<code>Visual C++</code>输出格式，节<a href="&quot;#&quot;">8.5</a>。</p>
+<h3 id="Z选项：将错误发送到文件"><a href="#Z选项：将错误发送到文件" class="headerlink" title="-Z选项：将错误发送到文件"></a>-Z选项：将错误发送到文件</h3><p>在<code>MS-DOS</code>上很难（虽然可以）将程序的标准错误输出重定向到一个文件。由于NASM通常将警告和错误输出到<code>stderr</code>，（举例来说）如果需要将这些信息载入编辑器，可能很难捕获错误。<br>NASM因此提供了<code>-Z</code>选项，接受一个文件名参数，并将错误信息输出到指定文件而非标准错误流。因此可以用如下命令将错误重定向到一个文件。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nasm -Z myfile.err -f obj myfile.asm</span><br></pre></td></tr></table></figure><br>在NASM的早期版本，该选项称作<code>-E</code>，但因<code>-E</code>选项通常仅用于预处理，该设计已被调整，复用会引发灾难性后果。见节<a href="&quot;#&quot;">2.1.22</a>。</p>
+<h3 id="s选项：将错误发送到stdout"><a href="#s选项：将错误发送到stdout" class="headerlink" title="-s选项：将错误发送到stdout"></a>-s选项：将错误发送到stdout</h3><p><code>-s</code>选项将错误信息重定向到<code>stdout</code>而不是<code>stderr</code>，因此可以在<code>MS-DOS</code>上重定向。要汇编<code>myfile.asm</code>文件并将其输出传递给<code>more</code>程序，可以输入以下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nasm -s -f obj myfile.asm | more</span><br></pre></td></tr></table></figure><br>见<code>-Z</code>选项，节<a href="&quot;#&quot;">2.1.16</a>。</p>
+<h3 id="i选项：包含文件搜索目录"><a href="#i选项：包含文件搜索目录" class="headerlink" title="-i选项：包含文件搜索目录"></a>-i选项：包含文件搜索目录</h3><p>当NASM在源文件中遇到<code>%include</code>或<code>%pathsearch</code>命令（见节<a href="&quot;#&quot;">4.8.1</a>，节<a href="&quot;#&quot;">4.8.2</a>或节<a href="&quot;#&quot;">3.2.3</a>），不仅会在当前目录搜索指定文件，还会在东莞命令行选项<code>-i</code>添加的目录中搜素。因此 比如说，可以用如下命令引入宏库中的文件<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nasm -ic:\marcolib\ -f obj myfile.asm</span><br></pre></td></tr></table></figure><br>（通常，<code>-i</code>与路径名之间的空格可有可无）。<br>NASM 2.14之前，通过该选项给出的路径会直接原样使用，是否添加路径分隔符取决于调用方。此前允许隐式拼接搜索路径与文件名。不过这也只是华而不实。现在则强制保留末尾路径分隔符，因此<code>-ifoo</code>会认为是<code>-ifoo/</code>目录。<br>如果想要定义<em>标准</em>包含搜索路径，类似Unix系统上的<code>/usr/include</code>，可以在<code>NASMENV</code>环境变量中设置一或多个<code>-i</code>参数（见节<a href="&quot;#&quot;">2.1.35</a>）。<br>考虑到Makefile和多数C编译器的兼容性，该选项也可以指定为<code>-I</code>。</p>
+<h3 id="p选项：预包含文件"><a href="#p选项：预包含文件" class="headerlink" title="-p选项：预包含文件"></a>-p选项：预包含文件</h3><p>NASM允许通过<code>-p</code>选项指定文件成为源代码的预包含文件。因此运行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nasm myfile.asm -p myinc.inc</span><br></pre></td></tr></table></figure><br>等价于运行<code>nasm myfile.asm</code>并在文件的开头放上<code>%include &quot;myinc.inc&quot;</code>。<br><code>--include</code>选项同样可接受。<br>考虑到和<code>-I</code>、<code>-D</code>与<code>-U</code>选项保持一致，该选项也可以指定为<code>-P</code>。</p>
+<h3 id="d选项：预定义宏"><a href="#d选项：预定义宏" class="headerlink" title="-d选项：预定义宏"></a>-d选项：预定义宏</h3><p>正如<code>-p</code>选项提供了源文件开头的<code>%include</code>命令的替代，<code>d</code>选项提供了<code>%define</code>命令的替代，可以输入：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nasm myfile.asm -dFOO=100。</span><br></pre></td></tr></table></figure><br>替代文件开头的下面这条指令：<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%define FOO 100</span><br></pre></td></tr></table></figure><br>也可以忽略宏的值：选项<code>-dFOO</code>等价于代码<code>%define FOO</code>。这种形式的命令适用于配置需要通过<code>%ifdef</code>检测的汇编时选项，例如<code>-dDEBUG</code>。<br>考虑到Makefile和多数C编译器的兼容性，该选项也可以指定为<code>-D</code>。</p>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>Nasm</category>
+      </categories>
+      <tags>
+        <tag>渣翻</tag>
+        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
