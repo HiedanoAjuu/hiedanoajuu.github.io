@@ -281,14 +281,14 @@
 
   
   <url>
-    <loc>https://hiedanoajuu.github.io/tags/%E6%B8%A3%E7%BF%BB/</loc>
+    <loc>https://hiedanoajuu.github.io/tags/%E5%8E%86%E5%8F%B2/</loc>
     <lastmod>2025-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hiedanoajuu.github.io/tags/%E5%8E%86%E5%8F%B2/</loc>
+    <loc>https://hiedanoajuu.github.io/tags/%E6%B8%A3%E7%BF%BB/</loc>
     <lastmod>2025-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -626,13 +626,6 @@
   </url>
   
   <url>
-    <loc>https://hiedanoajuu.github.io/categories/zh-CN-zh-Hans/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/Masm/</loc>
-    <lastmod>2025-07-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hiedanoajuu.github.io/categories/zh-CN-zh-Hans/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/Nasm/</loc>
     <lastmod>2025-07-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -648,6 +641,13 @@
   
   <url>
     <loc>https://hiedanoajuu.github.io/categories/zh-CN-zh-Hans/%E5%8E%86%E5%8F%B2/%E5%8F%A4%E4%BB%A3%E5%8F%B2/%E4%BA%BA%E7%B1%BB%E8%B5%B7%E6%BA%90/%E5%9C%B0%E8%B4%A8%E5%B9%B4%E4%BB%A3/</loc>
+    <lastmod>2025-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hiedanoajuu.github.io/categories/zh-CN-zh-Hans/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/Masm/</loc>
     <lastmod>2025-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
