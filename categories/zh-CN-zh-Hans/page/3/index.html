@@ -511,15 +511,15 @@
 
         if (openOnPC) {
             if (diffYears == 0){
-                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
             }else{
-                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
             }
         } else {
             if (y == 0){
-                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
             }else{
-                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + "年 " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
             }
        
         }
@@ -534,6 +534,9 @@
         document.getElementById('site-runtime').style.display = 'none';
     }
 </script>
+
+
+
 
         
 <div class="busuanzi-count">
