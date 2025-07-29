@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fa_32x32.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fa_16x16.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=times-new-roman, RuiZH:300,300italic,400,400italic,700,700italic|WHJZT:300,300italic,400,400italic,700,700italic|consola:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="A project that seems simplr ultimately contains approximately 282 lines of code.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project 1 Display the data of Power Idea">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/index.html">
+<meta property="og:site_name" content="稗田 阿柔">
+<meta property="og:description" content="A project that seems simplr ultimately contains approximately 282 lines of code.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/demo.jpg">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/assemble.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/table.png">
+<meta property="article:published_time" content="2025-01-25T14:03:15.000Z">
+<meta property="article:modified_time" content="2025-07-29T15:15:54.259Z">
+<meta property="article:author" content="稗田 阿柔">
+<meta property="article:tag" content="Memory">
+<meta property="article:tag" content="Assemble">
+<meta property="article:tag" content="Computer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/demo.jpg">
+
+<link rel="canonical" href="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Project 1 Display the data of Power Idea | 稗田 阿柔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="稗田 阿柔" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- aplayer -->
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">稗田 阿柔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Site of Hiedano Ajuu</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田 阿柔">
+      <meta itemprop="description" content="Once seen, never forgotten.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田 阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Project 1 Display the data of Power Idea
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-01-25 14:03:15" itemprop="dateCreated datePublished" datetime="2025-01-25T14:03:15Z">2025-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-07-29 15:15:54" itemprop="dateModified" datetime="2025-07-29T15:15:54Z">2025-07-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Assemble/" itemprop="url" rel="index"><span itemprop="name">Assemble</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Assemble/Masm/" itemprop="url" rel="index"><span itemprop="name">Masm</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+            <div class="post-description">A project that seems simplr ultimately contains approximately 282 lines of code.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Project-Context"><a href="#Project-Context" class="headerlink" title="Project Context"></a>Project Context</h1><p>Mission: Display the data From Power Idea in Experiment 7 in the format shown below.<br><img src="demo.jpg" alt="Format" title="Format"></p>
+<center>The data of Power idea</center>
+
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>Since this project requires the data from <a href="https://hiedanoajuu.github.io/2025/01/19/expt-7-en">Exp. 7</a>, I wrote the code based directly on <code>source.asm</code> to save time.<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">; source.asm</span><br><span class="line">assume cs:codesg</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &#x27;1975&#x27;,&#x27;1976&#x27;,&#x27;1977&#x27;,&#x27;1978&#x27;,&#x27;1979&#x27;,&#x27;1980&#x27;,&#x27;1981&#x27;,&#x27;1982&#x27;,&#x27;1983&#x27;</span><br><span class="line">    db &#x27;1984&#x27;,&#x27;1985&#x27;,&#x27;1986&#x27;,&#x27;1987&#x27;,&#x27;1988&#x27;,&#x27;1989&#x27;,&#x27;1990&#x27;,&#x27;1991&#x27;,&#x27;1992&#x27;</span><br><span class="line">    db &#x27;1993&#x27;,&#x27;1994&#x27;,&#x27;1995&#x27;</span><br><span class="line">    ;The above 21 strings represent 21 years.</span><br><span class="line"></span><br><span class="line">    dd 16,22,382,1356,2390,8000,16000,24486,50065,97479,140417,197514</span><br><span class="line">    dd 345980,590827,803530,1183000,1843000,2759000,3753000,4649000,5937000</span><br><span class="line">    ;The 21 dwords represent the yearly incomes over 21 years. </span><br><span class="line"></span><br><span class="line">    dw 3,7,9,13,28,38,130,220,476,778,1001,1442,2258,2793,4037,5635,8226</span><br><span class="line">    dw 11542,14430,15257,17800</span><br><span class="line">    ;The above 21 words represent the yearly number of employees over 21 years</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">table segment</span><br><span class="line">    db 21 dup (&#x27;year summ ne ?? &#x27;)</span><br><span class="line">table ends</span><br></pre></td></tr></table></figure></p>
+<p>Rename the Segment <code>table</code> <code>text</code>, to save the string required to be print.<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text segment</span><br><span class="line">    db 160 dup (0)</span><br><span class="line">    ; A huge segment made up of 160 bytes</span><br><span class="line">text ends</span><br></pre></td></tr></table></figure><br>Process the data types in the sequence of <strong>Years</strong>, <strong>Incomes</strong>, <strong>Employees</strong>, <strong>Per Capita Income</strong>(PCI) and print the results to the screen in four installments to improve efficiency.<br>When storing in Segment <code>text</code>, define <code>0</code> as the end marker for printable text, <code>0ah</code>(i.e. <code>LF</code>) as Line Feed, in order to control formatting.</p>
+<h1 id="Program-Implementation"><a href="#Program-Implementation" class="headerlink" title="Program Implementation"></a>Program Implementation</h1><h2 id="Subprogram-printf"><a href="#Subprogram-printf" class="headerlink" title="Subprogram printf"></a>Subprogram printf</h2><p>The string-printing functionality is implemented via subprogram <code>printf</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">printf:</span><br><span class="line">    ; Name:printf;</span><br><span class="line">    ; Function:Print a string to a specific position of the screen, interpreting 0Ah as newline(\n) and 0 as end marker;</span><br><span class="line">    ; Parameters:Segment text -&gt; printable string;</span><br><span class="line">    ;     (si) -&gt; position to print at;</span><br><span class="line">    push di</span><br><span class="line">    push cx</span><br><span class="line">    push es</span><br><span class="line">    push ds</span><br><span class="line">    push si</span><br><span class="line">    push si</span><br><span class="line">    ; Save the register contents; same applies to the subprograms below.</span><br><span class="line">    </span><br><span class="line">    mov di,0</span><br><span class="line">    mov cx,text</span><br><span class="line">    mov ds,cx</span><br><span class="line">    mov cx,0b800h</span><br><span class="line">    mov es,cx</span><br><span class="line">    s0:</span><br><span class="line">        mov ch,0</span><br><span class="line">        mov cl,ds:[di]</span><br><span class="line">        jcxz printf_cmpd ; 0 as end marker</span><br><span class="line">        sub cx,0ah</span><br><span class="line">        jcxz lineFeed ; LF as newline</span><br><span class="line">        add cx,0ah</span><br><span class="line">        mov ch,7h ; white fg with black bg</span><br><span class="line">        mov es:[si],cx</span><br><span class="line">        add si,2</span><br><span class="line">        s1:</span><br><span class="line">            add di,1</span><br><span class="line">            jmp short s0</span><br><span class="line">        lineFeed:</span><br><span class="line">            ; newline</span><br><span class="line">            pop si</span><br><span class="line">            add si,0a0h</span><br><span class="line">            push si</span><br><span class="line">            jmp short s1</span><br><span class="line">    printf_cmpd:</span><br><span class="line">        pop si</span><br><span class="line">        pop si</span><br><span class="line">        pop ds</span><br><span class="line">        pop es</span><br><span class="line">        pop cx</span><br><span class="line">        pop di</span><br><span class="line">        ret</span><br></pre></td></tr></table></figure></p>
+<h2 id="Subprogram-wtoc"><a href="#Subprogram-wtoc" class="headerlink" title="Subprogram wtoc"></a>Subprogram wtoc</h2><p>Data of type word(Employees, PCI) needs to be converted to string, which can be done using the subprogram <code>wtoc</code> as shown below:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">wtoc:</span><br><span class="line">        ; Name:wtoc</span><br><span class="line">        ; Function:word -&gt; string;</span><br><span class="line">        ; Parameters:(ax) -&gt; word;</span><br><span class="line">        ; ds:si -&gt; Beginning address of string;</span><br><span class="line">        ; Return:(si) -&gt; Ending address of string;</span><br><span class="line">        push ax</span><br><span class="line">        push bx</span><br><span class="line">        push cx</span><br><span class="line">        push dx</span><br><span class="line">        push di</span><br><span class="line"></span><br><span class="line">        mov di,0</span><br><span class="line">        divide_w:</span><br><span class="line">            mov dx,0</span><br><span class="line">            mov bx,10</span><br><span class="line">            div bx</span><br><span class="line">            ; Principle:The value is repeatedly dividing by 10 to obtain each digit, and then 30h is added to get its ASCII representation, the dtoc below is the same.</span><br><span class="line">            add dx,30h</span><br><span class="line">            mov dh,0</span><br><span class="line">            push dx</span><br><span class="line">            inc di</span><br><span class="line">            mov cx,ax</span><br><span class="line">            jcxz wtoc_cmpd ; Break if 0.</span><br><span class="line">            jmp short divide_w</span><br><span class="line">        wtoc_cmpd:</span><br><span class="line">            ; Arrange the characters obtained from the previous steps in reverse order.</span><br><span class="line">            mov cx,di</span><br><span class="line">            s7:</span><br><span class="line">                pop ax</span><br><span class="line">                mov es:[si],al</span><br><span class="line">                inc si</span><br><span class="line">            loop s7</span><br><span class="line">            mov byte ptr es:[si],0ah</span><br><span class="line">            ; Add LF to its ending.</span><br><span class="line">            inc si</span><br><span class="line"></span><br><span class="line">            pop di</span><br><span class="line">            pop dx</span><br><span class="line">            pop cx</span><br><span class="line">            pop bx</span><br><span class="line">            pop ax</span><br><span class="line">            ret</span><br></pre></td></tr></table></figure></p>
+<h2 id="Subprogram-divdw"><a href="#Subprogram-divdw" class="headerlink" title="Subprogram divdw"></a>Subprogram divdw</h2><p>Data of type dword (Incomes) requires a subprogram similar to <code>wtoc</code>. However, it may cause overflow to perform <code>div</code> on dword data. So a division subprogram that avoids overflow needs to be implemented.<br>The principle formula is as follows:</p>
+<script type="math/tex; mode=display">X \in [0,FFFFFFFF];X=H \cdot 65536+L;H,L \in [0,FFFF]</script><script type="math/tex; mode=display">N \in (0,FFFF]</script><script type="math/tex; mode=display">X \div N = \lfloor H \div N \rfloor \cdot 65536 + [H \pmod N \cdot 65536+L] \div N</script><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">divdw:</span><br><span class="line">    ; Name:divdw</span><br><span class="line">    ; Function:Division subprogram that avoids overflow.</span><br><span class="line">	;          c=a/b, a:dword, b:word, c:dword;</span><br><span class="line">	; Parameters:(ax) - Lower 16 bits of a;</span><br><span class="line">	;      (dx) - Higher 16 bits of a;</span><br><span class="line">	;      (cx)=b;</span><br><span class="line">	; Return:(ax) - Lower 16 bits of c;</span><br><span class="line">	;        (dx) - Higher 16 bits of c;</span><br><span class="line">	;        (cx)=Remainder;</span><br><span class="line">	; Principle:(H//N)*65536+[(H%N)*65536+L]/N</span><br><span class="line">	push bx</span><br><span class="line"></span><br><span class="line">	mov bx,ax</span><br><span class="line">	mov ax,dx</span><br><span class="line">	mov dx,0</span><br><span class="line">	div cx</span><br><span class="line">	push ax</span><br><span class="line">	push bx</span><br><span class="line">	pop ax</span><br><span class="line">	pop bx</span><br><span class="line">	; Exchange the content of ax and bx using stack;</span><br><span class="line">	div cx</span><br><span class="line">	mov cx,dx</span><br><span class="line">	mov dx,bx</span><br><span class="line"></span><br><span class="line">	pop bx</span><br><span class="line">	ret</span><br></pre></td></tr></table></figure>
+<h2 id="Subprogram-dtoc"><a href="#Subprogram-dtoc" class="headerlink" title="Subprogram dtoc"></a>Subprogram dtoc</h2><p>Using subprogram <code>dvidw</code>, convert data of type dword(Incomes) to string, following the same principle as <code>wtoc</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">dtoc:</span><br><span class="line">    ; Name:dtoc</span><br><span class="line">    ; Function:dword -&gt; string;</span><br><span class="line">    ; Parameters:(ax)=dword(Lower 16 bits);</span><br><span class="line">    ; 	   (dx)=dword(Higher 16 bits);</span><br><span class="line">    ; ds:si -&gt; Beginning address of the string;</span><br><span class="line">    ; Return:(si) -&gt; Ending address of the string;</span><br><span class="line">    push ax</span><br><span class="line">    push bx</span><br><span class="line">    push cx</span><br><span class="line">    push dx</span><br><span class="line">    push di</span><br><span class="line">    push bp</span><br><span class="line"></span><br><span class="line">    mov di,0</span><br><span class="line">    divide:</span><br><span class="line">        mov cx,10</span><br><span class="line">        call divdw ; Replace div with divdw</span><br><span class="line">        mov bp,ax</span><br><span class="line">        add cx,30h</span><br><span class="line">        mov ch,0</span><br><span class="line">        push cx</span><br><span class="line">        inc di</span><br><span class="line">        or ax,dx</span><br><span class="line">        mov cx,ax</span><br><span class="line">        mov ax,bp</span><br><span class="line">        jcxz dtoc_cmpd</span><br><span class="line">        jmp short divide</span><br><span class="line">    dtoc_cmpd:</span><br><span class="line">        mov cx,di</span><br><span class="line">        s4:</span><br><span class="line">            pop ax</span><br><span class="line">            mov es:[si],al</span><br><span class="line">            inc si</span><br><span class="line">        loop s4</span><br><span class="line">        mov byte ptr es:[si],0ah</span><br><span class="line">        inc si</span><br><span class="line"></span><br><span class="line">        pop bp</span><br><span class="line">        pop di</span><br><span class="line">        pop dx</span><br><span class="line">        pop cx</span><br><span class="line">        pop bx</span><br><span class="line">        pop ax</span><br><span class="line">        ret</span><br></pre></td></tr></table></figure></p>
+<h2 id="Main-Program"><a href="#Main-Program" class="headerlink" title="Main Program"></a>Main Program</h2><p>Next, proceed to the main program.<br>Assume segment registers:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br></pre></td></tr></table></figure><br>Define Segment <code>stack</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack segment</span><br><span class="line">    db 64 dup (0)</span><br><span class="line">    ; A huge stack segment made up of 64 bytes</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure><br>Define Segment <code>code</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">code segment</span><br><span class="line">    start:</span><br><span class="line">...</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>Initialize segment registers:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mov ax,data</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ax,stack</span><br><span class="line">mov ss,ax</span><br><span class="line">mov sp,32</span><br><span class="line">mov ax,text</span><br><span class="line">mov es,ax</span><br></pre></td></tr></table></figure><br>To clear the screen, fill the video memory with <code>0720h</code>(White fg with black bg, Space):<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mov ax,0b800h</span><br><span class="line">mov es,ax</span><br><span class="line">mov cx,2000</span><br><span class="line">mov bx,0</span><br><span class="line">clear:</span><br><span class="line">    mov word ptr es:[bx],0720h</span><br><span class="line">    add bx,2</span><br><span class="line">loop clear</span><br></pre></td></tr></table></figure><br>Print the Years. Since the data of Years is already in string format. Write to Segment <code>text</code> and then print directly using <code>printf</code>, without any additional process:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mov ax,text</span><br><span class="line">mov es,ax</span><br><span class="line">mov di,0</span><br><span class="line">mov cx,21</span><br><span class="line">mov si,0</span><br><span class="line">s2:</span><br><span class="line">    push cx</span><br><span class="line">    mov cx,4</span><br><span class="line">    s3:</span><br><span class="line">        mov al,ds:[di]</span><br><span class="line">        mov es:[si],al</span><br><span class="line">        inc di</span><br><span class="line">        inc si</span><br><span class="line">    loop s3</span><br><span class="line">    mov byte ptr es:[si],0ah ; Each Year a newline</span><br><span class="line">    inc si</span><br><span class="line">    pop cx</span><br><span class="line">loop s2</span><br><span class="line">mov byte ptr es:[si],0 ; Add 0 to the ending</span><br><span class="line">mov si,0a0h ; Position:(0,1)</span><br><span class="line">call printf</span><br></pre></td></tr></table></figure><br>Next, print the Incomes. Convert them to strings through <code>dtoc</code> and then print them using <code>printf</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mov ax,data</span><br><span class="line">mov ds,ax</span><br><span class="line">mov ax,text</span><br><span class="line">mov es,ax</span><br><span class="line"></span><br><span class="line">mov di,0</span><br><span class="line">mov cx,21</span><br><span class="line">mov si,0</span><br><span class="line">s5:</span><br><span class="line">    mov ax,ds:[di+54h] ; ax -&gt; The lower 16 bits</span><br><span class="line">    mov dx,ds:[di+56h] ; dx -&gt; The higher 16 bits</span><br><span class="line">    call dtoc</span><br><span class="line">    add di,4</span><br><span class="line">loop s5</span><br><span class="line">mov byte ptr es:[si],0</span><br><span class="line">mov si,0a0h</span><br><span class="line">add si,40  ; Position(20,1)</span><br><span class="line">call printf</span><br></pre></td></tr></table></figure><br>Employees are converted to strings using <code>wtoc</code> so that they can be printed using <code>printf</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mov di,0</span><br><span class="line">mov cx,21</span><br><span class="line">mov si,0</span><br><span class="line">s6:</span><br><span class="line">    mov ax,ds:[di+0a8h]</span><br><span class="line">    call wtoc</span><br><span class="line">    add di,2</span><br><span class="line">loop s6</span><br><span class="line">mov byte ptr es:[si],0</span><br><span class="line">mov si,0a0h</span><br><span class="line">add si,80 ; Position(40,1)</span><br><span class="line">call printf</span><br></pre></td></tr></table></figure><br>The step sizes <code>+54h</code>、<code>+56h</code>、<code>+0a8h</code> have been discussed in <a href="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/#Project Context">Exp. 7</a>, no more detailed description.</p>
+<p>PCI can be calculated using <code>div</code>, and then converted to strings using<code>wtoc</code>. Finally, print the results using <code>printf</code>:<br>(Since the PCI in <a href="https://hiedanoajuu.github.io/2025/01/19/expt-7/#%E9%A1%B9%E7%9B%AE%E6%83%85%E6%99%AF">Exp. 7</a> are of type dword, we can safely use <code>div</code> without concern for overflow.)<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mov di,0</span><br><span class="line">mov cx,21</span><br><span class="line">mov bx,0</span><br><span class="line">mov si,0</span><br><span class="line">s8:</span><br><span class="line">    mov ax,ds:[bx+54h]</span><br><span class="line">    mov dx,ds:[bx+56h]</span><br><span class="line">    div word ptr ds:[di+0a8h]</span><br><span class="line">    call wtoc</span><br><span class="line">    add di,2</span><br><span class="line">    add bx,4</span><br><span class="line">loop s8</span><br><span class="line">mov byte ptr es:[si],0</span><br><span class="line">mov si,0a0h</span><br><span class="line">add si,120 ; Position(60,1)</span><br><span class="line">call printf</span><br></pre></td></tr></table></figure><br>Finally, terminate:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4c00h</span><br><span class="line">int 21h</span><br></pre></td></tr></table></figure><br>The full program is as shown below:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br></pre></td><td class="code"><pre><span class="line">; p1.asm</span><br><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &#x27;1975&#x27;,&#x27;1976&#x27;,&#x27;1977&#x27;,&#x27;1978&#x27;,&#x27;1979&#x27;,&#x27;1980&#x27;,&#x27;1981&#x27;,&#x27;1982&#x27;,&#x27;1983&#x27;</span><br><span class="line">    db &#x27;1984&#x27;,&#x27;1985&#x27;,&#x27;1986&#x27;,&#x27;1987&#x27;,&#x27;1988&#x27;,&#x27;1989&#x27;,&#x27;1990&#x27;,&#x27;1991&#x27;,&#x27;1992&#x27;</span><br><span class="line">    db &#x27;1993&#x27;,&#x27;1994&#x27;,&#x27;1995&#x27;</span><br><span class="line">    ;The above is 21 strings representing 21 years</span><br><span class="line"></span><br><span class="line">    dd 16,22,382,1356,2390,8000,16000,24486,50065,97479,140417,197514</span><br><span class="line">    dd 345980,590827,803530,1183000,1843000,2759000,3753000,4649000,5937000</span><br><span class="line">    ;The above is 21 dwords representing the incomes of 21 years</span><br><span class="line"></span><br><span class="line">    dw 3,7,9,13,28,38,130,220,476,778,1001,1442,2258,2793,4037,5635,8226</span><br><span class="line">    dw 11542,14430,15257,17800</span><br><span class="line">    ;The above is 21 words representing the numbers of employees</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">text segment</span><br><span class="line">    db 160 dup (0)</span><br><span class="line">text ends</span><br><span class="line"></span><br><span class="line">stack segment</span><br><span class="line">    db 64 dup (0)</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">    start:</span><br><span class="line">        ; segReg init</span><br><span class="line">        mov ax,data</span><br><span class="line">        mov ds,ax</span><br><span class="line">        mov ax,stack</span><br><span class="line">        mov ss,ax</span><br><span class="line">        mov sp,32</span><br><span class="line">        mov ax,text</span><br><span class="line">        mov es,ax</span><br><span class="line"></span><br><span class="line">        ; Clear the screen</span><br><span class="line">        mov ax,0b800h</span><br><span class="line">        mov es,ax</span><br><span class="line">        mov cx,2000</span><br><span class="line">        mov bx,0</span><br><span class="line">        clear:</span><br><span class="line">            mov word ptr es:[bx],0720h</span><br><span class="line">            add bx,2</span><br><span class="line">        loop clear</span><br><span class="line"></span><br><span class="line">        ; Years</span><br><span class="line">        mov ax,text</span><br><span class="line">        mov es,ax</span><br><span class="line">        mov di,0</span><br><span class="line">        mov cx,21</span><br><span class="line">        mov si,0</span><br><span class="line">        s2:</span><br><span class="line">            push cx</span><br><span class="line">            mov cx,4</span><br><span class="line">            s3:</span><br><span class="line">                mov al,ds:[di]</span><br><span class="line">                mov es:[si],al</span><br><span class="line">                inc di</span><br><span class="line">                inc si</span><br><span class="line">            loop s3</span><br><span class="line">            mov byte ptr es:[si],0ah</span><br><span class="line">            inc si</span><br><span class="line">            pop cx</span><br><span class="line">        loop s2</span><br><span class="line">        mov byte ptr es:[si],0</span><br><span class="line">        mov si,0a0h ;(0,1)</span><br><span class="line">        call printf</span><br><span class="line"></span><br><span class="line">        ; Incomes</span><br><span class="line">        mov ax,data</span><br><span class="line">        mov ds,ax</span><br><span class="line">        mov ax,text</span><br><span class="line">        mov es,ax</span><br><span class="line">        </span><br><span class="line">        mov di,0</span><br><span class="line">        mov cx,21</span><br><span class="line">        mov si,0</span><br><span class="line">        s5:</span><br><span class="line">            mov ax,ds:[di+54h]</span><br><span class="line">            mov dx,ds:[di+56h]</span><br><span class="line">            call dtoc</span><br><span class="line">            add di,4</span><br><span class="line">        loop s5</span><br><span class="line">        mov byte ptr es:[si],0</span><br><span class="line">        mov si,0a0h</span><br><span class="line">        add si,40  ;(20,1)</span><br><span class="line">        call printf</span><br><span class="line"></span><br><span class="line">        ; Employees</span><br><span class="line">        mov di,0</span><br><span class="line">        mov cx,21</span><br><span class="line">        mov si,0</span><br><span class="line">        s6:</span><br><span class="line">            mov ax,ds:[di+0a8h]</span><br><span class="line">            call wtoc</span><br><span class="line">            add di,2</span><br><span class="line">        loop s6</span><br><span class="line">        mov byte ptr es:[si],0</span><br><span class="line">        mov si,0a0h</span><br><span class="line">        add si,80 ; (40,1)</span><br><span class="line">        call printf</span><br><span class="line"></span><br><span class="line">        ; PCI</span><br><span class="line">        mov di,0</span><br><span class="line">        mov cx,21</span><br><span class="line">        mov bx,0</span><br><span class="line">        mov si,0</span><br><span class="line">        s8:</span><br><span class="line">            mov ax,ds:[bx+54h]</span><br><span class="line">            mov dx,ds:[bx+56h]</span><br><span class="line">            div word ptr ds:[di+0a8h]</span><br><span class="line">            call wtoc</span><br><span class="line">            add di,2</span><br><span class="line">            add bx,4</span><br><span class="line">        loop s8</span><br><span class="line">        mov byte ptr es:[si],0</span><br><span class="line">        mov si,0a0h</span><br><span class="line">        add si,120 ; (60,1)</span><br><span class="line">        call printf</span><br><span class="line"></span><br><span class="line">        ; Terminate</span><br><span class="line">        mov ax,4c00h</span><br><span class="line">        int 21h</span><br><span class="line"></span><br><span class="line">    printf:</span><br><span class="line">        ; Name:printf</span><br><span class="line">        ; Function:Print the strings at the specified position,0A -&gt; \n,ending in 0</span><br><span class="line">        ; Parameter:text seg -&gt; content to be printed</span><br><span class="line">        ;           (si) -&gt; position</span><br><span class="line">        push di</span><br><span class="line">        push cx</span><br><span class="line">        push es</span><br><span class="line">        push ds</span><br><span class="line">        push si</span><br><span class="line">        push si</span><br><span class="line"></span><br><span class="line">        mov di,0</span><br><span class="line">        mov cx,text</span><br><span class="line">        mov ds,cx</span><br><span class="line">        mov cx,0b800h</span><br><span class="line">        mov es,cx</span><br><span class="line">        s0:</span><br><span class="line">            mov ch,0</span><br><span class="line">            mov cl,ds:[di]</span><br><span class="line">            jcxz printf_cmpd</span><br><span class="line">            sub cx,0ah</span><br><span class="line">            jcxz lineFeed </span><br><span class="line">            add cx,0ah</span><br><span class="line">            mov ch,7h</span><br><span class="line">            mov es:[si],cx</span><br><span class="line">            add si,2</span><br><span class="line">            s1:</span><br><span class="line">                add di,1</span><br><span class="line">                jmp short s0</span><br><span class="line">            lineFeed:</span><br><span class="line">                pop si</span><br><span class="line">                add si,0a0h</span><br><span class="line">                push si</span><br><span class="line">                jmp short s1</span><br><span class="line">        printf_cmpd:</span><br><span class="line">            pop si</span><br><span class="line">            pop si</span><br><span class="line">            pop ds</span><br><span class="line">            pop es</span><br><span class="line">            pop cx</span><br><span class="line">            pop di</span><br><span class="line">            ret</span><br><span class="line">    divdw:</span><br><span class="line">        ; Name:divdw</span><br><span class="line">        ; Function:Dividing without overflow</span><br><span class="line">    	;          c=a/b, a:dword, b:word, c:dword</span><br><span class="line">    	; Parameter:(ax)=a low 16 bits</span><br><span class="line">    	;           (dx)=a high 16 bits</span><br><span class="line">    	;           (cx)=b</span><br><span class="line">    	; Return:(ax)=c low 16 bits</span><br><span class="line">    	;        (dx)=c high 16 bits</span><br><span class="line">    	;        (cx)=reminder</span><br><span class="line">    	; Principle: (H//N)*65536+[(H%N)*65536+L]/N</span><br><span class="line">    	push bx</span><br><span class="line"></span><br><span class="line">    	mov bx,ax</span><br><span class="line">    	mov ax,dx</span><br><span class="line">    	mov dx,0</span><br><span class="line">    	div cx</span><br><span class="line">    	push ax</span><br><span class="line">    	push bx</span><br><span class="line">    	pop ax</span><br><span class="line">    	pop bx</span><br><span class="line">    	div cx</span><br><span class="line">    	mov cx,dx</span><br><span class="line">    	mov dx,bx</span><br><span class="line"></span><br><span class="line">    	pop bx</span><br><span class="line">    	ret</span><br><span class="line">    dtoc:</span><br><span class="line">        ; Name:dtoc</span><br><span class="line">        ; Function: dword -&gt; char</span><br><span class="line">        ; Parameter: (ax)=dword(low 16bits)</span><br><span class="line">        ; 	     (dx)=dword(high 16bits)</span><br><span class="line">        ; ds:si(in) -&gt; Starting address of string</span><br><span class="line">        ; si(out) -&gt; Ending address of string</span><br><span class="line">        push ax</span><br><span class="line">        push bx</span><br><span class="line">        push cx</span><br><span class="line">        push dx</span><br><span class="line">        push di</span><br><span class="line">        push bp</span><br><span class="line"></span><br><span class="line">        mov di,0</span><br><span class="line">        divide:</span><br><span class="line">            mov cx,10</span><br><span class="line">            call divdw</span><br><span class="line">            mov bp,ax</span><br><span class="line">            add cx,30h</span><br><span class="line">            mov ch,0</span><br><span class="line">            push cx</span><br><span class="line">            inc di</span><br><span class="line">            or ax,dx</span><br><span class="line">            mov cx,ax</span><br><span class="line">            mov ax,bp</span><br><span class="line">            jcxz dtoc_cmpd</span><br><span class="line">            jmp short divide</span><br><span class="line">        dtoc_cmpd:</span><br><span class="line">            mov cx,di</span><br><span class="line">            s4:</span><br><span class="line">                pop ax</span><br><span class="line">                mov es:[si],al</span><br><span class="line">                inc si</span><br><span class="line">            loop s4</span><br><span class="line">            mov byte ptr es:[si],0ah</span><br><span class="line">            inc si</span><br><span class="line"></span><br><span class="line">            pop bp</span><br><span class="line">            pop di</span><br><span class="line">            pop dx</span><br><span class="line">            pop cx</span><br><span class="line">            pop bx</span><br><span class="line">            pop ax</span><br><span class="line">            ret</span><br><span class="line">    wtoc:</span><br><span class="line">        ; Name:wtoc</span><br><span class="line">        ; Function: number(word) -&gt; char</span><br><span class="line">        ; Parameter: (ax)=Word</span><br><span class="line">        ; ds:si -&gt; Starting address of string</span><br><span class="line">        ; si(out) -&gt; Ending address of string</span><br><span class="line">        push ax</span><br><span class="line">        push bx</span><br><span class="line">        push cx</span><br><span class="line">        push dx</span><br><span class="line">        push di</span><br><span class="line"></span><br><span class="line">        mov di,0</span><br><span class="line">        divide_w:</span><br><span class="line">            mov dx,0</span><br><span class="line">            mov bx,10</span><br><span class="line">            div bx</span><br><span class="line">            add dx,30h</span><br><span class="line">            mov dh,0</span><br><span class="line">            push dx</span><br><span class="line">            inc di</span><br><span class="line">            mov cx,ax</span><br><span class="line">            jcxz wtoc_cmpd</span><br><span class="line">            jmp short divide_w</span><br><span class="line">        wtoc_cmpd:</span><br><span class="line">            mov cx,di</span><br><span class="line">            s7:</span><br><span class="line">                pop ax</span><br><span class="line">                mov es:[si],al</span><br><span class="line">                inc si</span><br><span class="line">            loop s7</span><br><span class="line">            mov byte ptr es:[si],0ah</span><br><span class="line">            inc si</span><br><span class="line"></span><br><span class="line">            pop di</span><br><span class="line">            pop dx</span><br><span class="line">            pop cx</span><br><span class="line">            pop bx</span><br><span class="line">            pop ax</span><br><span class="line">            ret</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure></p>
+<h1 id="Program-Behavior"><a href="#Program-Behavior" class="headerlink" title="Program Behavior"></a>Program Behavior</h1><p>Assemble, link, generate <code>p1.exe</code>;<br><img src="assemble.png" alt="Assemble" title="Assemble"><br>The program behavior is as shown below:<br><img src="table.png" alt="Program Behavior" title="Program Behavior"><br>It can be seen that it fully meets the requirements of the project.<br><strong>Project completed.</strong></p>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ That’s all for now <i class="fa fa-paw"></i> thank you for your reading. ~~~~~~~~~~~~~~</div>
+    
+</div>
+
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田 阿柔 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田 阿柔 Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>稗田 阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://hiedanoajuu.github.io/2025/01/25/power-idea-en/" title="Project 1 Display the data of Power Idea">https://hiedanoajuu.github.io/2025/01/25/power-idea-en/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Memory/" rel="tag"><i class="fa fa-tag"></i> Memory</a>
+              <a href="/tags/Assemble/" rel="tag"><i class="fa fa-tag"></i> Assemble</a>
+              <a href="/tags/Computer/" rel="tag"><i class="fa fa-tag"></i> Computer</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/25/power-idea/" rel="prev" title="课程设计1 显示Power idea公司的数据">
+      <i class="fa fa-chevron-left"></i> 课程设计1 显示Power idea公司的数据
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/02/01/time-exe/" rel="next" title="访问CMOS中的系统时间">
+      访问CMOS中的系统时间 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-Context"><span class="nav-number">1.</span> <span class="nav-text">Project Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analysis"><span class="nav-number">2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Program-Implementation"><span class="nav-number">3.</span> <span class="nav-text">Program Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Subprogram-printf"><span class="nav-number">3.1.</span> <span class="nav-text">Subprogram printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subprogram-wtoc"><span class="nav-number">3.2.</span> <span class="nav-text">Subprogram wtoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subprogram-divdw"><span class="nav-number">3.3.</span> <span class="nav-text">Subprogram divdw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subprogram-dtoc"><span class="nav-number">3.4.</span> <span class="nav-text">Subprogram dtoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-Program"><span class="nav-number">3.5.</span> <span class="nav-text">Main Program</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Program-Behavior"><span class="nav-number">4.</span> <span class="nav-text">Program Behavior</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="稗田 阿柔"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">稗田 阿柔</p>
+  <div class="site-description" itemprop="description">Once seen, never forgotten.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hiedanoajuu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hiedanoajuu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hiedanoajuu@outlook.com" title="E-Mail → mailto:hiedanoajuu@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hiedano_ajuu" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hiedano_ajuu" rel="noopener" target="_blank"><i class="fa fa-lightbulb fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Recommended Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/HiedanoAjuu/Ajuu-s-repository" title="https:&#x2F;&#x2F;github.com&#x2F;HiedanoAjuu&#x2F;Ajuu-s-repository" rel="noopener" target="_blank">Ajuu's Repository</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">稗田 阿柔</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">68k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:02</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div id="site-runtime">
+    <span class="post-meta-item-icon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+    <span id="runtime"></span>
+</div>
+
+ <script language="javascript">
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        for (var i = 0; i < agents.length; i++) {
+            if (userAgentInfo.indexOf(agents[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+}
+
+    function siteTime(openOnPC, start) {
+        window.setTimeout("siteTime(openOnPC, start)", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+            start = new Date("2023-08-23 15:24:00 +0800");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var diff = now - start;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        if (openOnPC) {
+            if (diffYears == 0){
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }else{
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }
+        } else {
+            if (y == 0){
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }else{
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }
+       
+        }
+    }
+
+    var showOnMobile = false;
+    var openOnPC = isPC();
+    var start = new Date();
+    siteTime(openOnPC, start);
+
+    if (!openOnPC && !showOnMobile) {
+        document.getElementById('site-runtime').style.display = 'none';
+    }
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+    </div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
