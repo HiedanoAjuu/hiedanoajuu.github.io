@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fa_32x32.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fa_16x16.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=times-new-roman, RuiZH:300,300italic,400,400italic,700,700italic|WHJZT:300,300italic,400,400italic,700,700italic|consola:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="埃及地图，来自http:&#x2F;&#x2F;www.mnsu.edu&#x2F;emuseum&#x2F;prehistory&#x2F;egypt&#x2F;maps&#x2F;mainmap.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="埃及地图">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/index.html">
+<meta property="og:site_name" content="稗田 阿柔">
+<meta property="og:description" content="埃及地图，来自http:&#x2F;&#x2F;www.mnsu.edu&#x2F;emuseum&#x2F;prehistory&#x2F;egypt&#x2F;maps&#x2F;mainmap.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/lower_egypt.gif">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/central_egypt.gif">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/sinai.gif">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/southern_egypt.gif">
+<meta property="article:published_time" content="2025-01-10T17:47:24.000Z">
+<meta property="article:modified_time" content="2025-07-29T09:12:27.173Z">
+<meta property="article:author" content="稗田 阿柔">
+<meta property="article:tag" content="渣翻">
+<meta property="article:tag" content="埃及">
+<meta property="article:tag" content="地图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/lower_egypt.gif">
+
+<link rel="canonical" href="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>埃及地图 | 稗田 阿柔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="稗田 阿柔" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- aplayer -->
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">稗田 阿柔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Site of Hiedano Ajuu</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田 阿柔">
+      <meta itemprop="description" content="Once seen, never forgotten.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田 阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          埃及地图
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-10 17:47:24" itemprop="dateCreated datePublished" datetime="2025-01-10T17:47:24Z">2025-01-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-29 09:12:27" itemprop="dateModified" datetime="2025-07-29T09:12:27Z">2025-07-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zh-CN-zh-Hans/" itemprop="url" rel="index"><span itemprop="name">zh-CN/zh-Hans</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zh-CN-zh-Hans/%E5%8E%86%E5%8F%B2/" itemprop="url" rel="index"><span itemprop="name">历史</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zh-CN-zh-Hans/%E5%8E%86%E5%8F%B2/%E5%8F%A4%E4%BB%A3%E5%8F%B2/" itemprop="url" rel="index"><span itemprop="name">古代史</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zh-CN-zh-Hans/%E5%8E%86%E5%8F%B2/%E5%8F%A4%E4%BB%A3%E5%8F%B2/%E5%9F%83%E5%8F%8A/" itemprop="url" rel="index"><span itemprop="name">埃及</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/zh-CN-zh-Hans/%E5%8E%86%E5%8F%B2/%E5%8F%A4%E4%BB%A3%E5%8F%B2/%E5%9F%83%E5%8F%8A/0-%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">0 杂项</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+            <div class="post-description">埃及地图，来自http://www.mnsu.edu/emuseum/prehistory/egypt/maps/mainmap.html</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="下埃及"><a href="#下埃及" class="headerlink" title="下埃及"></a>下埃及</h1><p><img src="lower_egypt.gif" alt="下埃及" title="下埃及"></p>
+<ul>
+<li><strong>阿布西尔</strong>(Abusir，阿拉伯语:ابو صير):古埃及称<strong>佩尔-奥西里斯</strong>(pr wsjr)，阿布西尔纸草发现地；</li>
+<li><strong>亚历山大里亚</strong>(Alexandria，希腊语:Ἀλεξάνδρεια，以「大帝」亚历山大三世命名):古埃及称<strong>拉科提斯</strong>(r-ꜥ-qd(y)t)，守护神为塞拉匹斯(埃及神祇阿皮斯与希腊神祇的融合神)，托勒密王朝(第31王朝)首都；</li>
+<li><strong>阿马尔那</strong>(Amarna，阿拉伯语:العمارنة):古埃及称<strong>埃赫塔吞</strong>(Akhetaten)，意为“阿吞地平线”，守护神为阿吞，第18王朝阿马尔那时期首都；</li>
+<li><strong>阿特里比斯</strong>(Athribis，希腊语:Ἄθριβις):古埃及称<strong>赫瓦特-塔-赫里-吉布</strong>(Ḥw.t-tꜣ-ḥry-jb)，守护神为雷皮特，黑牛诺姆(第10诺姆)首府；</li>
+<li><strong>阿瓦里斯</strong>(Avaris，希腊语:Αὔαρις):古埃及称<strong>胡特-瓦雷特</strong>(ḥw.t wꜥr.t)，守护神为塞特，第14、15王朝首都；</li>
+<li><strong>贝尼·哈桑</strong>(Beni Hassan，阿拉伯语:بني حسن):墓地；</li>
+<li><strong>布巴斯提斯</strong>(Bubastis，希腊语:Βούβαστις):古埃及称<strong>佩尔-贝斯特</strong>(Pr-Bȝst.t)，意为贝斯特(猫女神)的神庙，守护神为贝斯特，第22王朝首都，南方王子诺姆(第18诺姆)首府；</li>
+<li><strong>布西里斯</strong>(Busiris，希腊语:Βούσιρις):古埃及称<strong>杰杜</strong>(ḏdw)，守护神为奥西里斯，安杰提神诺姆(第9诺姆)首府；</li>
+<li><strong>布陀</strong>(Buto，希腊语:Βοῦτος):古埃及称<strong>佩尔-瓦吉特</strong>(pr-wꜣḏyt)，意为瓦吉特(下埃及守护神)神庙，守护神为瓦吉特；</li>
+<li><strong>开罗</strong>(Cairo，阿拉伯语:القاهرة):现代埃及首都；</li>
+<li><strong>代赫舒尔</strong>(Dahshur，阿拉伯语:دهشور):代赫舒尔金字塔所在地；</li>
+<li><strong>三角洲</strong>(Delta):<strong>尼罗河三角洲</strong>；</li>
+<li><strong>埃尔-希巴</strong>(el-Hiba，阿拉伯语:الحيبة):古埃及称<strong>塔尤-贾耶特</strong>(t3yw-ḏ3yt)，南方王子诺姆(第18诺姆)首府；</li>
+<li><strong>法尤姆</strong>(Faiyum，阿拉伯语:الفيوم):<strong>法尤姆绿洲</strong>，古埃及称<strong>沙德特</strong>(šd t)；</li>
+<li><strong>吉萨</strong>(Giza，阿拉伯语(埃及):الجيزة):古埃及称<strong>提佩尔西斯</strong>(ϯⲡⲉⲣⲥⲓⲥ)，吉萨大金字塔所在地；</li>
+<li><strong>赫利奥波利斯</strong>(Heliopolis，希腊语:Ἡλιούπολις，意为“日城”):古埃及称<strong>尤努</strong>(jwnw)，意为“柱子”，守护神为拉，繁荣权杖诺姆(第13诺姆)首府；</li>
+<li><strong>赫拉克里奥波利斯</strong>(Heracleopolis，希腊语:Ἡρακλέους πόλις):古埃及称<strong>赫南-奈苏特</strong>(nn nswt)，守护神为赫里沙夫，第9、10王朝首都，索普杜-羽隼诺姆(第20诺姆)首府；</li>
+<li><strong>赫耳墨波利斯</strong>(Hermopolis，希腊语:Ἑρμούπολις):古埃及称<strong>赫姆努</strong>(ḫmnw)，意为“八”，守护神为托特和八元神，哈雷斯诺姆(第15诺姆)首府;</li>
+<li><strong>拉罕</strong>(Lahun，阿拉伯语:اللاهون):古埃及称<strong>拉-赫内特</strong>(rꜣ-ḥn.t)，意为“运河口”；</li>
+<li><strong>莱昂托波利斯</strong>(Leontopolis，希腊语:Λεόντων πόλις，意为“狮城”):古埃及称<strong>塔雷穆</strong>(Taremu)，意为“鱼之地”，守护神为贝斯特和塞赫麦特，第23王朝首都，海塞布公牛诺姆(第11诺姆)首府；</li>
+<li><strong>利什特</strong>(Lisht，阿拉伯语:اللشت):古埃及称<strong>伊特-塔维</strong>(Itj-tawy)，意为“一统两土地”，第12、13王朝首都；</li>
+<li><strong>下埃及</strong>(Lower Egypt):<strong>尼罗河下游及三角洲的埃及土地</strong>，古埃及称<strong>塔-梅胡</strong>(tꜣ mḥw)，意为“北方”；</li>
+<li><strong>孟斐斯</strong>(Memphis，希腊语:Μέμφις):古埃及称<strong>孟斐</strong>(mn nfr)，意为“永久而美丽”，守护神为普塔，第3、4、5、6、7、8、25(库施)、27(波斯)、31(波斯)王朝首都，白墙诺姆(第1诺姆)首府；</li>
+<li><strong>美杜姆</strong>(Meydum，古埃及语:Mr(y)-Jtmw，意为“阿图姆(黄昏的太阳神)眷恋”):美杜姆金字塔所在地；</li>
+<li><strong>门德斯</strong>(Mendes，希腊语:Μένδης):古埃及称<strong>杰德特</strong>(ḏd.t)，守护神为巴内布杰德特，第29王朝首都，鱼诺姆(第16诺姆)首府；</li>
+<li><strong>瑙克拉提斯</strong>(Naucratis，希腊语:Ναύκρατις，意为“海军指挥部”):古埃及称<strong>尼沃特-卡尔特</strong>(Njwt-kꜣrṯ)或<strong>佩尔-梅里特</strong>(pr-mryt)，守护神为托特，古希腊佣兵在埃及的聚集地与殖民地；</li>
+<li><strong>罗塞塔</strong>(Rosetta):罗塞塔石碑出土地，碑文见<a href="https://hiedanoajuu.github.io/2024/06/20/rosetta-stone-translation-greek">我之前的翻译</a>；</li>
+<li><strong>萨卡拉</strong>(Saqqara，阿拉伯语:سقارة):萨卡拉王墓所在地；</li>
+<li><strong>塞本尼托斯</strong>(Sebennytos，希腊语:Σεβέννυτος):古埃及称<strong>圣牛之城</strong>(ṯb-(n)-nṯr)，守护神为安胡尔，第30王朝首都，犊与母牛诺姆(第12诺姆)首府；</li>
+<li><strong>塔尼斯</strong>(Tanis，希腊语:Τάνις):古埃及称<strong>贾奈特</strong>(ḏꜥn.t)，守护神为阿蒙，第21王朝首都，北方王子诺姆(第19诺姆首府)；</li>
+</ul>
+<h1 id="上埃及"><a href="#上埃及" class="headerlink" title="上埃及"></a>上埃及</h1><p><img src="central_egypt.gif" alt="上埃及" title="上埃及"></p>
+<ul>
+<li><strong>第一瀑布</strong>(1st Cataract):<strong>尼罗河第一瀑布</strong>；</li>
+<li><strong>阿拜多斯</strong>(Abydos，阿拉伯语:أبيدوس):古埃及称<strong>阿卜杜</strong>(ꜣbḏw)，守护神为赫恩提阿门图，奥西里斯和伊西斯，大地诺姆(第8诺姆)首府；</li>
+<li><strong>贝特·埃尔-瓦利</strong>(Beit el Wali):埃及神庙，修建于拉美西斯二世时期；</li>
+<li><strong>科普托斯</strong>(Coptos，希腊语:Κόπτος):古埃及称<strong>盖布图</strong>(gbtjw)，守护神为敏，双隼诺姆(第5诺姆首府)，上埃及红海跨哈马马特干谷贸易商业中心；</li>
+<li><strong>丹德拉</strong>(Dendera，阿拉伯语:دَنْدَرة):古埃及称<strong>尤内特</strong>(jwnt)，守护神为哈托尔，鳄鱼诺姆(第6诺姆)首府；</li>
+<li><strong>埃德富</strong>(Edfu，阿拉伯语:إدفو):古埃及称<strong>贝赫德特</strong>(bḥdt)，守护神为荷鲁斯，荷鲁斯王座诺姆(第2诺姆)首府；</li>
+<li><strong>象岛</strong>(Elephantine，希腊语:Ἐλεφαντίνη):古埃及称<strong>阿布</strong>(ꜣbw)，守护神为克奴姆，弓诺姆(第1诺姆)首府；</li>
+<li><strong>埃尔-卡布</strong>(el-Kab，阿拉伯语:الكاب):古埃及称<strong>奈赫布</strong>(nḫb(t))，守护神为奈赫贝特，在奈赫恩之前作为神殿诺姆(第3诺姆)首府，被巨大的泥砖墙环绕；</li>
+<li><strong>伊斯纳</strong>(Esna,阿拉伯语:إسنا):古埃及称<strong>塔-塞内特</strong>(tꜣ-snt)，守护神为克奴姆，在奈赫恩之后成为神殿诺姆(第3诺姆)首府；</li>
+<li><strong>盖贝莱因</strong>(Gebelein，阿拉伯语:الجبلين):古埃及称<strong>佩尔-哈托尔</strong>(pr ḥwt-ḥr)，守护神为哈托尔；</li>
+<li><strong>吉贝尔·埃尔-西尔西拉</strong>(Gebel el-Silsila，阿拉伯语:جبل السلسلة):古埃及称<strong>赫努</strong>(ẖny)；</li>
+<li><strong>杰尔夫·侯赛因</strong>(Gerf Hussein):古埃及称<strong>佩尔-普塔</strong>(Per-Ptah)，有一座普塔神庙；</li>
+<li><strong>希拉孔波利斯</strong>(Hierakonpolis，希腊语:Ἱεράκων πόλις，意为“隼鹰之城”):古埃及称<strong>奈赫恩</strong>(nḫn)，守护神为荷鲁斯，在奈赫布之后成为神殿诺姆(第3诺姆)首府，在奈赫布的尼罗河正对岸；</li>
+<li><strong>涅伽达</strong>(Naqada，阿拉伯语:نقادة):古埃及称<strong>努布特</strong>(Nbyt)，守护神为塞特，前王朝涅伽达文化发现地；</li>
+<li><strong>斐莱</strong>(Philae，希腊语:Φιλαί):古埃及称<strong>帕-尤-尔克</strong>(p3-jw-rķ’)尼罗河上的一个岛，其上有伊西斯神庙；</li>
+<li><strong>塞赫尔岛</strong>(Sehel Island，希腊语:Σῆτις):古埃及称<strong>塞泰特</strong>(sṯt(t))；</li>
+<li><strong>底比斯</strong>(Thebes，阿拉伯语:طيبة):古埃及称<strong>瓦塞特</strong>(wꜣs.t)，守护神为阿蒙，权杖诺姆(第4诺姆)首府，第11、16、17、18、19、25王朝首都；</li>
+<li><strong>托德</strong>(Tod，阿拉伯语:طود):古埃及称<strong>杰尔提</strong>(Ḏrty)，守护神为孟图；</li>
+<li><strong>哈马马特干谷</strong>(Wadi Hammamat，阿拉伯语:وادي الحمامات):上埃及的一条干谷；</li>
+</ul>
+<h1 id="西奈"><a href="#西奈" class="headerlink" title="西奈"></a>西奈</h1><p><img src="sinai.gif" alt="西奈" title="西奈"></p>
+<ul>
+<li><strong>贝鲁西亚</strong>(Pelusium，科普特语:Ⲡⲉⲣⲉⲙⲟⲩⲛ):古埃及称<strong>佩尔-阿蒙</strong>(pr-jmn)，守护神为阿蒙，埃及最东部的主要城市；</li>
+<li><strong>红海</strong>(Red Sea):南起曼德海峡，北至苏伊士运河的一片狭长的、较为封闭的海域；</li>
+<li><strong>塞拉比特·埃尔-哈迪姆</strong>(Serabit el-Khadim，阿拉伯语:سرابيط الخادم):古埃及考古发掘点，发现了几座采矿营地和一座哈托尔神庙；</li>
+<li><strong>西奈</strong>(Sinai，阿拉伯语:سِينَاء):古埃及称<strong>比阿乌</strong>(bjꜣw)，意为“矿产之国”，埃及的一座半岛；</li>
+<li><strong>提姆纳</strong>(Timna，希伯来语:תִּמְנָע):以色列南部的一条河谷；</li>
+<li><strong>马格哈拉干谷</strong>(Wadi Maghara):古埃及称<strong>孟法卡</strong>(mfkꜣ)，意为“绿松石镇”，西奈半岛上的一座干谷；</li>
+</ul>
+<h1 id="努比亚"><a href="#努比亚" class="headerlink" title="努比亚"></a>努比亚</h1><p><img src="southern_egypt.gif" alt="努比亚" title="努比亚"></p>
+<ul>
+<li><strong>第二瀑布</strong>(2nd Cataract):<strong>尼罗河第二瀑布</strong>；</li>
+<li><strong>第三瀑布</strong>(3nd Cataract):<strong>尼罗河第三瀑布</strong>；</li>
+<li><strong>阿布辛贝勒</strong>(Abu Simbel，阿拉伯语:أبو سمبل):两座岩雕神殿遗迹；</li>
+<li><strong>阿马达</strong>(Amada):神庙遗迹；</li>
+<li><strong>阿马拉</strong>(Amara):库施总督所在地；</li>
+<li><strong>阿尼巴</strong>(Aniba):努比亚村庄；</li>
+<li><strong>布亨</strong>(Buhen，古埃及语:b(w)hn):努比亚最大的要塞城镇，有一座铜厂；</li>
+<li><strong>德尔</strong>(Derr):神庙遗迹；</li>
+<li><strong>下努比亚</strong>(Lower Nubia):亦称<strong>瓦瓦特</strong>(Wawat)，努比亚北部；</li>
+<li><strong>塞姆纳</strong>(Semna):古埃及在努比亚的要塞区；</li>
+<li><strong>索雷布</strong>(Soleb):神庙遗迹；</li>
+<li><strong>上努比亚</strong>(Upper Nubia):努比亚南部；</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ That’s all for now <i class="fa fa-paw"></i> thank you for your reading. ~~~~~~~~~~~~~~</div>
+    
+</div>
+
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田 阿柔 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田 阿柔 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>稗田 阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hiedanoajuu.github.io/2025/01/11/egypt-maps/" title="埃及地图">https://hiedanoajuu.github.io/2025/01/11/egypt-maps/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%A3%E7%BF%BB/" rel="tag"><i class="fa fa-tag"></i> 渣翻</a>
+              <a href="/tags/%E5%9F%83%E5%8F%8A/" rel="tag"><i class="fa fa-tag"></i> 埃及</a>
+              <a href="/tags/%E5%9C%B0%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 地图</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/08/10/hiragana-in-chinese/" rel="prev" title="平假名寻根——草书书法中的“平假名”">
+      <i class="fa fa-chevron-left"></i> 平假名寻根——草书书法中的“平假名”
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/19/expt-7/" rel="next" title="寻址方式在结构化数据访问中的应用">
+      寻址方式在结构化数据访问中的应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E5%9F%83%E5%8F%8A"><span class="nav-number">1.</span> <span class="nav-text">下埃及</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E5%9F%83%E5%8F%8A"><span class="nav-number">2.</span> <span class="nav-text">上埃及</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A5%BF%E5%A5%88"><span class="nav-number">3.</span> <span class="nav-text">西奈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%AA%E6%AF%94%E4%BA%9A"><span class="nav-number">4.</span> <span class="nav-text">努比亚</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="稗田 阿柔"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">稗田 阿柔</p>
+  <div class="site-description" itemprop="description">Once seen, never forgotten.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hiedanoajuu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hiedanoajuu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hiedanoajuu@outlook.com" title="E-Mail → mailto:hiedanoajuu@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hiedano_ajuu" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hiedano_ajuu" rel="noopener" target="_blank"><i class="fa fa-lightbulb fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Recommended Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/HiedanoAjuu/Ajuu-s-repository" title="https:&#x2F;&#x2F;github.com&#x2F;HiedanoAjuu&#x2F;Ajuu-s-repository" rel="noopener" target="_blank">Ajuu's Repository</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">稗田 阿柔</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">66k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:01</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div id="site-runtime">
+    <span class="post-meta-item-icon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+    <span id="runtime"></span>
+</div>
+
+ <script language="javascript">
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        for (var i = 0; i < agents.length; i++) {
+            if (userAgentInfo.indexOf(agents[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+}
+
+    function siteTime(openOnPC, start) {
+        window.setTimeout("siteTime(openOnPC, start)", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+            start = new Date("2023-08-23 15:24:00 +0800");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var diff = now - start;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        if (openOnPC) {
+            if (diffYears == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+            }
+        } else {
+            if (y == 0){
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }else{
+                document.getElementById("runtime").innerHTML = "本站已运行: " + diffYears + "年 " + diffDays + "天 " + diffHours + "小时 " + diffMinutes + "分钟 " + diffSeconds + "秒";
+            }
+       
+        }
+    }
+
+    var showOnMobile = false;
+    var openOnPC = isPC();
+    var start = new Date();
+    siteTime(openOnPC, start);
+
+    if (!openOnPC && !showOnMobile) {
+        document.getElementById('site-runtime').style.display = 'none';
+    }
+</script>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
