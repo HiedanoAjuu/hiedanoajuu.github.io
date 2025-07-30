@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fa_32x32.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fa_16x16.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=times-new-roman, RuiZH:300,300italic,400,400italic,700,700italic|WHJZT:300,300italic,400,400italic,700,700italic|consola:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hiedanoajuu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Integrated use of various addressing modes in structured data access.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Experiment 7 Applying Addressing Modes to Access Structured Data">
+<meta property="og:url" content="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/index.html">
+<meta property="og:site_name" content="稗田 阿柔">
+<meta property="og:description" content="Integrated use of various addressing modes in structured data access.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/assemble.png">
+<meta property="og:image" content="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/table.png">
+<meta property="article:published_time" content="2025-01-19T11:54:16.000Z">
+<meta property="article:modified_time" content="2025-07-30T09:08:08.533Z">
+<meta property="article:author" content="稗田 阿柔">
+<meta property="article:tag" content="Programming Languages">
+<meta property="article:tag" content="Data Structures">
+<meta property="article:tag" content="Computer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/assemble.png">
+
+<link rel="canonical" href="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Experiment 7 Applying Addressing Modes to Access Structured Data | 稗田 阿柔</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="稗田 阿柔" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- aplayer -->
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">稗田 阿柔</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Site of Hiedano Ajuu</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="稗田 阿柔">
+      <meta itemprop="description" content="Once seen, never forgotten.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="稗田 阿柔">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Experiment 7 Applying Addressing Modes to Access Structured Data
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-01-19 11:54:16" itemprop="dateCreated datePublished" datetime="2025-01-19T11:54:16Z">2025-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-07-30 09:08:08" itemprop="dateModified" datetime="2025-07-30T09:08:08Z">2025-07-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Assemble/" itemprop="url" rel="index"><span itemprop="name">Assemble</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Assemble/Masm/" itemprop="url" rel="index"><span itemprop="name">Masm</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+            <div class="post-description">Integrated use of various addressing modes in structured data access.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Project-Context"><a href="#Project-Context" class="headerlink" title="Project Context"></a>Project Context</h1><p>The following table presents an overview of Power Idea from its founding in 1975 to 1995.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Years</th>
+<th style="text-align:right">Incomes</th>
+<th style="text-align:right">Employees</th>
+<th>Per Capita Incomes(PCI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1975</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">3</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1976</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">7</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1977</td>
+<td style="text-align:right">382</td>
+<td style="text-align:right">9</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1978</td>
+<td style="text-align:right">1356</td>
+<td style="text-align:right">13</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1979</td>
+<td style="text-align:right">2390</td>
+<td style="text-align:right">28</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1980</td>
+<td style="text-align:right">8000</td>
+<td style="text-align:right">38</td>
+<td>?</td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td></td>
+</tr>
+<tr>
+<td>1995</td>
+<td style="text-align:right">5,937,000</td>
+<td style="text-align:right">17,800</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The data is defined in the following program:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">; source.asm</span><br><span class="line">assume cs:codesg</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &#x27;1975&#x27;,&#x27;1976&#x27;,&#x27;1977&#x27;,&#x27;1978&#x27;,&#x27;1979&#x27;,&#x27;1980&#x27;,&#x27;1981&#x27;,&#x27;1982&#x27;,&#x27;1983&#x27;</span><br><span class="line">    db &#x27;1984&#x27;,&#x27;1985&#x27;,&#x27;1986&#x27;,&#x27;1987&#x27;,&#x27;1988&#x27;,&#x27;1989&#x27;,&#x27;1990&#x27;,&#x27;1991&#x27;,&#x27;1992&#x27;</span><br><span class="line">    db &#x27;1993&#x27;,&#x27;1994&#x27;,&#x27;1995&#x27;</span><br><span class="line">    ;The above 21 strings represent 21 years.</span><br><span class="line"></span><br><span class="line">    dd 16,22,382,1356,2390,8000,16000,24486,50065,97479,140417,197514</span><br><span class="line">    dd 345980,590827,803530,1183000,1843000,2759000,3753000,4649000,5937000</span><br><span class="line">    ;The 21 dwords represent the yearly incomes over 21 years.</span><br><span class="line"></span><br><span class="line">    dw 3,7,9,13,28,38,130,220,476,778,1001,1442,2258,2793,4037,5635,8226</span><br><span class="line">    dw 11542,14430,15257,17800</span><br><span class="line">    ;The above 21 words represent the yearly number of employees over 21 years.</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">table segment</span><br><span class="line">    db 21 dup (&#x27;year summ ne ?? &#x27;)</span><br><span class="line">table ends</span><br></pre></td></tr></table></figure></p>
+<p>Program: Write the data in Segment <code>data</code> to Segment <code>table</code> in the format shown below. Then calculate the PCIs over the 21 years and store the result in Segment <code>table</code> as well.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Years (4B)</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">Space (1B)</th>
+<th style="text-align:center">Incomes (4B)</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">Space (1B)</th>
+<th style="text-align:center">Employees (2B)</th>
+<th style="text-align:center"></th>
+<th>Spaces (1B)</th>
+<th>PCI (2B)</th>
+<th></th>
+<th>Space (1B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">table</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+<tr>
+<td style="text-align:center">0H</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">16</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td></td>
+<td></td>
+<td>??</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">10H</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">22</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td></td>
+<td></td>
+<td>??</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">140H</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">5,937,000</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">17,800</td>
+<td style="text-align:center"></td>
+<td></td>
+<td></td>
+<td>??</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Tip: Think of Segment <code>data</code> as several arrays, and Segment <code>table</code> as an array of structures. Use <code>bx</code> to locate each structure, <code>imm</code>(Immediate value) as a field offset, and <code>si</code> to access individual bytes in dword fields. You can use addressing modes like <code>[bx + idata]</code> and <code>[bx + idata + si]</code> for access.</p>
+<h1 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h1><p>In the source file <code>source.asm</code>, three segments are defined: <code>codesg</code> (hereafter referred to as <code>code</code> for convenience), <code>data</code>, and <code>table</code>.</p>
+<ul>
+<li>Segment <code>code</code> stores assembly instructions and corresponds to Register <code>cs</code>;</li>
+<li>Segment <code>data</code> stores input data and corresponds to Register <code>ds</code>;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data segment</span><br><span class="line">    db &#x27;1975&#x27;,&#x27;1976&#x27;,&#x27;1977&#x27;,&#x27;1978&#x27;,&#x27;1979&#x27;,&#x27;1980&#x27;,&#x27;1981&#x27;,&#x27;1982&#x27;,&#x27;1983&#x27;</span><br><span class="line">    db &#x27;1984&#x27;,&#x27;1985&#x27;,&#x27;1986&#x27;,&#x27;1987&#x27;,&#x27;1988&#x27;,&#x27;1989&#x27;,&#x27;1990&#x27;,&#x27;1991&#x27;,&#x27;1992&#x27;</span><br><span class="line">    db &#x27;1993&#x27;,&#x27;1994&#x27;,&#x27;1995&#x27;</span><br><span class="line">    ;The above 21 strings represent 21 years.</span><br><span class="line"></span><br><span class="line">    dd 16,22,382,1356,2390,8000,16000,24486,50065,97479,140417,197514</span><br><span class="line">    dd 345980,590827,803530,1183000,1843000,2759000,3753000,4649000,5937000</span><br><span class="line">    ;The 21 dwords represent the yearly incomes over 21 years.</span><br><span class="line"></span><br><span class="line">    dw 3,7,9,13,28,38,130,220,476,778,1001,1442,2258,2793,4037,5635,8226</span><br><span class="line">    dw 11542,14430,15257,17800</span><br><span class="line">    ;The above 21 words represent the yearly number of employees over 21 years.</span><br><span class="line">data ends</span><br></pre></td></tr></table></figure>
+<p>Segment <code>data</code> is divided into three sections: </p>
+<ul>
+<li><strong>Years</strong>: from offset <code>0H</code> to <code>53H</code>, with a step size of 4 bytes;</li>
+<li><strong>Incomes</strong>: from offset <code>54H</code> to <code>A7H</code>, with a step size of 4 bytes;</li>
+<li>Numbers of <strong>Employees</strong>: from offset <code>A8H</code> to the end of the segment, with a step size of 2 bytes;</li>
+</ul>
+<p>Data can be accessed by adding the appropriate step size to <code>bx</code>. Since the sections of Years and Incomes share the same step size and use the same offset addressing, they can be processed within the same loop.</p>
+<ul>
+<li>Segment <code>table</code> stores output data and corresponds to Register <code>es</code>;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">table segment</span><br><span class="line">    db 21 dup (&#x27;year summ ne ?? &#x27;)</span><br><span class="line">table ends</span><br></pre></td></tr></table></figure>
+<p>In each “row”(<code>10H</code>) of Segment <code>table</code>:</p>
+<ul>
+<li><code>year</code> (4 bytes) is used to store the <strong>Year</strong> (string);</li>
+<li><code>summ</code> (4 bytes) is used to store the <strong>Income</strong> (dword);</li>
+<li><code>ne</code> (2 bytes) is used to store the numbers of <strong>Employees</strong> (word);</li>
+<li><code>??</code> (2 bytes) is used to store the <strong>PCI</strong> (word);</li>
+</ul>
+<p>Register <code>es</code> is set to point to Segment <code>table</code>. Advancing to the next “row” can be archieved by incrementing <code>es</code> by 1. </p>
+<h1 id="Program-Implementation"><a href="#Program-Implementation" class="headerlink" title="Program Implementation"></a>Program Implementation</h1><p>Assume segment registers:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br></pre></td></tr></table></figure><br>Define Segment <code>stack</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack segment</span><br><span class="line">    dw 8 dup (0)</span><br><span class="line">    ; For cx</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure><br>Define Segment <code>code</code> and the entry point <code>start</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">......</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>Initialize segment registers: set <code>ds</code> to point to <code>data</code>, <code>es</code> to point to <code>table</code>, <code>ss:sp</code> to point to the bottom of <code>stack</code>:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mov ax,data</span><br><span class="line">mov ds,ax</span><br><span class="line"></span><br><span class="line">mov ax,table</span><br><span class="line">mov es,ax</span><br><span class="line"></span><br><span class="line">mov ax,stack</span><br><span class="line">mov ss,ax</span><br><span class="line">mov sp,16</span><br></pre></td></tr></table></figure><br>Process the <strong>Years</strong> and <strong>Incomes</strong> simultaneously, as both are 4 bytes in length:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mov bx,0</span><br><span class="line">mov cx,21</span><br><span class="line">s0:</span><br><span class="line">  push cx</span><br><span class="line">  mov si,0</span><br><span class="line">  mov cx,4</span><br><span class="line">  ; 4 bytes, 4 times, 1 byte each time;</span><br><span class="line">  s1:</span><br><span class="line">     ; Years</span><br><span class="line">     mov al,ds:[bx+si]  ; ds:[bx+si] -&gt; Years(0-53H)</span><br><span class="line">     mov es:[si],al     ; es:[si] -&gt; &quot;year&quot; in each row(10H) of Segment table</span><br><span class="line">     ; Incomes</span><br><span class="line">     mov al,ds:[bx+si+54h] ; ds:[bx+si+54h] -&gt; Incomes(54H-A7H)</span><br><span class="line">     mov es:[si+5],al      ; es:[si+5] -&gt; &quot;summ&quot; in each row of Segment table</span><br><span class="line">     inc si</span><br><span class="line">  loop s1</span><br><span class="line">  add bx,4</span><br><span class="line">  pop cx</span><br><span class="line">  mov ax,es</span><br><span class="line">  inc ax</span><br><span class="line">  mov es,ax ;Advancing to the next &quot;row&quot; is archieved by incrementing `es` by 1.</span><br><span class="line">loop s0</span><br></pre></td></tr></table></figure><br>Process the numbers of <strong>Employees</strong> and <strong>PCI</strong> simultaneously, as both are 2 bytes in length:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mov ax,table</span><br><span class="line">mov es,ax</span><br><span class="line">mov bx,0</span><br><span class="line">mov cx,21</span><br><span class="line">s2:</span><br><span class="line">  ; Employees</span><br><span class="line">  mov ax,ds:[bx+0a8h]   ; ds:[bx+0a8h] -&gt; Employees(0A8H-End)</span><br><span class="line">  mov es:[10],ax        ; es:[10] -&gt; &quot;ne&quot; in each row of Segment table</span><br><span class="line">  ; PCI</span><br><span class="line">  mov ax,es:[5]         ; es:[5] -&gt; lower 2 bytes of the Income</span><br><span class="line">  mov dx,es:[7]         ; es:[7] -&gt; higher 2 bytes of the Income</span><br><span class="line">  div word ptr es:[10]  ; es:[10] -&gt; number of Employees</span><br><span class="line">  mov es:[13],ax        ; es:[13] -&gt; &quot;??&quot; in each row of Segment table</span><br><span class="line">  </span><br><span class="line">  add bx,2</span><br><span class="line">  mov ax,es</span><br><span class="line">  inc ax</span><br><span class="line">  mov es,ax</span><br><span class="line">loop s2</span><br></pre></td></tr></table></figure><br>Finally, terminate:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov ax,4c00h</span><br><span class="line">int 21h</span><br></pre></td></tr></table></figure><br>The full program is as shown below:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">; code.asm</span><br><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &#x27;1975&#x27;,&#x27;1976&#x27;,&#x27;1977&#x27;,&#x27;1978&#x27;,&#x27;1979&#x27;,&#x27;1980&#x27;,&#x27;1981&#x27;,&#x27;1982&#x27;,&#x27;1983&#x27;</span><br><span class="line">    db &#x27;1984&#x27;,&#x27;1985&#x27;,&#x27;1986&#x27;,&#x27;1987&#x27;,&#x27;1988&#x27;,&#x27;1989&#x27;,&#x27;1990&#x27;,&#x27;1991&#x27;,&#x27;1992&#x27;</span><br><span class="line">    db &#x27;1993&#x27;,&#x27;1994&#x27;,&#x27;1995&#x27;</span><br><span class="line">    ;The above is 21 strings representing 21 years</span><br><span class="line"></span><br><span class="line">    dd 16,22,382,1356,2390,8000,16000,24486,50065,97479,140417,197514</span><br><span class="line">    dd 345980,590827,803530,1183000,1843000,2759000,3753000,4649000,5937000</span><br><span class="line">    ;The above is 21 dwords representing the incomes of 21 years</span><br><span class="line"></span><br><span class="line">    dw 3,7,9,13,28,38,130,220,476,778,1001,1442,2258,2793,4037,5635,8226</span><br><span class="line">    dw 11542,14430,15257,17800</span><br><span class="line">    ;The above is 21 words representing the numbers of employees</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">table segment</span><br><span class="line">    db 21 dup (&#x27;year sums em ?? &#x27;)</span><br><span class="line">    ; Create 336 bytes to save the table</span><br><span class="line">table ends</span><br><span class="line"></span><br><span class="line">stack segment</span><br><span class="line">    dw 8 dup (0)</span><br><span class="line">    ; Create a stack to temporarily save CX</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">    ; Segment Register init</span><br><span class="line">    mov ax,data</span><br><span class="line">    mov ds,ax</span><br><span class="line"></span><br><span class="line">    mov ax,table</span><br><span class="line">    mov es,ax</span><br><span class="line"></span><br><span class="line">    mov ax,stack</span><br><span class="line">    mov ss,ax</span><br><span class="line">    mov sp,16</span><br><span class="line"></span><br><span class="line">    ; Years and Incomes(4B)</span><br><span class="line">    mov bx,0</span><br><span class="line">    mov cx,21</span><br><span class="line">    s0:</span><br><span class="line">      push cx</span><br><span class="line">      mov si,0</span><br><span class="line">      mov cx,4</span><br><span class="line">      s1:</span><br><span class="line">         ; Years</span><br><span class="line">         mov al,ds:[bx+si]</span><br><span class="line">         mov es:[si],al</span><br><span class="line">         ; Incomes</span><br><span class="line">         mov al,ds:[bx+si+54h]</span><br><span class="line">         mov es:[si+5],al</span><br><span class="line">         inc si</span><br><span class="line">      loop s1</span><br><span class="line">      add bx,4</span><br><span class="line">      pop cx</span><br><span class="line">      mov ax,es</span><br><span class="line">      inc ax</span><br><span class="line">      mov es,ax</span><br><span class="line">    loop s0</span><br><span class="line"></span><br><span class="line">    ; Employees and PCI(2B)</span><br><span class="line">    mov ax,table</span><br><span class="line">    mov es,ax</span><br><span class="line">    mov bx,0</span><br><span class="line">    mov cx,21</span><br><span class="line">    s2:</span><br><span class="line">      ; Emplyees</span><br><span class="line">      mov ax,ds:[bx+0a8h]</span><br><span class="line">      mov es:[10],ax</span><br><span class="line">      ; PCI</span><br><span class="line">      mov ax,es:[5]</span><br><span class="line">      mov dx,es:[7]</span><br><span class="line">      div word ptr es:[10]</span><br><span class="line">      mov es:[13],ax</span><br><span class="line">      </span><br><span class="line">      add bx,2</span><br><span class="line">      mov ax,es</span><br><span class="line">      inc ax</span><br><span class="line">      mov es,ax</span><br><span class="line">    loop s2</span><br><span class="line"></span><br><span class="line">    ; Termination</span><br><span class="line">    mov ax,4c00h</span><br><span class="line">    int 21h</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure></p>
+<h1 id="Program-Behavior"><a href="#Program-Behavior" class="headerlink" title="Program Behavior"></a>Program Behavior</h1><p>Assemble, link, generate <code>code.exe</code>;<br><img src="assemble.png" alt="Assemble" title="Assemble"><br>The program behavior is as shown below:<br><img src="table.png" alt="Program Behavior" title="Program Behavior"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0778:0000 31 39 37 35 20 10 00 00-00 20 03 00 20 05 00 20 1975 .... .. ..</span><br></pre></td></tr></table></figure>
+<p>As shown:</p>
+<ul>
+<li>Offsets <code>0H-3H</code> store <code>31 39 37 35</code>, which corresponds to the Year 1975 (in ASCII);</li>
+<li>The 4th, 9th, 12th, and 15th bytes are all <code>20</code>, representing “ “ (Space);</li>
+<li>Offsets <code>5H-8H</code> store the Income <code>10 00 00-00</code> (in little endian);</li>
+<li>Offsets <code>10H-11H</code> store the number of Employees <code>03 00</code> (in little endian);</li>
+<li>Offsets <code>13H-14H</code> store the PCI, which is the result of integer division (truncating toward zero) of Income by Employees: <code>05 00</code> (in little endian);<br>It can be seen that it fully meets the requirements of the project.<br><strong>Experiment completed.</strong></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">~~~~~~~~~~~~~~ That’s all for now <i class="fa fa-paw"></i> thank you for your reading. ~~~~~~~~~~~~~~</div>
+    
+</div>
+
+      </div>
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="稗田 阿柔 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="稗田 阿柔 Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>稗田 阿柔
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://hiedanoajuu.github.io/2025/01/19/expt-7-en/" title="Experiment 7 Applying Addressing Modes to Access Structured Data">https://hiedanoajuu.github.io/2025/01/19/expt-7-en/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Programming-Languages/" rel="tag"><i class="fa fa-tag"></i> Programming Languages</a>
+              <a href="/tags/Data-Structures/" rel="tag"><i class="fa fa-tag"></i> Data Structures</a>
+              <a href="/tags/Computer/" rel="tag"><i class="fa fa-tag"></i> Computer</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/11/egypt-maps/" rel="prev" title="埃及地图">
+      <i class="fa fa-chevron-left"></i> 埃及地图
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/19/expt-7/" rel="next" title="寻址方式在结构化数据访问中的应用">
+      寻址方式在结构化数据访问中的应用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-Context"><span class="nav-number">1.</span> <span class="nav-text">Project Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analysis"><span class="nav-number">2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Program-Implementation"><span class="nav-number">3.</span> <span class="nav-text">Program Implementation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Program-Behavior"><span class="nav-number">4.</span> <span class="nav-text">Program Behavior</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="稗田 阿柔"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">稗田 阿柔</p>
+  <div class="site-description" itemprop="description">Once seen, never forgotten.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hiedanoajuu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hiedanoajuu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hiedanoajuu@outlook.com" title="E-Mail → mailto:hiedanoajuu@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hiedano_ajuu" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hiedano_ajuu" rel="noopener" target="_blank"><i class="fa fa-lightbulb fa-fw"></i>Zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Recommended Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/HiedanoAjuu/Ajuu-s-repository" title="https:&#x2F;&#x2F;github.com&#x2F;HiedanoAjuu&#x2F;Ajuu-s-repository" rel="noopener" target="_blank">Ajuu's Repository</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">稗田 阿柔</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">70k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:04</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+  <div id="site-runtime">
+    <span class="post-meta-item-icon">
+        <i class="fa fa-clock-o"></i>
+    </span>
+    <span id="runtime"></span>
+</div>
+
+ <script language="javascript">
+    function isPC() {
+        var userAgentInfo = navigator.userAgent;
+        var agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        for (var i = 0; i < agents.length; i++) {
+            if (userAgentInfo.indexOf(agents[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+}
+
+    function siteTime(openOnPC, start) {
+        window.setTimeout("siteTime(openOnPC, start)", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+            start = new Date("2023-08-23 15:24:00 +0800");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        var diff = now - start;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        if (openOnPC) {
+            if (diffYears == 0){
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }else{
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }
+        } else {
+            if (y == 0){
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }else{
+                document.getElementById("runtime").innerHTML = "This site has running for: " + diffYears + "y " + diffDays + "d " + diffHours + "h " + diffMinutes + "m " + diffSeconds + "s";
+            }
+       
+        }
+    }
+
+    var showOnMobile = false;
+    var openOnPC = isPC();
+    var start = new Date();
+    siteTime(openOnPC, start);
+
+    if (!openOnPC && !showOnMobile) {
+        document.getElementById('site-runtime').style.display = 'none';
+    }
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
