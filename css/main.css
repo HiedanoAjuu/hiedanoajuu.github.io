@@ -1199,7 +1199,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f7ffc7;
+  background: #6affe4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2785,11 +2785,11 @@ pre {
   src: url("../fonts/times-new-roman.ttf");
 }
 .links-of-author-item a {
+  display: flex !important;
   white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: unset !important;
   max-width: none !important;
-  display: flex !important;
   justify-content: flex-start !important /* 左对齐 */;
   align-items: center !important /* 垂直居中 */;
   text-align: left !important;

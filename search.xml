@@ -1242,36 +1242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>&quot;Hello World&quot;在Masm上的实现</title>
-    <url>/2025/01/21/hello-world-masm/</url>
-    <content><![CDATA[<h1 id="项目情景"><a href="#项目情景" class="headerlink" title="项目情景"></a>项目情景</h1><p>编程:在屏幕中间分别显示绿色、绿底红色、白底蓝色的字符串”welcome to masm!”</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>情景要求以及需要实现的功能非常简单，这里分析一下其中的几个要点:</p>
-<ol>
-<li>字符串<code>&quot;welcome to masm!&quot;</code>，查表可得其ASCII编码，不过也可以直接写到<code>data</code>段里，打印时再取用，将ASCII编码写入显示的字符所在字的低位字节即可；</li>
-<li><strong>中间</strong>，也即屏幕正中间，我们要打印的字符串长度为16，共打印3次，对于80x25(字符)的DOS屏幕，如果要显示在正中间，第1行应显示在第12行(偏移地址为<code>780H</code>)处，每行第1个字符应显示在该行的第32列处(偏移地址为<code>40H</code>)，换行可以通过偏移地址<code>+0A0H</code>实现，因为每行显示80个字符，每个字符占2字节；</li>
-<li><strong>绿色</strong>、<strong>绿底红色</strong>、<strong>白底蓝色</strong>，可以通过调节属性字节实现更改，属性字节的格式如下:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">7  6 5 4 3 2 1 0</span><br><span class="line">BL R G B I R G B</span><br><span class="line">0-2为前景色，3为高亮，4-6为背景色，7为闪烁</span><br></pre></td></tr></table></figure>
-<strong>绿色</strong>的属性字节为:<code>0000 0010B</code>，即<code>02H</code>；<br><strong>绿底红色</strong>的属性字节为:<code>0010 0100B</code>，即<code>24H</code>；<br><strong>白底蓝色</strong>的属性字节为:<code>0111 0001B</code>，即<code>71H</code>；<br>将对应的属性字节写入显示的字符所在字的高位字节即可；</li>
-</ol>
-<h1 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h1><p>指定各段的段寄存器:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">assume cs:code,ds:data</span><br></pre></td></tr></table></figure><br>定义数据段<code>data</code>，向其中写入需要打印的字符串<code>welcome to masm!</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data segment</span><br><span class="line">    db &quot;w e l c o m e   t o   m a s m ! &quot;</span><br><span class="line">    ; 需要被打印的字符串</span><br><span class="line">data ends</span><br></pre></td></tr></table></figure><br>每个字符后面都加了一个空格，是为了以字的形式写入字符串，确保与显存中的位置拥有相同的偏移地址；</p>
-<p>定义代码段<code>code</code>和程序起始点<code>start</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">......</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>由于没有需要暂存的数据(比如循环变量)，所以这次的程序中不需要栈段；</p>
-<p>初始化各段寄存器，使<code>ds</code>指向<code>data</code>，<code>es</code>指向显存:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,data</span><br><span class="line">mov ds,ax</span><br><span class="line"></span><br><span class="line">mov ax,0b800h</span><br><span class="line">mov es,ax</span><br></pre></td></tr></table></figure></p>
-<p>以第一行为例，简单看看打印文本的代码:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; 第1行</span><br><span class="line">; 背景:黑</span><br><span class="line">; 前景:绿</span><br><span class="line">mov bx,0</span><br><span class="line">mov si,780h ; 设置第1行的偏移地址</span><br><span class="line">mov cx,16   ; 16个字符，循环16次</span><br><span class="line">s:</span><br><span class="line">    mov al,ds:[bx]</span><br><span class="line">    mov ah,02h  ; 将ASCII码与属性字节02H拼接形成显存中的字</span><br><span class="line">    mov es:[bx+si+40h],ax ; 写入显存对应位置，因为每行第1个字符在第32列所以要+40H</span><br><span class="line">    add bx,2</span><br><span class="line">    inc di</span><br><span class="line">loop s</span><br></pre></td></tr></table></figure><br>换行就<code>si+0A0H</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add si,0a0h</span><br></pre></td></tr></table></figure><br>其他两行也是同理，此处就不再赘述了；<br>(本来想用一个循环的，但是每行需要写入的属性字节不同，只得作罢)</p>
-<p>最后返回:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,4c00h</span><br><span class="line">int 21h</span><br></pre></td></tr></table></figure></p>
-<p>完整的程序如下:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; hello.asm</span><br><span class="line">assume cs:code,ds:data</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &quot;w e l c o m e   t o   m a s m ! &quot;</span><br><span class="line">    ; The strings to be printed</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">    start:</span><br><span class="line">        ; segReg init</span><br><span class="line">        mov ax,data</span><br><span class="line">        mov ds,ax</span><br><span class="line"></span><br><span class="line">        mov ax,0b800h</span><br><span class="line">        mov es,ax</span><br><span class="line"></span><br><span class="line">        ; 1st line</span><br><span class="line">        ; bg:black</span><br><span class="line">        ; fg:green</span><br><span class="line">        mov bx,0</span><br><span class="line">        mov si,780h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,02h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s</span><br><span class="line"></span><br><span class="line">        ; 2nd line</span><br><span class="line">        ; bg:green</span><br><span class="line">        ; fg:red</span><br><span class="line">        mov bx,0</span><br><span class="line">        add si,0a0h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s1:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,24h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s1</span><br><span class="line"></span><br><span class="line">        ; 3rd line</span><br><span class="line">        ; bg:white</span><br><span class="line">        ; fg:blue</span><br><span class="line">        mov bx,0</span><br><span class="line">        add si,0a0h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s2:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,71h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s2</span><br><span class="line"></span><br><span class="line">        ; Termination</span><br><span class="line">        mov ax,4c00h</span><br><span class="line">        int 21h</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>感觉写得很烂，但似乎也没有更好的实现方法了(</p>
-<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p>编译、链接，生成<code>hello.exe</code><br><img src="assemble.png" alt="编译" title="编译"><br>运行结果如图所示:<br><img src="hello.png" alt="welcome to masm!" title="运行结果"><br>可以看到，程序以正确的格式在屏幕正中间显示了字符串<code>&quot;welcome to masm!&quot;</code>，完美地实现了功能；<br><strong>项目完成</strong></p>
-]]></content>
-      <categories>
-        <category>zh-CN</category>
-        <category>计算机</category>
-        <category>汇编语言</category>
-        <category>Masm</category>
-      </categories>
-      <tags>
-        <tag>计算机</tag>
-        <tag>编程语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>寻址方式在结构化数据访问中的应用</title>
     <url>/2025/01/19/expt-7/</url>
     <content><![CDATA[<h1 id="项目情景"><a href="#项目情景" class="headerlink" title="项目情景"></a>项目情景</h1><p>Power idea 公司从 1975 年成立一直到 1995 年的基本情况如下。</p>
@@ -1484,8 +1454,38 @@
       </categories>
       <tags>
         <tag>计算机</tag>
-        <tag>编程语言</tag>
         <tag>数据结构</tag>
+        <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>&quot;Hello World&quot;在Masm上的实现</title>
+    <url>/2025/01/21/hello-world-masm/</url>
+    <content><![CDATA[<h1 id="项目情景"><a href="#项目情景" class="headerlink" title="项目情景"></a>项目情景</h1><p>编程:在屏幕中间分别显示绿色、绿底红色、白底蓝色的字符串”welcome to masm!”</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>情景要求以及需要实现的功能非常简单，这里分析一下其中的几个要点:</p>
+<ol>
+<li>字符串<code>&quot;welcome to masm!&quot;</code>，查表可得其ASCII编码，不过也可以直接写到<code>data</code>段里，打印时再取用，将ASCII编码写入显示的字符所在字的低位字节即可；</li>
+<li><strong>中间</strong>，也即屏幕正中间，我们要打印的字符串长度为16，共打印3次，对于80x25(字符)的DOS屏幕，如果要显示在正中间，第1行应显示在第12行(偏移地址为<code>780H</code>)处，每行第1个字符应显示在该行的第32列处(偏移地址为<code>40H</code>)，换行可以通过偏移地址<code>+0A0H</code>实现，因为每行显示80个字符，每个字符占2字节；</li>
+<li><strong>绿色</strong>、<strong>绿底红色</strong>、<strong>白底蓝色</strong>，可以通过调节属性字节实现更改，属性字节的格式如下:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">7  6 5 4 3 2 1 0</span><br><span class="line">BL R G B I R G B</span><br><span class="line">0-2为前景色，3为高亮，4-6为背景色，7为闪烁</span><br></pre></td></tr></table></figure>
+<strong>绿色</strong>的属性字节为:<code>0000 0010B</code>，即<code>02H</code>；<br><strong>绿底红色</strong>的属性字节为:<code>0010 0100B</code>，即<code>24H</code>；<br><strong>白底蓝色</strong>的属性字节为:<code>0111 0001B</code>，即<code>71H</code>；<br>将对应的属性字节写入显示的字符所在字的高位字节即可；</li>
+</ol>
+<h1 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h1><p>指定各段的段寄存器:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">assume cs:code,ds:data</span><br></pre></td></tr></table></figure><br>定义数据段<code>data</code>，向其中写入需要打印的字符串<code>welcome to masm!</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">data segment</span><br><span class="line">    db &quot;w e l c o m e   t o   m a s m ! &quot;</span><br><span class="line">    ; 需要被打印的字符串</span><br><span class="line">data ends</span><br></pre></td></tr></table></figure><br>每个字符后面都加了一个空格，是为了以字的形式写入字符串，确保与显存中的位置拥有相同的偏移地址；</p>
+<p>定义代码段<code>code</code>和程序起始点<code>start</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">......</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>由于没有需要暂存的数据(比如循环变量)，所以这次的程序中不需要栈段；</p>
+<p>初始化各段寄存器，使<code>ds</code>指向<code>data</code>，<code>es</code>指向显存:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,data</span><br><span class="line">mov ds,ax</span><br><span class="line"></span><br><span class="line">mov ax,0b800h</span><br><span class="line">mov es,ax</span><br></pre></td></tr></table></figure></p>
+<p>以第一行为例，简单看看打印文本的代码:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; 第1行</span><br><span class="line">; 背景:黑</span><br><span class="line">; 前景:绿</span><br><span class="line">mov bx,0</span><br><span class="line">mov si,780h ; 设置第1行的偏移地址</span><br><span class="line">mov cx,16   ; 16个字符，循环16次</span><br><span class="line">s:</span><br><span class="line">    mov al,ds:[bx]</span><br><span class="line">    mov ah,02h  ; 将ASCII码与属性字节02H拼接形成显存中的字</span><br><span class="line">    mov es:[bx+si+40h],ax ; 写入显存对应位置，因为每行第1个字符在第32列所以要+40H</span><br><span class="line">    add bx,2</span><br><span class="line">    inc di</span><br><span class="line">loop s</span><br></pre></td></tr></table></figure><br>换行就<code>si+0A0H</code>:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add si,0a0h</span><br></pre></td></tr></table></figure><br>其他两行也是同理，此处就不再赘述了；<br>(本来想用一个循环的，但是每行需要写入的属性字节不同，只得作罢)</p>
+<p>最后返回:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov ax,4c00h</span><br><span class="line">int 21h</span><br></pre></td></tr></table></figure></p>
+<p>完整的程序如下:<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; hello.asm</span><br><span class="line">assume cs:code,ds:data</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">    db &quot;w e l c o m e   t o   m a s m ! &quot;</span><br><span class="line">    ; The strings to be printed</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">    start:</span><br><span class="line">        ; segReg init</span><br><span class="line">        mov ax,data</span><br><span class="line">        mov ds,ax</span><br><span class="line"></span><br><span class="line">        mov ax,0b800h</span><br><span class="line">        mov es,ax</span><br><span class="line"></span><br><span class="line">        ; 1st line</span><br><span class="line">        ; bg:black</span><br><span class="line">        ; fg:green</span><br><span class="line">        mov bx,0</span><br><span class="line">        mov si,780h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,02h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s</span><br><span class="line"></span><br><span class="line">        ; 2nd line</span><br><span class="line">        ; bg:green</span><br><span class="line">        ; fg:red</span><br><span class="line">        mov bx,0</span><br><span class="line">        add si,0a0h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s1:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,24h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s1</span><br><span class="line"></span><br><span class="line">        ; 3rd line</span><br><span class="line">        ; bg:white</span><br><span class="line">        ; fg:blue</span><br><span class="line">        mov bx,0</span><br><span class="line">        add si,0a0h</span><br><span class="line">        mov cx,16</span><br><span class="line">        s2:</span><br><span class="line">            mov al,ds:[bx]</span><br><span class="line">            mov ah,71h</span><br><span class="line">            mov es:[bx+si+40h],ax</span><br><span class="line">            add bx,2</span><br><span class="line">            inc di</span><br><span class="line">        loop s2</span><br><span class="line"></span><br><span class="line">        ; Termination</span><br><span class="line">        mov ax,4c00h</span><br><span class="line">        int 21h</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure><br>感觉写得很烂，但似乎也没有更好的实现方法了(</p>
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p>编译、链接，生成<code>hello.exe</code><br><img src="assemble.png" alt="编译" title="编译"><br>运行结果如图所示:<br><img src="hello.png" alt="welcome to masm!" title="运行结果"><br>可以看到，程序以正确的格式在屏幕正中间显示了字符串<code>&quot;welcome to masm!&quot;</code>，完美地实现了功能；<br><strong>项目完成</strong></p>
+]]></content>
+      <categories>
+        <category>zh-CN</category>
+        <category>计算机</category>
+        <category>汇编语言</category>
+        <category>Masm</category>
+      </categories>
+      <tags>
+        <tag>计算机</tag>
+        <tag>编程语言</tag>
       </tags>
   </entry>
   <entry>
@@ -1649,12 +1649,12 @@
 <center>[明]王铎 《临唐太宗帖》 “無(无)”</center>
 
 <h1 id="一些统计"><a href="#一些统计" class="headerlink" title="一些统计"></a>一些统计</h1>
-    <div id="echarts2220" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts8171" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts2220'));
+            var myChart = echarts.init(document.getElementById('echarts8171'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -1679,12 +1679,12 @@
     </script>
     
 
-    <div id="echarts131" style="width: 85%;height: 400px;margin: 0 auto"></div>
+    <div id="echarts7962" style="width: 85%;height: 400px;margin: 0 auto"></div>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 
     <script type="text/javascript">
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('echarts131'));
+            var myChart = echarts.init(document.getElementById('echarts7962'));
             // 指定图表的配置项和数据
             var option = {
     title: {
@@ -2098,8 +2098,8 @@
       </categories>
       <tags>
         <tag>计算机</tag>
-        <tag>编程语言</tag>
         <tag>数据结构</tag>
+        <tag>编程语言</tag>
       </tags>
   </entry>
   <entry>
