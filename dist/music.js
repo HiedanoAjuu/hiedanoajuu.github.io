@@ -5,7 +5,7 @@ const ap = new APlayer({
     theme: "#000",
     mutex: true,
     lrcType: 3,
-    preload: "metadata",
+    preload: "auto",
     audio: [
         {
             name: "かぜのいろ",
