@@ -4,7 +4,6 @@ const ap = new APlayer({
     autoplay: false,
     theme: "#000",
     mutex: true,
-    preload: "auto",
     lrcType: 3,
     audio: [
         {
@@ -14,6 +13,7 @@ const ap = new APlayer({
             cover:
                 "/music/kazenoiro/cover.png",
             lrc: "/music/kazenoiro/lyric.lrc",
+            preload: "auto",
         }
     ]
 })
