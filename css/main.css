@@ -1199,7 +1199,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b0ff70;
+  background: #ffff05;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2793,4 +2793,10 @@ pre {
   justify-content: flex-start !important /* 左对齐 */;
   align-items: center !important /* 垂直居中 */;
   text-align: left !important;
+}
+.post-body {
+  min-height: 100vh !important;
+}
+.post-block {
+  min-height: 130vh !important;
 }
