@@ -5,6 +5,7 @@ const ap = new APlayer({
     theme: "#000",
     mutex: true,
     lrcType: 3,
+    preload: "metadata",
     audio: [
         {
             name: "かぜのいろ",
@@ -13,7 +14,6 @@ const ap = new APlayer({
             cover:
                 "/music/kazenoiro/cover.png",
             lrc: "/music/kazenoiro/lyric.lrc",
-            preload: "auto",
         }
     ]
 })
