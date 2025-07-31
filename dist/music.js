@@ -4,6 +4,7 @@ const ap = new APlayer({
     autoplay: false,
     theme: "#000",
     mutex: true,
+    preload: "auto",
     lrcType: 3,
     audio: [
         {
